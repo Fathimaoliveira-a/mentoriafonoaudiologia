@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Domínio Clínico | Dra. Fáthima</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #0B0F19;
+            color: #E2E8F0;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Gradiente Dourado */
+        .text-gold {
+            background: linear-gradient(to right, #FDE68A, #D97706, #FDE68A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shineText 4s linear infinite;
+        }
+        @keyframes shineText { to { background-position: 200% center; } }
+
+        /* Botão Shine */
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg); animation: shineButton 3s infinite;
+        }
+        @keyframes shineButton {
+            0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; }
+        }
+
+        /* Glow e Ruído */
+        .glow-effect { box-shadow: 0 0 40px -10px rgba(217, 119, 6, 0.3); }
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Animações de Scroll - Com Fallback */
+        .reveal-on-scroll {
+            opacity: 0; /* Começa invisível */
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- CARROSSEL INFINITO --- */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 2rem 0;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            
+            /* Ajuste para centralizar */
+            scroll-padding-left: 50%; 
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        
+        .carousel-container::-webkit-scrollbar { display: none; }
+        
+        .carousel-item {
+            flex: 0 0 80%;
+            max-width: 400px;
+            scroll-snap-align: center;
+            transition: all 0.4s ease;
+            opacity: 0.3;
+            transform: scale(0.9);
+            border: 1px solid rgba(30, 41, 59, 1);
+            position: relative;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item { 
+                flex: 0 0 400px; 
+            }
+            .carousel-container {
+                padding-left: calc(50% - 200px);
+                padding-right: calc(50% - 200px);
+            }
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+            transform: scale(1);
+            border-color: rgba(217, 119, 6, 0.8);
+            background-color: rgba(15, 23, 42, 1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        /* Ancoragem */
+        .strike-through {
+            position: relative;
+            display: inline-block;
+        }
+        .strike-through::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; width: 100%; height: 2px;
+            background: #ef4444; /* Vermelho */
+            transform: rotate(-3deg);
+        }
+        
+        /* Botões de Navegação */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            background: rgba(217, 119, 6, 0.2);
+            border: 1px solid rgba(217, 119, 6, 0.5);
+            color: #fbbf24;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        .carousel-nav-btn:hover {
+            background: rgba(217, 119, 6, 0.8);
+            color: white;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.5);
+        }
+        .carousel-prev { left: 10px; }
+        .carousel-next { right: 10px; }
+        
+        @media (min-width: 1024px) {
+            .carousel-prev { left: 10%; }
+            .carousel-next { right: 10%; }
+        }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-white">
+
+    <div class="bg-noise"></div>
+
+    <div class="w-full bg-gradient-to-r from-amber-700 to-amber-900 text-amber-100 text-xs font-bold uppercase tracking-widest text-center py-2 relative z-50">
+        Inscrições Abertas para Nova Turma
+    </div>
+
+    <!-- SEÇÃO 01: HERO -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-10 pb-20 overflow-hidden z-10">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-600/20 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-4xl mx-auto space-y-6 reveal-on-scroll visible">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-900/20 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                <span class="text-amber-200 text-xs font-bold uppercase tracking-widest">Método Exclusivo Dra. Fáthima</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-medium leading-[1.1] tracking-tight text-white">
+                Domine a clínica da <br>
+                <span class="italic text-gold">Fala à Escrita.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Vou te ensinar a eliminar a insegurança do "primeiro atendimento" e conduzir terapias de fala e escrita com a firmeza de quem tem anos de experiência — mesmo que você ainda esteja na faculdade.
+            </p>
+
+            <div class="pt-8 pb-12">
+                <a href="#oferta" class="relative inline-flex group w-full md:w-auto">
+                    <div class="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                    <button class="btn-shine relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-manrope rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20">
+                        QUERO TER SEGURANÇA CLÍNICA
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 02: A IDENTIFICAÇÃO (CARROSSEL INFINITO) -->
+    <section class="py-24 relative z-10 border-y border-slate-800/50 bg-[#0F1420]">
+        <div class="w-full">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 px-6 space-y-6 reveal-on-scroll">
+                <h2 class="text-3xl md:text-5xl text-white leading-tight">
+                    A teoria você tem.<br>
+                    <span class="text-slate-400 italic font-light">O que falta é saber o que fazer com ela.</span>
+                </h2>
+                <div class="text-slate-400 text-lg space-y-4">
+                    <p>Eu sei como é. Você devora os livros, entende os conceitos de Piaget, Vygotsky e Luria, e vai bem nas provas. Mas a clínica é diferente do livro.</p>
+                    <p>Quando a porta se fecha e você fica sozinho com a criança, a teoria parece fugir.</p>
+                </div>
+            </div>
+
+            <!-- CARROSSEL WRAPPER -->
+            <div class="carousel-wrapper reveal-on-scroll">
+                <!-- Botão Esquerda -->
+                <button class="carousel-nav-btn carousel-prev hidden md:block" onclick="scrollCarousel(-1)">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+
+                <div class="carousel-container" id="symptomsCarousel">
+                    
+                    <!-- CLONE: Último Item (Card 3) -->
+                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="last">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
+                        </p>
+                    </div>
+
+                    <!-- ORIGINAL: Card 1 -->
+                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
+                        <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
+                        </p>
+                    </div>
+
+                    <!-- ORIGINAL: Card 2 -->
+                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">👀</div>
+                        <h3 class="text-xl text-white font-serif mb-3">O Olhar dos Pais</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            O receio do julgamento dos pais que estão assistindo... Eles olham para você com aquela expectativa desesperada de quem busca um milagre. Surge o pensamento: "Eles vão perceber que eu não sei o que estou fazendo".
+                        </p>
+                    </div>
+
+                    <!-- ORIGINAL: Card 3 -->
+                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
+                        </p>
+                    </div>
+
+                    <!-- CLONE: Primeiro Item (Card 1) -->
+                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="first">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
+                        <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm">
+                            O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Botão Direita -->
+                <button class="carousel-nav-btn carousel-next hidden md:block" onclick="scrollCarousel(1)">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="text-center mt-4 md:hidden text-slate-500 text-xs uppercase tracking-widest animate-pulse">
+                &larr; Arraste para ver mais &rarr;
+            </div>
+
+            <!-- TEXTO DE CULPA -->
+            <div class="mt-20 text-center max-w-3xl mx-auto px-6 reveal-on-scroll">
+                <h4 class="text-2xl text-white font-serif mb-4">Quero que saiba de uma coisa: isso não acontece porque você não estudou.</h4>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Acontece porque a "chave" da prática clínica ainda não virou na sua cabeça. A faculdade te deu a base teórica e científica sólida. Sem isso, não somos nada. <br><br>
+                    Mas a faculdade não consegue simular o dia a dia real. Ela não te ensina o "tato clínico", o manejo da criança que não quer colaborar ou como explicar o tratamento para uma mãe ansiosa. Esse "tato" geralmente leva anos para ser construído na tentativa e erro.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 03: O MÉTODO (Scroll Reveal Progressivo) -->
+    <section class="py-32 relative z-10 bg-[#0B0F19]">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <div class="text-center mb-20 space-y-4 reveal-on-scroll">
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Solução</span>
+                <h2 class="text-4xl md:text-5xl text-white">A Hierarquia dos Desdobramentos</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Vejo muitos recém-formados travando porque tentam tratar o problema de trás para frente. A linguagem humana é uma engrenagem sequencial.
+                </p>
+            </div>
+
+            <!-- Timeline Vertical -->
+            <div class="relative space-y-24">
+                <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500/50 to-transparent -translate-x-1/2 md:block hidden"></div>
+                <div class="absolute left-[28px] top-0 bottom-0 w-0.5 bg-slate-800 md:hidden block"></div>
+
+                <!-- Passo 01 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
+                    <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
+                        <h3 class="text-xl text-white font-serif mb-2">1. A Base Oral</h3>
+                        <p class="text-slate-400">
+                            Se você tenta corrigir a escrita sem antes estabilizar a hierarquia da fala, você falha. Aqui, ensinamos a estabilizar a base da linguagem oral primeiro. O paciente precisa organizar o pensamento verbalmente antes de passar para o papel.
+                        </p>
+                    </div>
+                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">1</div>
+                    <div class="order-3 md:w-[45%] md:block hidden"></div>
+                </div>
+
+                <!-- Passo 02 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
+                    <div class="order-3 md:order-1 md:w-[45%] md:block hidden"></div>
+                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">2</div>
+                    <div class="order-2 md:order-3 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-left hover:border-amber-500/30 transition-colors">
+                        <h3 class="text-xl text-white font-serif mb-2">2. Processamento Auditivo</h3>
+                        <p class="text-slate-400">
+                            Afinamos o ouvido e o cérebro. Trabalhamos consciência fonológica e processamento auditivo central. É o elo perdido que 90% dos recém-formados deixam passar na avaliação.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Passo 03 -->
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
+                    <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
+                        <h3 class="text-xl text-white font-serif mb-2">3. Escrita Fluida</h3>
+                        <p class="text-slate-400">
+                            A escrita é apenas um desdobramento tardio de uma base bem estruturada. Quando você domina essa hierarquia, o "branco" some porque você sabe exatamente em que degrau a criança está. Não há adivinhação. Há apenas diagnóstico e conduta.
+                        </p>
+                    </div>
+                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">3</div>
+                    <div class="order-3 md:w-[45%] md:block hidden"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 04: A EXPERT -->
+    <section class="py-24 bg-gradient-to-b from-[#0B0F19] to-[#111827] relative z-10 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            
+            <div class="w-full md:w-1/2 relative reveal-on-scroll">
+                <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-lg"></div>
+                
+                <!-- FOTO ATUALIZADA (SEM EFEITO PRETO E BRANCO) -->
+                <img src="https://drafathimaoliveira.com.br/wp-content/uploads/elementor/thumbs/FTMITTO-15-qj1hffc3mdwfwx34i87dd7011b29rrifq3k8i6zy2o.jpg" alt="Foto da Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
+                
+                <div class="absolute bottom-8 -right-4 bg-amber-600 text-white p-4 rounded-lg shadow-lg max-w-[150px]">
+                    <p class="text-xs font-bold uppercase tracking-wider mb-1">Referência</p>
+                    <p class="text-2xl font-serif italic">Regional</p>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 space-y-6 reveal-on-scroll">
+                <h2 class="text-4xl md:text-5xl text-white">20 anos de experiência clínica condensados para você.</h2>
+                <div class="h-1 w-20 bg-amber-500"></div>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Sou a <strong>Dra. Fáthima</strong>. Aqui na nossa região, atuo como referência em Fonoaudiologia Educacional e Neuropsicopedagogia há mais de duas décadas.
+                </p>
+                <p class="text-slate-400 leading-relaxed">
+                    Ao longo desses anos, vi estagiários brilhantes quase desistirem da profissão por pura insegurança prática no momento do atendimento. Por isso, decidi abrir minha "caixa preta".
+                </p>
+                <p class="text-slate-400 leading-relaxed">
+                    Reservei algumas horas da minha agenda para encurtar o seu caminho. O Método Domínio Clínico não é mais uma aula teórica. É uma mentoria prática onde te entrego meu raciocínio de 20 anos, ensinando exatamente o que fazer, como fazer e quando fazer.
+                </p>
+                <div class="pt-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg" alt="Assinatura" class="h-12 invert opacity-50">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 05: A OFERTA -->
+    <section id="oferta" class="py-24 relative z-10">
+        <div class="max-w-lg mx-auto px-6">
+            
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-8 md:p-12 rounded-2xl shadow-2xl glow-effect text-center relative overflow-hidden reveal-on-scroll">
+                
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600"></div>
+
+                <div class="space-y-6 relative z-10">
+                    <div>
+                        <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Acesso Imediato</p>
+                        <h2 class="text-3xl md:text-4xl text-white font-serif">Domínio Clínico</h2>
+                        <p class="text-slate-400 text-sm mt-2">Mentoria Prática de 4 Meses</p>
+                    </div>
+
+                    <!-- Stack de Valor (Ancoragem) -->
+                    <div class="bg-slate-900/50 rounded-lg p-6 border border-slate-800 text-left space-y-3 text-sm">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Mentoria Prática (Valor Real):</span>
+                            <span class="line-through">R$ 1.997,00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Bônus: Protocolos Prontos:</span>
+                            <span class="line-through">R$ 297,00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Bônus: Scripts de Devolutiva:</span>
+                            <span class="line-through">R$ 197,00</span>
+                        </div>
+                        <div class="w-full h-px bg-slate-700 my-2"></div>
+                        <div class="flex justify-between text-white font-bold text-lg">
+                            <span>Valor Total Entregue:</span>
+                            <span>R$ 2.491,00</span>
+                        </div>
+                    </div>
+
+                    <ul class="text-left space-y-4 text-slate-300 pt-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                            <span>Mentoria Ao Vivo quinzenal</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                            <span>Análise de Casos Reais (Prontuários)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                            <span>Gravações disponíveis por <strong class="text-white">1 ANO</strong></span>
+                        </li>
+                    </ul>
+
+                    <div class="py-8">
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-1 strike-through opacity-70">De R$ 1.997,00 por apenas</p>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-xl text-slate-500 font-bold">4x</span>
+                            <span class="text-5xl font-serif text-white">200</span>
+                            <span class="text-xl text-slate-500 font-bold">,00</span>
+                        </div>
+                        <p class="text-xs text-amber-500 mt-2 font-bold">Menos de R$ 7,00 por dia.</p>
+                    </div>
+
+                    <button class="btn-shine relative block w-full py-4 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-500 transition-colors shadow-lg transform hover:-translate-y-1">
+                        QUERO DOMINAR A PRÁTICA AGORA
+                    </button>
+                    
+                    <p class="text-xs text-slate-500 mt-4">
+                        Garantia incondicional de 7 dias. Se não sentir segurança, devolvo seu dinheiro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center border-t border-slate-900 relative z-10">
+        <p class="text-slate-600 text-sm font-manrope">
+            &copy; 2024 Dra. Fáthima. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa ícones
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // === 1. SISTEMA DE REVEAL (VISUALIZAÇÃO) ===
+            // Usa IntersectionObserver para garantir que funcione mesmo sem evento de scroll da janela
+            const observerOptions = {
+                root: null, // usa a viewport
+                threshold: 0.1, // 10% do elemento visível
+                rootMargin: "0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Para de observar após aparecer
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // FAIL-SAFE: Se por algum motivo o observer não disparar (ex: erro de carregamento)
+            // Força a exibição após 1 segundo
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    if (!el.classList.contains('visible')) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 1000);
+
+            // === 2. LÓGICA DO CARROSSEL INFINITO ===
+            const container = document.getElementById('symptomsCarousel');
+            
+            // Só executa se o container existir
+            if (container) {
+                const items = container.querySelectorAll('.carousel-item');
+                let isScrolling = false;
+
+                const updateActiveCard = () => {
+                    const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
+                    
+                    items.forEach(item => {
+                        const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
+                        const distance = Math.abs(containerCenter - itemCenter);
+                        
+                        // Tolerância para active
+                        if (distance < 200) {
+                            item.classList.add('active');
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                            item.style.borderColor = 'rgba(217, 119, 6, 0.5)';
+                            item.style.zIndex = '10';
+                        } else {
+                            item.classList.remove('active');
+                            item.style.opacity = '0.3';
+                            item.style.transform = 'scale(0.9)';
+                            item.style.borderColor = 'rgba(30, 41, 59, 1)';
+                            item.style.zIndex = '1';
+                        }
+                    });
+                };
+
+                const checkInfiniteLoop = () => {
+                    if (isScrolling) return;
+
+                    const scrollLeft = container.scrollLeft;
+                    const scrollWidth = container.scrollWidth;
+                    const clientWidth = container.clientWidth;
+                    
+                    // Prevenção de erro se itens não carregarem
+                    if (items.length < 2) return;
+
+                    const itemWidth = items[1].offsetWidth + 20; // largura + gap
+
+                    // Loop Esquerda -> Direita
+                    if (scrollLeft < 10) {
+                        isScrolling = true;
+                        container.style.scrollBehavior = 'auto'; 
+                        // Pula para o penúltimo item real
+                        container.scrollLeft = scrollWidth - (itemWidth * 2) - clientWidth / 2 + itemWidth / 2;
+                        setTimeout(() => {
+                            container.style.scrollBehavior = 'smooth';
+                            isScrolling = false;
+                        }, 50);
+                    }
+                    // Loop Direita -> Esquerda
+                    else if (scrollLeft >= scrollWidth - clientWidth - 10) {
+                        isScrolling = true;
+                        container.style.scrollBehavior = 'auto'; 
+                        // Pula para o segundo item (primeiro original)
+                        container.scrollLeft = items[1].offsetLeft - (clientWidth - items[1].offsetWidth) / 2;
+                        setTimeout(() => {
+                            container.style.scrollBehavior = 'smooth';
+                            isScrolling = false;
+                        }, 50);
+                    }
+                };
+
+                // Listeners
+                container.addEventListener('scroll', () => {
+                    updateActiveCard();
+                    checkInfiniteLoop();
+                });
+
+                // Inicialização Centralizada
+                // Centraliza no primeiro item ORIGINAL (Index 1) ao carregar
+                if (items.length > 1) {
+                    const firstOriginal = items[1];
+                    const scrollPos = firstOriginal.offsetLeft - (container.offsetWidth - firstOriginal.offsetWidth) / 2;
+                    
+                    container.style.scrollBehavior = 'auto';
+                    container.scrollTo(scrollPos, 0);
+                    
+                    setTimeout(() => {
+                        container.style.scrollBehavior = 'smooth';
+                        updateActiveCard();
+                    }, 100);
+                }
+                
+                // Expor função globalmente para os botões HTML
+                window.scrollCarousel = (direction) => {
+                    const cardWidth = items[0].offsetWidth;
+                    const scrollAmount = cardWidth + 20; 
+                    container.scrollBy({
+                        left: direction * scrollAmount,
+                        behavior: 'smooth'
+                    });
+                };
+            }
+        });
+    </script>
+</body>
+</html>
