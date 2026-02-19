@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
             font-family: 'Manrope', sans-serif;
@@ -50,11 +49,12 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Animações de Scroll - Com Fallback */
+        /* Animações de Scroll - Com Alternativa de Segurança */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
         }
         .reveal-on-scroll.visible {
             opacity: 1;
@@ -78,6 +78,8 @@
             width: 100%;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            
+            /* Ajuste para centralizar */
             scroll-padding-left: 50%; 
             padding-left: 10%;
             padding-right: 10%;
@@ -95,7 +97,7 @@
             border: 1px solid rgba(30, 41, 59, 1);
             position: relative;
             z-index: 1;
-            user-select: none;
+            user-select: none; /* Evita seleção de texto ao arrastar */
         }
 
         @media (min-width: 768px) {
@@ -158,12 +160,6 @@
             .carousel-next { right: 10%; }
         }
 
-        /* AI Input */
-        .ai-input:focus {
-            outline: none;
-            border-color: #d97706;
-            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.1);
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-amber-500 selection:text-white">
@@ -174,6 +170,7 @@
         Inscrições Abertas para Nova Turma
     </div>
 
+    <!-- SECÇÃO 01: HERO -->
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-10 pb-20 overflow-hidden z-10">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-600/20 rounded-full blur-[120px] -z-10"></div>
 
@@ -203,6 +200,7 @@
         </div>
     </section>
 
+    <!-- SECÇÃO 02: A IDENTIFICAÇÃO (CARROSSEL INFINITO) -->
     <section class="py-24 relative z-10 border-y border-slate-800/50 bg-[#0F1420]">
         <div class="w-full">
             
@@ -217,12 +215,16 @@
                 </div>
             </div>
 
+            <!-- CARROSSEL WRAPPER -->
             <div class="carousel-wrapper reveal-on-scroll">
+                <!-- Botão Esquerda -->
                 <button class="carousel-nav-btn carousel-prev hidden md:block" onclick="scrollCarousel(-1)">
                     <i data-lucide="chevron-left" class="w-6 h-6"></i>
                 </button>
 
                 <div class="carousel-container" id="symptomsCarousel">
+                    
+                    <!-- CLONE: Último Item (Card 3) -->
                     <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="last">
                         <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
                         <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
@@ -230,6 +232,8 @@
                             A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
                         </p>
                     </div>
+
+                    <!-- ORIGINAL: Card 1 -->
                     <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
                         <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
                         <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
@@ -237,6 +241,8 @@
                             O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
                         </p>
                     </div>
+
+                    <!-- ORIGINAL: Card 2 -->
                     <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
                         <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">👀</div>
                         <h3 class="text-xl text-white font-serif mb-3">O Olhar dos Pais</h3>
@@ -244,6 +250,8 @@
                             O receio do julgamento dos pais que estão assistindo... Eles olham para você com aquela expectativa desesperada de quem busca um milagre. Surge o pensamento: "Eles vão perceber que eu não sei o que estou fazendo".
                         </p>
                     </div>
+
+                    <!-- ORIGINAL: Card 3 -->
                     <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
                         <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
                         <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
@@ -251,6 +259,8 @@
                             A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
                         </p>
                     </div>
+
+                    <!-- CLONE: Primeiro Item (Card 1) -->
                     <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="first">
                         <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
                         <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
@@ -258,8 +268,10 @@
                             O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
                         </p>
                     </div>
+
                 </div>
 
+                <!-- Botão Direita -->
                 <button class="carousel-nav-btn carousel-next hidden md:block" onclick="scrollCarousel(1)">
                     <i data-lucide="chevron-right" class="w-6 h-6"></i>
                 </button>
@@ -269,6 +281,7 @@
                 &larr; Arraste para ver mais &rarr;
             </div>
 
+            <!-- TEXTO DE CULPA -->
             <div class="mt-20 text-center max-w-3xl mx-auto px-6 reveal-on-scroll">
                 <h4 class="text-2xl text-white font-serif mb-4">Quero que saiba de uma coisa: isso não acontece porque você não estudou.</h4>
                 <p class="text-slate-300 text-lg leading-relaxed">
@@ -280,6 +293,7 @@
         </div>
     </section>
 
+    <!-- SECÇÃO 03: O MÉTODO -->
     <section class="py-32 relative z-10 bg-[#0B0F19]">
         <div class="max-w-4xl mx-auto px-6">
             
@@ -291,10 +305,12 @@
                 </p>
             </div>
 
+            <!-- Timeline Vertical -->
             <div class="relative space-y-24">
                 <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500/50 to-transparent -translate-x-1/2 md:block hidden"></div>
                 <div class="absolute left-[28px] top-0 bottom-0 w-0.5 bg-slate-800 md:hidden block"></div>
 
+                <!-- Passo 01 -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
                     <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
                         <h3 class="text-xl text-white font-serif mb-2">1. A Base Oral</h3>
@@ -306,6 +322,7 @@
                     <div class="order-3 md:w-[45%] md:block hidden"></div>
                 </div>
 
+                <!-- Passo 02 -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
                     <div class="order-3 md:order-1 md:w-[45%] md:block hidden"></div>
                     <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">2</div>
@@ -317,6 +334,7 @@
                     </div>
                 </div>
 
+                <!-- Passo 03 -->
                 <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
                     <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
                         <h3 class="text-xl text-white font-serif mb-2">3. Escrita Fluida</h3>
@@ -331,38 +349,14 @@
 
         </div>
     </section>
-    
-    <section class="py-24 bg-slate-900 relative z-10 border-y border-amber-900/30">
-        <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
-            <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-amber-900/40 border border-amber-500/30 rounded-full">
-                <i data-lucide="brain-circuit" class="w-4 h-4 text-amber-400"></i>
-                <span class="text-xs font-bold text-amber-200 uppercase tracking-widest">IA Integrada</span>
-            </div>
-            <h2 class="text-3xl md:text-4xl text-white font-serif mb-4">Simulador Clínico Rápido</h2>
-            <p class="text-slate-400 mb-8 max-w-2xl mx-auto">Descreva brevemente um comportamento infantil e nossa IA demonstrativa (baseada nos pilares do método) indicará qual etapa da hierarquia precisa ser investigada primeiro.</p>
-            
-            <div class="bg-slate-950 p-2 rounded-2xl border border-slate-800 shadow-xl max-w-2xl mx-auto">
-                <div class="relative">
-                    <textarea id="aiPrompt" class="ai-input w-full bg-slate-900 text-white p-4 rounded-xl resize-none h-28 text-sm placeholder-slate-600" placeholder="Ex: Criança de 6 anos que troca letras na hora de escrever e tem dificuldade de focar..."></textarea>
-                    <button onclick="analisarCaso()" id="btnAnalisar" class="absolute bottom-4 right-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-bold text-sm transition-colors">
-                        Analisar Caso
-                    </button>
-                </div>
-            </div>
-            
-            <div id="aiResultArea" class="hidden mt-6 bg-slate-800 border border-amber-500/50 rounded-xl p-6 text-left max-w-2xl mx-auto">
-                <h4 class="text-amber-500 font-bold mb-2">Diagnóstico Prévio Sugerido:</h4>
-                <div id="aiOutput" class="text-slate-300 text-sm"></div>
-            </div>
-        </div>
-    </section>
 
+    <!-- SECÇÃO 04: A EXPERT -->
     <section class="py-24 bg-gradient-to-b from-[#0B0F19] to-[#111827] relative z-10 border-y border-slate-800">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
             
             <div class="w-full md:w-1/2 relative reveal-on-scroll">
                 <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-lg"></div>
-                <img src="ERIS3023.jpg" alt="Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
+                <img src="https://drafathimaoliveira.com.br/wp-content/uploads/elementor/thumbs/FTMITTO-15-qj1hffc3mdwfwx34i87dd7011b29rrifq3k8i6zy2o.jpg" alt="Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
                 <div class="absolute bottom-8 -right-4 bg-amber-600 text-white p-4 rounded-lg shadow-lg max-w-[150px]">
                     <p class="text-xs font-bold uppercase tracking-wider mb-1">Referência</p>
                     <p class="text-2xl font-serif italic">Regional</p>
@@ -385,6 +379,7 @@
         </div>
     </section>
 
+    <!-- SECÇÃO 05: A OFERTA COMPLETA -->
     <section id="oferta" class="py-24 relative z-10">
         <div class="max-w-2xl mx-auto px-6">
             
@@ -401,6 +396,7 @@
 
                     <div class="w-full h-px bg-slate-700"></div>
 
+                    <!-- Entregáveis da Mentoria -->
                     <div>
                         <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="monitor-play" class="w-5 h-5 text-amber-500"></i> O que você vai receber:</h3>
                         <ul class="text-left space-y-4 text-slate-300">
@@ -419,6 +415,7 @@
                         </ul>
                     </div>
 
+                    <!-- Bónus Disponibilizados -->
                     <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
                         <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="gift" class="w-5 h-5 text-amber-500"></i> 4 Materiais Complementares Inclusos:</h3>
                         <p class="text-xs text-slate-400 mb-4">Arquivos essenciais liberados mensalmente para facilitar sua implementação imediata:</p>
@@ -432,6 +429,7 @@
 
                     <div class="w-full h-px bg-slate-700"></div>
 
+                    <!-- Ancoragem e Preço Reescritos -->
                     <div class="text-center py-4">
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
                             Pense comigo: quanto custa investir em uma pós-graduação genérica hoje para receber apenas mais teoria? <br>
@@ -471,17 +469,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            /* Inicializa ícones */
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
 
-            // Reveal Animation
-            const observerOptions = { root: null, threshold: 0.1, rootMargin: "0px" };
+            /* === 1. SISTEMA DE REVEAL (Animação de Scroll) === */
+            const observerOptions = {
+                root: null, /* usa a viewport */
+                threshold: 0.1, /* 10% do elemento visível */
+                rootMargin: "0px"
+            };
+
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
+                        observer.unobserve(entry.target); /* Pára de observar após aparecer */
                     }
                 });
             }, observerOptions);
@@ -489,24 +493,30 @@
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             revealElements.forEach(el => revealObserver.observe(el));
 
+            /* FAIL-SAFE: Garante que o conteúdo apareça mesmo se o script falhar */
             setTimeout(() => {
                 revealElements.forEach(el => {
-                    if (!el.classList.contains('visible')) el.classList.add('visible');
+                    if (!el.classList.contains('visible')) {
+                        el.classList.add('visible');
+                    }
                 });
             }, 1000);
 
-            // Carrossel
+            /* === 2. LÓGICA DO CARROSSEL INFINITO === */
             const container = document.getElementById('symptomsCarousel');
+            
             if (container) {
                 const items = container.querySelectorAll('.carousel-item');
                 let isScrolling = false;
 
                 const updateActiveCard = () => {
                     const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
+                    
                     items.forEach(item => {
                         const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
                         const distance = Math.abs(containerCenter - itemCenter);
                         
+                        /* Tolerância para active */
                         if (distance < 200) {
                             item.classList.add('active');
                             item.style.opacity = '1';
@@ -525,84 +535,68 @@
 
                 const checkInfiniteLoop = () => {
                     if (isScrolling) return;
+
                     const scrollLeft = container.scrollLeft;
                     const scrollWidth = container.scrollWidth;
                     const clientWidth = container.clientWidth;
+                    
                     if (items.length < 2) return;
-                    const itemWidth = items[1].offsetWidth + 20; 
 
+                    const itemWidth = items[1].offsetWidth + 20; /* largura + espaçamento */
+
+                    /* Loop Esquerda -> Direita */
                     if (scrollLeft < 10) {
                         isScrolling = true;
                         container.style.scrollBehavior = 'auto'; 
                         container.scrollLeft = scrollWidth - (itemWidth * 2) - clientWidth / 2 + itemWidth / 2;
-                        setTimeout(() => { container.style.scrollBehavior = 'smooth'; isScrolling = false; }, 50);
-                    } else if (scrollLeft >= scrollWidth - clientWidth - 10) {
+                        setTimeout(() => {
+                            container.style.scrollBehavior = 'smooth';
+                            isScrolling = false;
+                        }, 50);
+                    }
+                    /* Loop Direita -> Esquerda */
+                    else if (scrollLeft >= scrollWidth - clientWidth - 10) {
                         isScrolling = true;
                         container.style.scrollBehavior = 'auto'; 
                         container.scrollLeft = items[1].offsetLeft - (clientWidth - items[1].offsetWidth) / 2;
-                        setTimeout(() => { container.style.scrollBehavior = 'smooth'; isScrolling = false; }, 50);
+                        setTimeout(() => {
+                            container.style.scrollBehavior = 'smooth';
+                            isScrolling = false;
+                        }, 50);
                     }
                 };
 
+                // Listeners
                 container.addEventListener('scroll', () => {
                     updateActiveCard();
                     checkInfiniteLoop();
                 });
 
+                /* Inicialização Centralizada */
                 if (items.length > 1) {
                     const firstOriginal = items[1];
                     const scrollPos = firstOriginal.offsetLeft - (container.offsetWidth - firstOriginal.offsetWidth) / 2;
+                    
                     container.style.scrollBehavior = 'auto';
                     container.scrollTo(scrollPos, 0);
+                    
                     setTimeout(() => {
                         container.style.scrollBehavior = 'smooth';
                         updateActiveCard();
                     }, 100);
                 }
                 
+                /* Função Global para os botões */
                 window.scrollCarousel = (direction) => {
                     const cardWidth = items[0].offsetWidth;
                     const scrollAmount = cardWidth + 20; 
-                    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                    container.scrollBy({
+                        left: direction * scrollAmount,
+                        behavior: 'smooth'
+                    });
                 };
             }
         });
-
-        // Gemini AI Fetch Logic
-        async function analisarCaso() {
-            const promptInput = document.getElementById('aiPrompt').value;
-            const btn = document.getElementById('btnAnalisar');
-            const resultArea = document.getElementById('aiResultArea');
-            const output = document.getElementById('aiOutput');
-
-            if(!promptInput.trim()) {
-                alert('Por favor, descreva o caso primeiro.');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerText = 'Analisando...';
-            
-            // Simulação de chamada Gemini API
-            try {
-                // Em um ambiente real, você inseriria sua chave de API do Google Gemini aqui:
-                // const API_KEY = "SUA_CHAVE_AQUI";
-                // E faria um fetch para https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent
-                
-                // Simulação visual de resposta inteligente para o template:
-                setTimeout(() => {
-                    resultArea.classList.remove('hidden');
-                    output.innerHTML = `Com base na Hierarquia dos Desdobramentos, antes de intervir diretamente na escrita deste paciente, recomenda-se iniciar pela <strong>Fase 02: Processamento Auditivo</strong>. É provável que o paciente possua lacunas na consciência fonológica que estão refletindo diretamente nas trocas ortográficas. <em>(Nota: Esta é uma ferramenta demonstrativa com IA)</em>.`;
-                    btn.disabled = false;
-                    btn.innerText = 'Analisar Caso';
-                }, 1500);
-
-            } catch (error) {
-                console.error('Erro ao chamar API:', error);
-                btn.disabled = false;
-                btn.innerText = 'Tentar Novamente';
-            }
-        }
     </script>
 </body>
 </html>
