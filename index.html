@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Domínio Clínico | Dra. Fáthima</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fono Desde o Início | Mentoria para estudantes de Fonoaudiologia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         body {
             font-family: 'Manrope', sans-serif;
@@ -21,7 +22,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Gradiente Dourado */
         .text-gold {
             background: linear-gradient(to right, #FDE68A, #D97706, #FDE68A);
             -webkit-background-clip: text;
@@ -29,39 +29,181 @@
             background-size: 200% auto;
             animation: shineText 4s linear infinite;
         }
-        @keyframes shineText { to { background-position: 200% center; } }
 
-        /* Botão Shine */
-        .btn-shine { position: relative; overflow: hidden; }
+        @keyframes shineText {
+            to { background-position: 200% center; }
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
         .btn-shine::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-            transform: skewX(-25deg); animation: shineButton 3s infinite;
-        }
-        @keyframes shineButton {
-            0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; }
+            transform: skewX(-25deg);
+            animation: shineButton 3s infinite;
         }
 
-        /* Glow e Ruído */
-        .glow-effect { box-shadow: 0 0 40px -10px rgba(217, 119, 6, 0.3); }
+        @keyframes shineButton {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(217, 119, 6, 0.3);
+        }
+
         .bg-noise {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Animações de Scroll - Com Alternativa de Segurança */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 1s ease-out, transform 1s ease-out;
             will-change: opacity, transform;
         }
+
         .reveal-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- CARROSSEL INFINITO --- */
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-1 { transition-delay: 0.12s; }
+        .delay-2 { transition-delay: 0.24s; }
+        .delay-3 { transition-delay: 0.36s; }
+        .delay-4 { transition-delay: 0.48s; }
+
+        .floating-orb {
+            animation: floatOrb 7s ease-in-out infinite;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(-50%, 0px) scale(1); }
+            50% { transform: translate(-50%, 18px) scale(1.05); }
+        }
+
+        .hero-content {
+            animation: heroFadeUp 1.2s ease-out both;
+        }
+
+        @keyframes heroFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .soft-pulse {
+            animation: softPulse 2.8s ease-in-out infinite;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 rgba(217, 119, 6, 0.0); }
+            50% { box-shadow: 0 0 30px rgba(217, 119, 6, 0.18); }
+        }
+
+        .section-glow-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-glow-line::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(251,191,36,0.18), transparent);
+            transform: translateX(-100%);
+            animation: sectionSweep 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sectionSweep {
+            to { transform: translateX(100%); }
+        }
+
+        .hover-lift {
+            transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease, background-color 0.45s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -20px rgba(217, 119, 6, 0.35);
+            border-color: rgba(217, 119, 6, 0.55) !important;
+        }
+
+        .card-sheen {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-sheen::before {
+            content: "";
+            position: absolute;
+            inset: -120% -40%;
+            background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.08) 50%, transparent 65%);
+            transform: rotate(12deg) translateX(-120%);
+            transition: transform 0.9s ease;
+            pointer-events: none;
+        }
+
+        .card-sheen:hover::before {
+            transform: rotate(12deg) translateX(120%);
+        }
+
         .carousel-wrapper {
             position: relative;
             width: 100%;
@@ -78,32 +220,35 @@
             width: 100%;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            
-            /* Ajuste para centralizar */
-            scroll-padding-left: 50%; 
+            scroll-padding-left: 50%;
             padding-left: 10%;
             padding-right: 10%;
         }
-        
-        .carousel-container::-webkit-scrollbar { display: none; }
-        
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
         .carousel-item {
             flex: 0 0 80%;
             max-width: 400px;
             scroll-snap-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.45s ease;
             opacity: 0.3;
             transform: scale(0.9);
             border: 1px solid rgba(30, 41, 59, 1);
             position: relative;
             z-index: 1;
-            user-select: none; /* Evita seleção de texto ao arrastar */
+            user-select: none;
+            background-image:
+                radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 35%);
         }
 
         @media (min-width: 768px) {
-            .carousel-item { 
-                flex: 0 0 400px; 
+            .carousel-item {
+                flex: 0 0 400px;
             }
+
             .carousel-container {
                 padding-left: calc(50% - 200px);
                 padding-right: calc(50% - 200px);
@@ -115,24 +260,10 @@
             transform: scale(1);
             border-color: rgba(217, 119, 6, 0.8);
             background-color: rgba(15, 23, 42, 1);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(217, 119, 6, 0.08);
             z-index: 10;
         }
 
-        /* Ancoragem */
-        .strike-through {
-            position: relative;
-            display: inline-block;
-        }
-        .strike-through::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 0; width: 100%; height: 2px;
-            background: #ef4444; 
-            transform: rotate(-3deg);
-        }
-        
-        /* Botões de Navegação */
         .carousel-nav-btn {
             position: absolute;
             top: 50%;
@@ -147,314 +278,464 @@
             backdrop-filter: blur(4px);
             transition: all 0.3s ease;
         }
+
         .carousel-nav-btn:hover {
             background: rgba(217, 119, 6, 0.8);
             color: white;
             box-shadow: 0 0 15px rgba(217, 119, 6, 0.5);
+            transform: translateY(-50%) scale(1.08);
         }
+
         .carousel-prev { left: 10px; }
         .carousel-next { right: 10px; }
-        
+
         @media (min-width: 1024px) {
             .carousel-prev { left: 10%; }
             .carousel-next { right: 10%; }
         }
 
+        .timeline-line {
+            animation: lineGlow 3.2s ease-in-out infinite;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.9; }
+        }
+
+        .timeline-dot {
+            animation: dotPulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(217,119,6,0.35);
+            }
+            50% {
+                box-shadow: 0 0 0 14px rgba(217,119,6,0.0);
+            }
+        }
+
+        .expert-image-wrap {
+            transition: transform 0.6s ease;
+        }
+
+        .expert-image-wrap:hover {
+            transform: translateY(-6px) scale(1.01);
+        }
+
+        .expert-badge {
+            animation: badgeFloat 3.6s ease-in-out infinite;
+        }
+
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .offer-card {
+            animation: breatheGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes breatheGlow {
+            0%, 100% { box-shadow: 0 0 40px -16px rgba(217,119,6,0.18); }
+            50% { box-shadow: 0 0 55px -10px rgba(217,119,6,0.34); }
+        }
+
+        .offer-spark {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.14;
+            pointer-events: none;
+            animation: sparkMove 8s ease-in-out infinite;
+        }
+
+        .offer-spark.one {
+            background: #f59e0b;
+            top: -60px;
+            left: -40px;
+        }
+
+        .offer-spark.two {
+            background: #d97706;
+            bottom: -80px;
+            right: -30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkMove {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(18px,-12px) scale(1.08); }
+        }
+
+        .cta-pop {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+
+        .cta-pop:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 18px 35px -18px rgba(217,119,6,0.55);
+        }
+
+        .grid-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-card::after {
+            content: '';
+            position: absolute;
+            inset: auto -20% -120px -20%;
+            height: 180px;
+            background: radial-gradient(circle, rgba(245,158,11,0.14) 0%, rgba(245,158,11,0.0) 70%);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 0.65;
+        }
+
+        .grid-card:hover::after {
+            transform: translateY(-14px);
+            opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-amber-500 selection:text-white">
 
     <div class="bg-noise"></div>
 
-    <div class="w-full bg-gradient-to-r from-amber-700 to-amber-900 text-amber-100 text-xs font-bold uppercase tracking-widest text-center py-2 relative z-50">
-        Inscrições Abertas para Nova Turma
+    <div class="w-full bg-gradient-to-r from-amber-700 to-amber-900 text-amber-100 text-xs font-bold uppercase tracking-widest text-center py-2 relative z-50 section-glow-line">
+        Inscrições Abertas para a Nova Turma da Mentoria
     </div>
 
-    <!-- SECÇÃO 01: HERO -->
+    <!-- HERO -->
     <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-10 pb-20 overflow-hidden z-10">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-600/20 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute top-0 left-1/2 w-[600px] h-[600px] bg-amber-600/20 rounded-full blur-[120px] -z-10 floating-orb"></div>
 
-        <div class="max-w-4xl mx-auto space-y-6 reveal-on-scroll visible">
-            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-900/20 backdrop-blur-md">
+        <div class="max-w-4xl mx-auto space-y-6 hero-content">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-amber-500/30 bg-amber-900/20 backdrop-blur-md soft-pulse">
                 <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                <span class="text-amber-200 text-xs font-bold uppercase tracking-widest">Método Exclusivo Dra. Fáthima</span>
+                <span class="text-amber-200 text-xs font-bold uppercase tracking-widest">Mentoria Exclusiva Dra. Fáthima</span>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-medium leading-[1.1] tracking-tight text-white">
-                Domine a clínica da <br>
-                <span class="italic text-gold">Fala à Escrita.</span>
+                Comece a graduação em <br>
+                <span class="italic text-gold">Fono do jeito certo.</span>
             </h1>
 
             <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                Vou te ensinar a eliminar a insegurança do "primeiro atendimento" e conduzir terapias de fala e escrita com a firmeza de quem tem anos de experiência — mesmo que você ainda esteja na faculdade.
+                A mentoria Fono Desde o Início foi criada para estudantes que estão começando a faculdade e querem construir, desde cedo, mais clareza, visão prática e direção profissional com quem atua há mais de 22 anos.
             </p>
 
             <div class="pt-8 pb-12">
                 <a href="#oferta" class="relative inline-flex group w-full md:w-auto">
-                    <div class="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-                    <button class="btn-shine relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-manrope rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20">
-                        QUERO TER SEGURANÇA CLÍNICA
+                    <div class="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200"></div>
+                    <button class="btn-shine cta-pop relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-amber-600 rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20">
+                        QUERO COMEÇAR DO JEITO CERTO
                     </button>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SECÇÃO 02: A IDENTIFICAÇÃO (CARROSSEL INFINITO) -->
+    <!-- IDENTIFICAÇÃO -->
     <section class="py-24 relative z-10 border-y border-slate-800/50 bg-[#0F1420]">
         <div class="w-full">
-            
             <div class="text-center max-w-3xl mx-auto mb-10 px-6 space-y-6 reveal-on-scroll">
                 <h2 class="text-3xl md:text-5xl text-white leading-tight">
-                    A teoria você tem.<br>
-                    <span class="text-slate-400 italic font-light">O que falta é saber o que fazer com ela.</span>
+                    Entrar na faculdade é só o começo.<br>
+                    <span class="text-slate-400 italic font-light">O problema é quando esse começo vira confusão.</span>
                 </h2>
                 <div class="text-slate-400 text-lg space-y-4">
-                    <p>Eu sei como é. Você devora os livros, entende os conceitos de Piaget, Vygotsky e Luria, e vai bem nas provas. Mas a clínica é diferente do livro.</p>
-                    <p>Quando a porta se fecha e você fica sozinho com a criança, a teoria parece fugir.</p>
+                    <p>Muitas estudantes entram na Fonoaudiologia cheias de vontade, mas logo percebem que a faculdade nem sempre mostra com clareza como a profissão funciona na vida real.</p>
+                    <p>É muita teoria, muito conteúdo solto e pouca conexão prática para quem ainda está tentando entender os primeiros passos da área.</p>
                 </div>
             </div>
 
-            <!-- CARROSSEL WRAPPER -->
-            <div class="carousel-wrapper reveal-on-scroll">
-                <!-- Botão Esquerda -->
+            <div class="carousel-wrapper reveal-scale">
                 <button class="carousel-nav-btn carousel-prev hidden md:block" onclick="scrollCarousel(-1)">
                     <i data-lucide="chevron-left" class="w-6 h-6"></i>
                 </button>
 
                 <div class="carousel-container" id="symptomsCarousel">
-                    
-                    <!-- CLONE: Último Item (Card 3) -->
-                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="last">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
+                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="last">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">⏳</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Medo de passar anos sem clareza</h3>
                         <p class="text-slate-400 leading-relaxed text-sm">
-                            A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
+                            Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois.
                         </p>
                     </div>
 
-                    <!-- ORIGINAL: Card 1 -->
-                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
-                        <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
+                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🤯</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Tudo parece solto</h3>
                         <p class="text-slate-400 leading-relaxed text-sm">
-                            O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
+                            Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
                         </p>
                     </div>
 
-                    <!-- ORIGINAL: Card 2 -->
-                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">👀</div>
-                        <h3 class="text-xl text-white font-serif mb-3">O Olhar dos Pais</h3>
+                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🧭</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Falta direção</h3>
                         <p class="text-slate-400 leading-relaxed text-sm">
-                            O receio do julgamento dos pais que estão assistindo... Eles olham para você com aquela expectativa desesperada de quem busca um milagre. Surge o pensamento: "Eles vão perceber que eu não sei o que estou fazendo".
+                            No começo da graduação, é comum estudar muito e ainda assim não saber exatamente o que observar, o que importa mais ou como começar a construir visão profissional de verdade.
                         </p>
                     </div>
 
-                    <!-- ORIGINAL: Card 3 -->
-                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🎭</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Síndrome da Fraude</h3>
+                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">⏳</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Medo de passar anos sem clareza</h3>
                         <p class="text-slate-400 leading-relaxed text-sm">
-                            A sensação de ser uma "fraude" apesar de todo o seu esforço... Você sai da sala aliviado por ter sobrevivido, mas com a certeza amarga de que não gerou nenhum resultado real naquele atendimento.
+                            Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois.
                         </p>
                     </div>
 
-                    <!-- CLONE: Primeiro Item (Card 1) -->
-                    <div class="carousel-item bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="first">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">😰</div>
-                        <h3 class="text-xl text-white font-serif mb-3">O "Branco" Imediato</h3>
+                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="first">
+                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🤯</div>
+                        <h3 class="text-xl text-white font-serif mb-3">Tudo parece solto</h3>
                         <p class="text-slate-400 leading-relaxed text-sm">
-                            O medo de não saber por onde começar a intervenção... Suas mãos suam. O silêncio na sala se torna ensurdecedor. Você tenta aplicar uma atividade lúdica genérica para "ganhar tempo", torcendo para a sessão acabar logo.
+                            Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
                         </p>
                     </div>
-
                 </div>
 
-                <!-- Botão Direita -->
                 <button class="carousel-nav-btn carousel-next hidden md:block" onclick="scrollCarousel(1)">
                     <i data-lucide="chevron-right" class="w-6 h-6"></i>
                 </button>
             </div>
-            
+
             <div class="text-center mt-4 md:hidden text-slate-500 text-xs uppercase tracking-widest animate-pulse">
                 &larr; Arraste para ver mais &rarr;
             </div>
 
-            <!-- TEXTO DE CULPA -->
             <div class="mt-20 text-center max-w-3xl mx-auto px-6 reveal-on-scroll">
-                <h4 class="text-2xl text-white font-serif mb-4">Quero que saiba de uma coisa: isso não acontece porque você não estudou.</h4>
+                <h4 class="text-2xl text-white font-serif mb-4">E isso não acontece porque você não tem capacidade.</h4>
                 <p class="text-slate-300 text-lg leading-relaxed">
-                    Acontece porque a "chave" da prática clínica ainda não virou na sua cabeça. A faculdade te deu a base teórica e científica sólida. Sem isso, não somos nada. <br><br>
-                    Mas a faculdade não consegue simular o dia a dia real. Ela não te ensina o "tato clínico", o manejo da criança que não quer colaborar ou como explicar o tratamento para uma mãe ansiosa. Esse "tato" geralmente leva anos para ser construído na tentativa e erro.
+                    Acontece porque o começo da faculdade nem sempre entrega clareza suficiente para quem está tentando entender a profissão de forma mais concreta.<br><br>
+                    A graduação é essencial. Mas muitas estudantes passam os primeiros períodos vendo conteúdos importantes sem conseguir conectar tudo com a prática, com o desenvolvimento infantil e com a lógica real da atuação profissional.
                 </p>
             </div>
-
         </div>
     </section>
 
-    <!-- SECÇÃO 03: O MÉTODO -->
+    <!-- COMO FUNCIONA -->
     <section class="py-32 relative z-10 bg-[#0B0F19]">
         <div class="max-w-4xl mx-auto px-6">
-            
             <div class="text-center mb-20 space-y-4 reveal-on-scroll">
-                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Solução</span>
-                <h2 class="text-4xl md:text-5xl text-white">A Hierarquia dos Desdobramentos</h2>
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Mentoria</span>
+                <h2 class="text-4xl md:text-5xl text-white">Como a Fono Desde o Início funciona</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
-                    Vejo muitos recém-formados travando porque tentam tratar o problema de trás para frente. A linguagem humana é uma engrenagem sequencial.
+                    Em 4 meses, você percorre uma trilha pensada para ajudar estudantes iniciantes a desenvolver mais clareza, visão prática e direção profissional desde cedo.
                 </p>
             </div>
 
-            <!-- Timeline Vertical -->
             <div class="relative space-y-24">
-                <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500/50 to-transparent -translate-x-1/2 md:block hidden"></div>
-                <div class="absolute left-[28px] top-0 bottom-0 w-0.5 bg-slate-800 md:hidden block"></div>
+                <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500/50 to-transparent -translate-x-1/2 md:block hidden timeline-line"></div>
+                <div class="absolute left-[28px] top-0 bottom-0 w-0.5 bg-slate-800 md:hidden block timeline-line"></div>
 
-                <!-- Passo 01 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
-                    <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
-                        <h3 class="text-xl text-white font-serif mb-2">1. A Base Oral</h3>
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
+                    <div class="reveal-left order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover-lift card-sheen">
+                        <h3 class="text-xl text-white font-serif mb-2">1. Entender a profissão com mais clareza</h3>
                         <p class="text-slate-400">
-                            Se você tenta corrigir a escrita sem antes estabilizar a hierarquia da fala, você falha. Aqui, ensinamos a estabilizar a base da linguagem oral primeiro. O paciente precisa organizar o pensamento verbalmente antes de passar para o papel.
+                            Você começa enxergando a Fonoaudiologia de forma mais concreta, entendendo melhor os caminhos da área, o desenvolvimento infantil e o que realmente importa observar desde os primeiros períodos.
                         </p>
                     </div>
-                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">1</div>
+                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot">1</div>
                     <div class="order-3 md:w-[45%] md:block hidden"></div>
                 </div>
 
-                <!-- Passo 02 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
                     <div class="order-3 md:order-1 md:w-[45%] md:block hidden"></div>
-                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">2</div>
-                    <div class="order-2 md:order-3 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-left hover:border-amber-500/30 transition-colors">
-                        <h3 class="text-xl text-white font-serif mb-2">2. Processamento Auditivo</h3>
+                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot delay-1">2</div>
+                    <div class="reveal-right order-2 md:order-3 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-left hover-lift card-sheen">
+                        <h3 class="text-xl text-white font-serif mb-2">2. Conectar teoria e prática</h3>
                         <p class="text-slate-400">
-                            Afinamos o ouvido e o cérebro. Trabalhamos consciência fonológica e processamento auditivo central. É o elo perdido que 90% dos recém-formados deixam passar na avaliação.
+                            Em vez de acumular conteúdo solto, você passa a compreender como linguagem, fala, leitura e escrita se conectam no desenvolvimento e na prática profissional.
                         </p>
                     </div>
                 </div>
 
-                <!-- Passo 03 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group reveal-on-scroll">
-                    <div class="order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover:border-amber-500/30 transition-colors">
-                        <h3 class="text-xl text-white font-serif mb-2">3. Escrita Fluida</h3>
+                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
+                    <div class="reveal-left order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover-lift card-sheen delay-2">
+                        <h3 class="text-xl text-white font-serif mb-2">3. Construir visão profissional desde cedo</h3>
                         <p class="text-slate-400">
-                            A escrita é apenas um desdobramento tardio de uma base bem estruturada. Quando você domina essa hierarquia, o "branco" some porque você sabe exatamente em que degrau a criança está. Não há adivinhação. Há apenas diagnóstico e conduta.
+                            Ao longo da mentoria, você desenvolve mais repertório, mais direção e uma base muito mais sólida para atravessar a graduação com maturidade e muito menos confusão.
                         </p>
                     </div>
-                    <div class="order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 shadow-[0_0_20px_rgba(217,119,6,0.4)]">3</div>
+                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#0B0F19] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot delay-2">3</div>
                     <div class="order-3 md:w-[45%] md:block hidden"></div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- SECÇÃO 04: A EXPERT -->
+    <!-- CRONOGRAMA -->
+    <section class="py-24 relative z-10 bg-[#0F1420] border-y border-slate-800/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 space-y-4 reveal-on-scroll">
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">Cronograma da Mentoria</span>
+                <h2 class="text-4xl md:text-5xl text-white">O que você vai aprender em 4 meses</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Uma trilha organizada para ajudar você a construir base, visão prática e direção profissional desde os primeiros períodos da graduação.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="reveal-scale delay-1 bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
+                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 01</p>
+                    <h3 class="text-white text-xl font-serif mb-2">Entrando na Fonoaudiologia do jeito certo</h3>
+                    <p class="text-slate-400 text-sm mb-4">Entenda a profissão com mais clareza e comece a enxergar melhor os caminhos da área.</p>
+                    <h4 class="text-white text-lg font-serif mb-2">Marcos do desenvolvimento e primeiros olhares sobre a infância</h4>
+                    <p class="text-slate-400 text-sm">Aprenda o que observar no desenvolvimento infantil e comece a formar um olhar mais atento desde cedo.</p>
+                </div>
+
+                <div class="reveal-scale delay-2 bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
+                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 02</p>
+                    <h3 class="text-white text-xl font-serif mb-2">Como a linguagem se desenvolve na vida real</h3>
+                    <p class="text-slate-400 text-sm mb-4">Compreenda de forma prática como a linguagem se estrutura e aparece no desenvolvimento infantil.</p>
+                    <h4 class="text-white text-lg font-serif mb-2">Quando observar mais de perto: atraso, dificuldade ou sinal de alerta?</h4>
+                    <p class="text-slate-400 text-sm">Desenvolva um olhar inicial para sinais que merecem mais atenção.</p>
+                </div>
+
+                <div class="reveal-scale delay-3 bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
+                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 03</p>
+                    <h3 class="text-white text-xl font-serif mb-2">Leitura e escrita: entendendo as bases da aprendizagem</h3>
+                    <p class="text-slate-400 text-sm mb-4">Entenda como linguagem, leitura e escrita se conectam no desenvolvimento da criança.</p>
+                    <h4 class="text-white text-lg font-serif mb-2">Sinais de alerta na leitura e na escrita</h4>
+                    <p class="text-slate-400 text-sm">Reconheça dificuldades que merecem observação mais cuidadosa no processo de aprendizagem.</p>
+                </div>
+
+                <div class="reveal-scale delay-4 bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
+                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 04</p>
+                    <h3 class="text-white text-xl font-serif mb-2">O papel da família no desenvolvimento da criança</h3>
+                    <p class="text-slate-400 text-sm mb-4">Entenda como a família influencia diretamente o desenvolvimento e a condução dos casos.</p>
+                    <h4 class="text-white text-lg font-serif mb-2">Construindo olhar profissional desde o começo da faculdade</h4>
+                    <p class="text-slate-400 text-sm">Saia da mentoria com mais direção, visão e maturidade profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERT -->
     <section class="py-24 bg-gradient-to-b from-[#0B0F19] to-[#111827] relative z-10 border-y border-slate-800">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-            
-            <div class="w-full md:w-1/2 relative reveal-on-scroll">
-                <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-lg"></div>
-                <img src="https://drafathimaoliveira.com.br/wp-content/uploads/elementor/thumbs/FTMITTO-15-qj1hffc3mdwfwx34i87dd7011b29rrifq3k8i6zy2o.jpg" alt="Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
-                <div class="absolute bottom-8 -right-4 bg-amber-600 text-white p-4 rounded-lg shadow-lg max-w-[150px]">
-                    <p class="text-xs font-bold uppercase tracking-wider mb-1">Referência</p>
-                    <p class="text-2xl font-serif italic">Regional</p>
+            <div class="w-full md:w-1/2 relative reveal-left">
+                <div class="expert-image-wrap relative">
+                    <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-lg"></div>
+                    <img src="https://drafathimaoliveira.com.br/wp-content/uploads/elementor/thumbs/FTMITTO-15-qj1hffc3mdwfwx34i87dd7011b29rrifq3k8i6zy2o.jpg" alt="Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
+                    <div class="expert-badge absolute bottom-8 -right-4 bg-amber-600 text-white p-4 rounded-lg shadow-lg max-w-[150px]">
+                        <p class="text-xs font-bold uppercase tracking-wider mb-1">Experiência</p>
+                        <p class="text-2xl font-serif italic">22 anos</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 space-y-6 reveal-on-scroll">
-                <h2 class="text-4xl md:text-5xl text-white">20 anos de experiência clínica condensados para você.</h2>
-                <div class="h-1 w-20 bg-amber-500"></div>
+            <div class="w-full md:w-1/2 space-y-6 reveal-right">
+                <h2 class="text-4xl md:text-5xl text-white">22 anos de experiência transformados em direção para quem está começando.</h2>
+                <div class="h-1 w-20 bg-amber-500 soft-pulse"></div>
                 <p class="text-slate-300 text-lg leading-relaxed">
-                    Sou a <strong>Dra. Fáthima</strong>. Aqui na nossa região, atuo como referência em Fonoaudiologia Educacional e Neuropsicopedagogia há mais de duas décadas.
+                    Sou a <strong>Dra. Fáthima</strong>. Atuo há mais de 22 anos na Fonoaudiologia, com uma trajetória construída a partir da prática, da escuta, do acompanhamento de crianças e da formação de um olhar profissional sólido ao longo do tempo.
                 </p>
                 <p class="text-slate-400 leading-relaxed">
-                    Ao longo desses anos, vi estagiários brilhantes quase desistirem da profissão por pura insegurança prática no momento do atendimento. Por isso, decidi abrir minha "caixa preta".
+                    Ao longo desses anos, percebi quantas estudantes entram na faculdade cheias de vontade, mas passam muito tempo tentando entender a profissão de forma solta, sem clareza e sem direção.
                 </p>
                 <p class="text-slate-400 leading-relaxed">
-                    Reservei algumas horas da minha agenda para encurtar o seu caminho. O Método Domínio Clínico não é mais uma aula teórica. É uma mentoria prática onde te entrego meu raciocínio de 20 anos, ensinando exatamente o que fazer, como fazer e quando fazer.
+                    Foi por isso que criei a Fono Desde o Início: uma mentoria para ajudar quem está no começo da graduação a construir base, visão prática e maturidade profissional desde cedo, encurtando um caminho que muita gente leva anos para percorrer.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECÇÃO 05: A OFERTA COMPLETA -->
+    <!-- OFERTA -->
     <section id="oferta" class="py-24 relative z-10">
         <div class="max-w-2xl mx-auto px-6">
-            
-            <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-600/30 p-8 md:p-12 rounded-2xl shadow-2xl glow-effect relative overflow-hidden reveal-on-scroll">
-                
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600"></div>
+            <div class="offer-card bg-gradient-to-br from-slate-800 to-slate-900 border border-amber-600/30 p-8 md:p-12 rounded-2xl shadow-2xl glow-effect relative overflow-hidden reveal-scale">
+                <div class="offer-spark one"></div>
+                <div class="offer-spark two"></div>
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 section-glow-line"></div>
 
                 <div class="space-y-8 relative z-10">
                     <div class="text-center">
                         <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Inscrições Abertas</p>
-                        <h2 class="text-3xl md:text-4xl text-white font-serif">Método Domínio Clínico</h2>
-                        <p class="text-slate-400 text-sm mt-2">Da Fala à Escrita - Mentoria Completa</p>
+                        <h2 class="text-3xl md:text-4xl text-white font-serif">Fono Desde o Início</h2>
+                        <p class="text-slate-400 text-sm mt-2">Mentoria para estudantes de Fonoaudiologia que querem começar a graduação com mais clareza, visão prática e direção profissional</p>
                     </div>
 
                     <div class="w-full h-px bg-slate-700"></div>
 
-                    <!-- Entregáveis da Mentoria -->
                     <div>
-                        <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="monitor-play" class="w-5 h-5 text-amber-500"></i> O que você vai receber:</h3>
+                        <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="monitor-play" class="w-5 h-5 text-amber-500"></i>
+                            O que você vai receber:
+                        </h3>
                         <ul class="text-left space-y-4 text-slate-300">
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong>8 Encontros Ao Vivo:</strong> Mentoria estratégica ao longo de 4 meses focando no cronograma curricular prático.</span>
+                                <span><strong>8 encontros ao vivo em 4 meses:</strong> uma trilha organizada para ajudar você a construir visão, repertório e mais clareza desde os primeiros períodos.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong>Análise de Casos Reais:</strong> Estudo direto dos prontuários de consultório.</span>
+                                <span><strong>Acesso às gravações por 1 ano:</strong> para rever as aulas no seu tempo e consolidar o conteúdo com mais segurança.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong>Acesso de 1 Ano:</strong> Todas as aulas gravadas disponíveis para você rever.</span>
+                                <span><strong>4 materiais complementares:</strong> conteúdos práticos liberados ao longo da mentoria para aprofundar seu entendimento e facilitar a revisão.</span>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Bónus Disponibilizados -->
-                    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
-                        <h3 class="text-white font-bold mb-3 flex items-center gap-2"><i data-lucide="gift" class="w-5 h-5 text-amber-500"></i> 4 Materiais Complementares Inclusos:</h3>
-                        <p class="text-xs text-slate-400 mb-4">Arquivos essenciais liberados mensalmente para facilitar sua implementação imediata:</p>
+                    <div class="bg-slate-900/50 rounded-xl p-6 border border-slate-800 hover-lift card-sheen">
+                        <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+                            <i data-lucide="gift" class="w-5 h-5 text-amber-500"></i>
+                            4 materiais complementares inclusos:
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4">Arquivos liberados ao longo da mentoria para aprofundar sua compreensão e deixar o conteúdo ainda mais claro e aplicável:</p>
                         <ul class="space-y-2 text-sm text-slate-300">
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 01:</span> Roteiro de Anamnese Prática.</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 02:</span> Tabela de Consulta Rápida (Desenvolvimento).</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 03:</span> Guia de Estratégias (Leitura e Escrita).</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 04:</span> Modelo de Relatório e Evolução Clínica.</li>
+                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 01:</span> Guia de Primeiros Passos na Fonoaudiologia.</li>
+                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 02:</span> Mapa Prático do Desenvolvimento da Linguagem.</li>
+                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 03:</span> Guia Essencial de Linguagem, Leitura e Escrita.</li>
+                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 04:</span> Plano de Direção Profissional na Fonoaudiologia.</li>
                         </ul>
                     </div>
 
                     <div class="w-full h-px bg-slate-700"></div>
 
-                    <!-- Ancoragem e Preço Reescritos -->
                     <div class="text-center py-4">
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                            Pense comigo: quanto custa investir em uma pós-graduação genérica hoje para receber apenas mais teoria? <br>
-                            E qual o verdadeiro custo de perder um paciente na primeira consulta por transparecer insegurança?
+                            Pense comigo: quanto vale começar a faculdade com mais clareza, mais direção e uma visão da profissão que muitas estudantes só vão construir muito tempo depois?
                         </p>
-                        
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">Acesso aos 20 anos de prática por:</p>
-                        
+
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2">Investimento para entrar na mentoria:</p>
+
                         <div class="flex items-center justify-center gap-2 mt-4">
                             <span class="text-2xl text-slate-500 font-bold">4x de</span>
                             <span class="text-6xl font-serif text-white font-bold">R$200</span>
                         </div>
-                        <p class="text-sm text-amber-500 mt-4 font-bold bg-amber-900/20 inline-block px-4 py-2 rounded-full border border-amber-500/20">
-                            Isso dá menos de R$ 7,00 por dia.
+
+                        <p class="text-sm text-amber-500 mt-4 font-bold bg-amber-900/20 inline-block px-4 py-2 rounded-full border border-amber-500/20 soft-pulse">
+                            Menos de R$ 7,00 por dia para começar sua trajetória na Fono com muito mais clareza.
                         </p>
-                        <p class="text-xs text-slate-400 mt-2">É o preço de um café para garantir a segurança de toda a sua carreira profissional.</p>
+                        <p class="text-xs text-slate-400 mt-2">Um investimento pequeno para encurtar anos de confusão e começar do jeito certo.</p>
                     </div>
 
-                    <button class="btn-shine relative block w-full py-5 mt-4 bg-amber-600 text-white font-bold text-lg rounded-xl hover:bg-amber-500 transition-colors shadow-[0_0_20px_rgba(217,119,6,0.3)] transform hover:-translate-y-1">
-                        GARANTIR MINHA VAGA AGORA
+                    <button class="btn-shine cta-pop relative block w-full py-5 mt-4 bg-amber-600 text-white font-bold text-lg rounded-xl hover:bg-amber-500 transition-colors shadow-[0_0_20px_rgba(217,119,6,0.3)]">
+                        QUERO ENTRAR PARA A MENTORIA
                     </button>
-                    
+
                     <div class="flex items-center justify-center gap-2 mt-4 text-xs text-slate-500">
                         <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
-                        <span>Garantia incondicional de 7 dias. Risco Zero.</span>
+                        <span>Garantia de 7 dias para você entrar com tranquilidade.</span>
                     </div>
                 </div>
             </div>
@@ -462,22 +743,20 @@
     </section>
 
     <footer class="bg-black py-12 text-center border-t border-slate-900 relative z-10">
-        <p class="text-slate-600 text-sm font-manrope">
+        <p class="text-slate-600 text-sm">
             &copy; 2024 Dra. Fáthima. Todos os direitos reservados.
         </p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            /* Inicializa ícones */
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
 
-            /* === 1. SISTEMA DE REVEAL (Animação de Scroll) === */
             const observerOptions = {
-                root: null, /* usa a viewport */
-                threshold: 0.1, /* 10% do elemento visível */
+                root: null,
+                threshold: 0.12,
                 rootMargin: "0px"
             };
 
@@ -485,38 +764,35 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); /* Pára de observar após aparecer */
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right');
             revealElements.forEach(el => revealObserver.observe(el));
 
-            /* FAIL-SAFE: Garante que o conteúdo apareça mesmo se o script falhar */
             setTimeout(() => {
                 revealElements.forEach(el => {
                     if (!el.classList.contains('visible')) {
                         el.classList.add('visible');
                     }
                 });
-            }, 1000);
+            }, 1200);
 
-            /* === 2. LÓGICA DO CARROSSEL INFINITO === */
             const container = document.getElementById('symptomsCarousel');
-            
+
             if (container) {
                 const items = container.querySelectorAll('.carousel-item');
                 let isScrolling = false;
 
                 const updateActiveCard = () => {
                     const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
-                    
+
                     items.forEach(item => {
                         const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
                         const distance = Math.abs(containerCenter - itemCenter);
-                        
-                        /* Tolerância para active */
+
                         if (distance < 200) {
                             item.classList.add('active');
                             item.style.opacity = '1';
@@ -539,25 +815,22 @@
                     const scrollLeft = container.scrollLeft;
                     const scrollWidth = container.scrollWidth;
                     const clientWidth = container.clientWidth;
-                    
+
                     if (items.length < 2) return;
 
-                    const itemWidth = items[1].offsetWidth + 20; /* largura + espaçamento */
+                    const itemWidth = items[1].offsetWidth + 20;
 
-                    /* Loop Esquerda -> Direita */
                     if (scrollLeft < 10) {
                         isScrolling = true;
-                        container.style.scrollBehavior = 'auto'; 
+                        container.style.scrollBehavior = 'auto';
                         container.scrollLeft = scrollWidth - (itemWidth * 2) - clientWidth / 2 + itemWidth / 2;
                         setTimeout(() => {
                             container.style.scrollBehavior = 'smooth';
                             isScrolling = false;
                         }, 50);
-                    }
-                    /* Loop Direita -> Esquerda */
-                    else if (scrollLeft >= scrollWidth - clientWidth - 10) {
+                    } else if (scrollLeft >= scrollWidth - clientWidth - 10) {
                         isScrolling = true;
-                        container.style.scrollBehavior = 'auto'; 
+                        container.style.scrollBehavior = 'auto';
                         container.scrollLeft = items[1].offsetLeft - (clientWidth - items[1].offsetWidth) / 2;
                         setTimeout(() => {
                             container.style.scrollBehavior = 'smooth';
@@ -566,30 +839,27 @@
                     }
                 };
 
-                // Listeners
                 container.addEventListener('scroll', () => {
                     updateActiveCard();
                     checkInfiniteLoop();
                 });
 
-                /* Inicialização Centralizada */
                 if (items.length > 1) {
                     const firstOriginal = items[1];
                     const scrollPos = firstOriginal.offsetLeft - (container.offsetWidth - firstOriginal.offsetWidth) / 2;
-                    
+
                     container.style.scrollBehavior = 'auto';
                     container.scrollTo(scrollPos, 0);
-                    
+
                     setTimeout(() => {
                         container.style.scrollBehavior = 'smooth';
                         updateActiveCard();
                     }, 100);
                 }
-                
-                /* Função Global para os botões */
+
                 window.scrollCarousel = (direction) => {
                     const cardWidth = items[0].offsetWidth;
-                    const scrollAmount = cardWidth + 20; 
+                    const scrollAmount = cardWidth + 20;
                     container.scrollBy({
                         left: direction * scrollAmount,
                         behavior: 'smooth'
