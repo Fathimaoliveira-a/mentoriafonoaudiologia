@@ -11,13 +11,10 @@
     <style>
         :root {
             --bg-main: #080C14;
-            --bg-secondary: #0C1018;
-            --bg-card: #0D1420;
             --gold-1: #FDE68A;
             --gold-2: #F59E0B;
             --gold-3: #D97706;
             --text-main: #E2E8F0;
-            --text-muted: #94A3B8;
         }
 
         * {
@@ -111,98 +108,34 @@
             50% { transform: translateX(190%) rotate(8deg); opacity: 0.32; }
         }
 
-        .reveal-on-scroll,
-        .reveal-scale,
-        .reveal-left,
-        .reveal-right,
-        .mask-reveal,
-        .mask-reveal-left {
+        .reveal-on-scroll, .reveal-scale, .reveal-left, .reveal-right, .mask-reveal, .mask-reveal-left {
             will-change: opacity, transform, clip-path;
         }
 
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
+        .reveal-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        .reveal-scale { opacity: 0; transform: scale(0.96); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+        
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 1s ease, transform 1s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 1s ease, transform 1s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-        .reveal-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .mask-reveal { opacity: 0; clip-path: inset(0 0 100% 0); transition: opacity 1s ease, clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .mask-reveal.visible { opacity: 1; clip-path: inset(0 0 0 0); }
+        
+        .mask-reveal-left { opacity: 0; clip-path: inset(0 100% 0 0); transition: opacity 1s ease, clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .mask-reveal-left.visible { opacity: 1; clip-path: inset(0 0 0 0); }
 
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.96);
-            transition: opacity 0.9s ease, transform 0.9s ease;
-        }
-
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .mask-reveal {
-            opacity: 0;
-            clip-path: inset(0 0 100% 0);
-            transition: opacity 1s ease, clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .mask-reveal.visible {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-        }
-
-        .mask-reveal-left {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-            transition: opacity 1s ease, clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .mask-reveal-left.visible {
-            opacity: 1;
-            clip-path: inset(0 0 0 0);
-        }
-
-        .stagger-children > * {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.75s ease, transform 0.75s ease;
-        }
-
-        .stagger-children.visible > * {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .stagger-children > * { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
         .stagger-children.visible > *:nth-child(1) { transition-delay: 0.08s; }
         .stagger-children.visible > *:nth-child(2) { transition-delay: 0.16s; }
         .stagger-children.visible > *:nth-child(3) { transition-delay: 0.24s; }
         .stagger-children.visible > *:nth-child(4) { transition-delay: 0.32s; }
-        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.40s; }
-        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.48s; }
 
         .hero-content {
             animation: heroFadeUp 1.1s ease-out both;
@@ -211,299 +144,123 @@
         }
 
         @keyframes heroFadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(35px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .soft-pulse {
-            animation: softPulse 2.8s ease-in-out infinite;
-        }
-
+        .soft-pulse { animation: softPulse 2.8s ease-in-out infinite; }
         @keyframes softPulse {
             0%, 100% { box-shadow: 0 0 0 rgba(217, 119, 6, 0.0); }
             50% { box-shadow: 0 0 26px rgba(217, 119, 6, 0.16); }
         }
 
-        .btn-shine {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .btn-shine { position: relative; overflow: hidden; }
         .btn-shine::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.30), transparent);
-            transform: skewX(-25deg);
-            animation: shineButton 3s infinite;
+            transform: skewX(-25deg); animation: shineButton 3s infinite;
         }
+        @keyframes shineButton { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
-        @keyframes shineButton {
-            0% { left: -100%; }
-            20% { left: 200%; }
-            100% { left: 200%; }
-        }
+        .cta-pop { transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease; }
+        .cta-pop:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 18px 35px -18px rgba(217,119,6,0.55); }
 
-        .cta-pop {
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-        }
-
-        .cta-pop:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 18px 35px -18px rgba(217,119,6,0.55);
-        }
-
-        .section-glow-line {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .section-glow-line { position: relative; overflow: hidden; }
         .section-glow-line::after {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
-            transform: translateX(-100%);
-            animation: sectionSweep 5.5s linear infinite;
-            pointer-events: none;
+            transform: translateX(-100%); animation: sectionSweep 5.5s linear infinite; pointer-events: none;
         }
+        @keyframes sectionSweep { to { transform: translateX(100%); } }
 
-        @keyframes sectionSweep {
-            to { transform: translateX(100%); }
-        }
-
-        .divider-trace {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .divider-trace { position: relative; overflow: hidden; }
         .divider-trace::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -30%;
-            width: 30%;
-            height: 100%;
+            content: ""; position: absolute; top: 0; left: -30%; width: 30%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-            filter: blur(8px);
-            animation: traceRun 4.8s linear infinite;
+            filter: blur(8px); animation: traceRun 4.8s linear infinite;
         }
+        @keyframes traceRun { to { left: 130%; } }
 
-        @keyframes traceRun {
-            to { left: 130%; }
-        }
-
-        .hover-lift {
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
-        }
-
+        .hover-lift { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease; }
         .hover-lift:hover {
             transform: translateY(-6px);
             box-shadow: 0 18px 36px -24px rgba(255,255,255,0.10);
             border-color: rgba(255,255,255,0.18) !important;
         }
 
-        .card-sheen {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .card-sheen { position: relative; overflow: hidden; }
         .card-sheen::before {
-            content: "";
-            position: absolute;
-            inset: -120% -40%;
+            content: ""; position: absolute; inset: -120% -40%;
             background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.06) 50%, transparent 65%);
-            transform: rotate(12deg) translateX(-120%);
-            transition: transform 0.8s ease;
-            pointer-events: none;
+            transform: rotate(12deg) translateX(-120%); transition: transform 0.8s ease; pointer-events: none;
         }
+        .card-sheen:hover::before { transform: rotate(12deg) translateX(120%); }
 
-        .card-sheen:hover::before {
-            transform: rotate(12deg) translateX(120%);
-        }
+        .parallax-wrap { transform-style: preserve-3d; transition: transform 0.18s ease; will-change: transform; }
+        .parallax-item-slow, .parallax-item-fast { transition: transform 0.2s ease; transform: translateZ(0); }
 
-        .parallax-wrap {
-            transform-style: preserve-3d;
-            transition: transform 0.18s ease;
-            will-change: transform;
-        }
+        .timeline-line { animation: lineGlow 3.2s ease-in-out infinite; }
+        @keyframes lineGlow { 0%, 100% { opacity: 0.30; } 50% { opacity: 0.75; } }
 
-        .parallax-item-slow,
-        .parallax-item-fast {
-            transition: transform 0.2s ease;
-            transform: translateZ(0);
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .carousel-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding: 2rem 0;
-            width: 100%;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            scroll-padding-left: 50%;
-            padding-left: 10%;
-            padding-right: 10%;
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carousel-item {
-            flex: 0 0 80%;
-            max-width: 400px;
-            scroll-snap-align: center;
-            transition: all 0.45s ease;
-            opacity: 0.3;
-            transform: scale(0.9);
-            border: 1px solid rgba(30, 41, 59, 1);
-            position: relative;
-            z-index: 1;
-            user-select: none;
-            background-image: linear-gradient(to bottom right, rgba(255,255,255,0.02), transparent 45%);
-        }
-
-        @media (min-width: 768px) {
-            .carousel-item {
-                flex: 0 0 400px;
-            }
-
-            .carousel-container {
-                padding-left: calc(50% - 200px);
-                padding-right: calc(50% - 200px);
-            }
-        }
-
-        .carousel-item.active {
-            opacity: 1;
-            transform: scale(1);
-            border-color: rgba(255,255,255,0.28);
-            background-color: rgba(15, 23, 42, 1);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-        }
-
-        .carousel-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 20;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.16);
-            color: #ffffff;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
-        }
-
-        .carousel-nav-btn:hover {
-            background: rgba(255,255,255,0.12);
-            color: white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.10);
-            transform: translateY(-50%) scale(1.08);
-        }
-
-        .carousel-prev { left: 10px; }
-        .carousel-next { right: 10px; }
-
-        @media (min-width: 1024px) {
-            .carousel-prev { left: 10%; }
-            .carousel-next { right: 10%; }
-        }
-
-        .timeline-line {
-            animation: lineGlow 3.2s ease-in-out infinite;
-        }
-
-        @keyframes lineGlow {
-            0%, 100% { opacity: 0.30; }
-            50% { opacity: 0.75; }
-        }
-
-        .timeline-dot {
-            animation: dotPulse 2.4s ease-in-out infinite;
-        }
-
+        .timeline-dot { animation: dotPulse 2.4s ease-in-out infinite; }
         @keyframes dotPulse {
             0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.12); }
             50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
         }
 
-        .grid-card {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .grid-card { position: relative; overflow: hidden; }
         .grid-card::after {
-            content: '';
-            position: absolute;
-            inset: auto -20% -120px -20%;
-            height: 180px;
+            content: ''; position: absolute; inset: auto -20% -120px -20%; height: 180px;
             background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 70%);
-            transition: opacity 0.35s ease, transform 0.35s ease;
-            opacity: 0.45;
+            transition: opacity 0.35s ease, transform 0.35s ease; opacity: 0.45;
         }
+        .grid-card:hover::after { transform: translateY(-12px); opacity: 0.8; }
 
-        .grid-card:hover::after {
-            transform: translateY(-12px);
-            opacity: 0.8;
-        }
+        .expert-image-wrap { transition: transform 0.5s ease; }
+        .expert-image-wrap:hover { transform: translateY(-4px) scale(1.01); }
+        .expert-badge { animation: badgeFloat 3.6s ease-in-out infinite; }
+        @keyframes badgeFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
 
-        .expert-image-wrap {
-            transition: transform 0.5s ease;
-        }
-
-        .expert-image-wrap:hover {
-            transform: translateY(-4px) scale(1.01);
-        }
-
-        .expert-badge {
-            animation: badgeFloat 3.6s ease-in-out infinite;
-        }
-
-        @keyframes badgeFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .offer-card {
-            animation: breatheGlow 4.5s ease-in-out infinite;
-        }
-
+        .offer-card { animation: breatheGlow 4.5s ease-in-out infinite; }
         @keyframes breatheGlow {
             0%, 100% { box-shadow: 0 0 34px -18px rgba(255,255,255,0.06); }
             50% { box-shadow: 0 0 46px -16px rgba(255,255,255,0.10); }
         }
 
+        /* Classes Utilitárias Adicionadas */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animações dos Nós (Órbita Profissional) */
+        @keyframes float-orb {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float-1 { animation: float-orb 4s ease-in-out infinite; }
+        .animate-float-2 { animation: float-orb 5s ease-in-out infinite 1.5s; }
+        .animate-float-3 { animation: float-orb 4.5s ease-in-out infinite 0.8s; }
+
+        .radar-pulse {
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            border: 1px solid rgba(217,119,6,0.6);
+            animation: radarPulse 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes radarPulse {
+            0% { transform: scale(0.6); opacity: 0; border-width: 2px; }
+            40% { opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; border-width: 0px; }
+        }
+        
+        .planet-orb { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
+            *, *::before, *::after {
+                animation: none !important; transition: none !important; scroll-behavior: auto !important;
             }
         }
     </style>
@@ -512,24 +269,25 @@
 
     <div class="bg-noise"></div>
 
-    <div class="w-full bg-gradient-to-r from-slate-700 to-slate-900 text-slate-100 text-xs font-bold uppercase tracking-widest text-center py-2 relative z-50 section-glow-line divider-trace">
+    <!-- Faixa de urgência vermelha no topo -->
+    <div class="w-full bg-red-600/15 border-b border-red-500/30 text-red-500 text-xs font-bold uppercase tracking-widest text-center py-2 relative z-50 section-glow-line divider-trace">
         Inscrições Abertas por apenas 24h e vagas extremamente limitadas.
     </div>
 
     <!-- HERO -->
-    <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-10 pb-20 overflow-hidden z-10 bg-[#080C14]">
+    <section class="relative pt-24 pb-20 md:pt-40 md:pb-32 flex flex-col justify-center items-center text-center px-4 overflow-hidden z-10 bg-transparent">
         <div class="scene-layer">
             <div class="grid-motion"></div>
             <div class="light-beam"></div>
         </div>
 
-        <div class="max-w-4xl mx-auto space-y-6 hero-content parallax-wrap">
+        <div class="max-w-4xl mx-auto space-y-6 hero-content parallax-wrap py-12">
             <div class="parallax-item-fast inline-flex items-center gap-2 px-4 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md soft-pulse">
                 <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
                 <span class="text-slate-200 text-xs font-bold uppercase tracking-widest">Mentoria Exclusiva Dra. Fáthima Oliveira</span>
             </div>
 
-            <h1 class="parallax-item-slow text-5xl md:text-7xl font-medium leading-[1.1] tracking-tight text-white">
+            <h1 class="parallax-item-slow text-[1.35rem] xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.2] tracking-tight text-white w-full max-w-4xl mx-auto">
                 Comece fazendo a graduação em <br>
                 <span class="italic text-gold">Fono do jeito certo.</span>
             </h1>
@@ -550,221 +308,307 @@
     </section>
 
     <!-- IDENTIFICAÇÃO -->
-    <section class="py-24 relative z-10 border-y border-slate-800/50 bg-[#0C1018] overflow-hidden">
+    <section class="py-24 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
         </div>
 
-        <div class="w-full relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-10 px-6 space-y-6 mask-reveal">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 px-6 space-y-6 mask-reveal">
                 <h2 class="text-3xl md:text-5xl text-white leading-tight">
                     A faculdade é só o começo.<br>
                     <span class="text-slate-400 italic font-light">O problema é quando esse começo vira confusão.</span>
                 </h2>
                 <div class="text-slate-400 text-lg space-y-4">
-                    <p>Muitos estudantes entram na Fonoaudiologia cheios de vontade, mas logo percebem que a faculdade não mostra com clareza como ter raciocínio clinico e como a profissão funciona na vida real</p>
-                    <p>É muita teoria, muito conteúdo solto e pouca conexão prática para quem ainda está tentando entender os primeiros passos da área.</p>
+                    <p>Muitos estudantes entram na Fonoaudiologia cheios de vontade, mas logo percebem que a faculdade não mostra com clareza como ter raciocínio clinico e como a profissão funciona na vida real.</p>
                 </div>
             </div>
 
-            <div class="carousel-wrapper reveal-scale">
-                <button class="carousel-nav-btn carousel-prev hidden md:block" onclick="scrollCarousel(-1)">
-                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                </button>
+            <!-- NOVA INTERAÇÃO EM ÓRBITA PROFISSIONAL (TAMANHO ELEGANTE E COMPACTO) -->
+            <div class="relative w-full max-w-3xl mx-auto mt-8 mb-4 px-4 h-[180px] md:h-[220px] reveal-scale">
+                
+                <!-- Anel de Órbita 3D -->
+                <div class="absolute top-1/2 left-[10%] right-[10%] h-[100px] md:h-[140px] -translate-y-1/2 rounded-[100%] border border-amber-500/15 shadow-[inset_0_0_30px_rgba(217,119,6,0.05)] pointer-events-none">
+                    <div class="absolute inset-0 rounded-[100%] border border-slate-700/30 blur-[2px]"></div>
+                </div>
 
-                <div class="carousel-container" id="symptomsCarousel">
-                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="last">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">⏳</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Medo de passar anos sem clareza</h3>
-                        <p class="text-slate-400 leading-relaxed text-sm">
-                            Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois.
-                        </p>
+                <!-- Nó 1 (Esquerda) -->
+                <div class="absolute left-[15%] top-[25%] -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div class="animate-float-1">
+                        <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(0)">
+                            <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-amber-500/50 hover:text-amber-300 shadow-lg transition-all duration-300" id="orb-0">
+                                <i data-lucide="cloud-fog" class="w-6 h-6 md:w-8 md:h-8"></i>
+                            </div>
+                            <div class="absolute inset-0 rounded-full bg-amber-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-0"></div>
+                            <div class="radar-pulse hidden" id="pulse-0"></div>
+                            <span class="absolute top-full mt-3 text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-amber-400" id="label-0">Falta de Clareza</span>
+                        </button>
                     </div>
-
-                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🤯</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Tudo parece solto</h3>
-                        <p class="text-slate-400 leading-relaxed text-sm">
-                            Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
-                        </p>
-                    </div>
-
-                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🧭</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Falta direção</h3>
-                        <p class="text-slate-400 leading-relaxed text-sm">
-                            No começo da graduação, é comum estudar muito e ainda assim não saber exatamente o que observar, o que importa mais ou como começar a construir visão profissional de verdade.
-                        </p>
-                    </div>
-
-                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">⏳</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Medo de passar anos sem clareza</h3>
-                        <p class="text-slate-400 leading-relaxed text-sm">
-                            Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois.
-                        </p>
-                    </div>
-
-                    <div class="carousel-item card-sheen hover-lift bg-slate-900/90 p-8 rounded-2xl flex flex-col justify-center" data-clone="first">
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 text-2xl">🤯</div>
-                        <h3 class="text-xl text-white font-serif mb-3">Tudo parece solto</h3>
-                        <p class="text-slate-400 leading-relaxed text-sm">
-                            Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
-                        </p>
+                </div>
+                
+                <!-- Nó 2 (Centro-Baixo - Ativo por Padrão) -->
+                <div class="absolute left-[50%] top-[85%] -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div class="animate-float-2">
+                        <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(1)">
+                            <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-amber-500 bg-amber-900/40 backdrop-blur-sm flex items-center justify-center text-amber-400 z-10 planet-orb scale-125 shadow-[0_0_30px_rgba(217,119,6,0.4)]" id="orb-1">
+                                <i data-lucide="network" class="w-6 h-6 md:w-8 md:h-8"></i>
+                            </div>
+                            <div class="absolute inset-0 rounded-full bg-amber-500/30 blur-xl transition-all duration-500 scale-150 opacity-100" id="glow-1"></div>
+                            <div class="radar-pulse block" id="pulse-1"></div>
+                            <span class="absolute top-full mt-5 text-sm font-bold whitespace-nowrap transition-colors text-amber-500 drop-shadow-md" id="label-1">Conteúdo Solto</span>
+                        </button>
                     </div>
                 </div>
 
-                <button class="carousel-nav-btn carousel-next hidden md:block" onclick="scrollCarousel(1)">
-                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                </button>
+                <!-- Nó 3 (Direita) -->
+                <div class="absolute left-[85%] top-[25%] -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div class="animate-float-3">
+                        <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(2)">
+                            <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-amber-500/50 hover:text-amber-300 shadow-lg transition-all duration-300" id="orb-2">
+                                <i data-lucide="compass" class="w-6 h-6 md:w-8 md:h-8"></i>
+                            </div>
+                            <div class="absolute inset-0 rounded-full bg-amber-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-2"></div>
+                            <div class="radar-pulse hidden" id="pulse-2"></div>
+                            <span class="absolute top-full mt-3 text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-amber-400" id="label-2">Sem Direção</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div class="text-center mt-4 md:hidden text-slate-500 text-xs uppercase tracking-widest animate-pulse">
-                &larr; Arraste para ver mais &rarr;
-            </div>
+            <!-- Painel de Informações Minimalista -->
+            <div class="relative z-30 mt-12 md:mt-14 max-w-lg mx-auto px-4 reveal-on-scroll">
+                <div class="bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 rounded-2xl p-5 md:p-6 text-center shadow-lg relative overflow-hidden min-h-[130px] flex flex-col justify-center items-center transition-all duration-500 group" id="planet-content-card">
+                    
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent"></div>
 
-            <div class="mt-20 text-center max-w-3xl mx-auto px-6 mask-reveal">
-                <h4 class="text-2xl text-white font-serif mb-4">E isso não acontece porque você não tem capacidade.</h4>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Acontece porque o começo da faculdade nem sempre entrega clareza suficiente para quem está tentando entender o conteúdo, a profissão de forma mais concreta.<br><br>
-                    A graduação é essencial. Mas muitas estudantes passam os primeiros períodos vendo conteúdos importantes sem conseguir conectar tudo com a prática, com o desenvolvimento infantil e com a lógica real da atuação profissional.
-                </p>
+                    <h3 id="planet-title" class="text-lg md:text-xl text-white font-serif mb-2 transition-all duration-400 transform translate-y-0 opacity-100">Tudo parece solto e desconectado</h3>
+                    <p id="planet-desc" class="text-slate-400 text-sm leading-relaxed transition-all duration-400 transform translate-y-0 opacity-100 max-w-md mx-auto">
+                        Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
+                    </p>
+                </div>
+                
+                <div class="text-center mt-5 text-amber-500/40 text-[10px] uppercase tracking-widest animate-pulse flex items-center justify-center gap-2">
+                    <i data-lucide="mouse-pointer-click" class="w-3 h-3"></i>
+                    Clique nos nós orbitais para explorar
+                </div>
             </div>
+            
         </div>
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section class="py-32 relative z-10 bg-[#080C14] overflow-hidden">
+    <section class="py-24 md:py-32 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[100px] pointer-events-none"></div>
         </div>
 
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-20 space-y-4 mask-reveal">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16 space-y-4 mask-reveal">
                 <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Mentoria</span>
-                <h2 class="text-4xl md:text-5xl text-white">Como a Fono Desde o Início funciona</h2>
+                <h2 class="text-3xl md:text-5xl text-white">Como a Fono Desde o Início funciona</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
                     Em 4 meses, você percorre uma trilha pensada para ajudar estudantes iniciantes a desenvolver mais clareza, visão prática e direção profissional desde cedo.
                 </p>
             </div>
 
-            <div class="relative space-y-24">
-                <div class="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/30 to-transparent -translate-x-1/2 md:block hidden timeline-line"></div>
-                <div class="absolute left-[28px] top-0 bottom-0 w-0.5 bg-slate-800 md:hidden block timeline-line"></div>
-
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
-                    <div class="reveal-left order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover-lift card-sheen">
-                        <h3 class="text-xl text-white font-serif mb-2">1. Entender a profissão com mais clareza</h3>
-                        <p class="text-slate-400">
-                            Você começa enxergando a Fonoaudiologia de forma mais concreta, entendendo melhor os caminhos da comunicação, o desenvolvimento infantil e o que realmente importa observar desde os primeiros períodos.
-                        </p>
+            <!-- Novo Layout Retangular (Tamanho Reduzido e Elegante) -->
+            <div class="flex flex-col gap-4 relative z-10 max-w-2xl mx-auto reveal-on-scroll stagger-children">
+                
+                <!-- Passo 1 -->
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                        <span class="font-serif text-xl md:text-2xl">1</span>
                     </div>
-                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#080C14] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot">1</div>
-                    <div class="order-3 md:w-[45%] md:block hidden"></div>
-                </div>
-
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
-                    <div class="order-3 md:order-1 md:w-[45%] md:block hidden"></div>
-                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#080C14] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot delay-1">2</div>
-                    <div class="reveal-right order-2 md:order-3 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-left hover-lift card-sheen">
-                        <h3 class="text-xl text-white font-serif mb-2">2. Conectar teoria e prática</h3>
-                        <p class="text-slate-400">
-                            Em vez de acumular conteúdo solto, você passa a compreender como linguagem, fala, leitura e escrita se conectam no desenvolvimento e na prática profissional.
-                        </p>
+                    <div>
+                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Entender a profissão com mais clareza</h3>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Você começa enxergando a Fonoaudiologia de forma mais concreta, entendendo melhor os caminhos da comunicação e o desenvolvimento infantil.</p>
                     </div>
                 </div>
 
-                <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 group">
-                    <div class="reveal-left order-2 md:order-1 md:w-[45%] bg-slate-900 border border-slate-800 p-8 rounded-xl text-right hover-lift card-sheen delay-2">
-                        <h3 class="text-xl text-white font-serif mb-2">3. Construir visão profissional desde cedo</h3>
-                        <p class="text-slate-400">
-                            Ao longo da mentoria, você desenvolve mais repertório, mais direção e uma base muito mais sólida para atravessar a graduação com maturidade e muito menos confusão.
-                        </p>
+                <!-- Passo 2 -->
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                        <span class="font-serif text-xl md:text-2xl">2</span>
                     </div>
-                    <div class="reveal-scale order-1 md:order-2 flex-shrink-0 w-14 h-14 bg-amber-600 rounded-full border-4 border-[#080C14] flex items-center justify-center text-white font-bold text-xl relative z-10 timeline-dot delay-2">3</div>
-                    <div class="order-3 md:w-[45%] md:block hidden"></div>
+                    <div>
+                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Conectar a teoria à prática real</h3>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Compreenda como linguagem, fala, leitura e escrita se conectam profundamente no desenvolvimento e na prática profissional do dia a dia.</p>
+                    </div>
                 </div>
+
+                <!-- Passo 3 -->
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                        <span class="font-serif text-xl md:text-2xl">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Construir visão profissional desde cedo</h3>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Desenvolva mais repertório, mais direção e uma base sólida para atravessar a graduação com maturidade, se destacando já na faculdade.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- CRONOGRAMA -->
-    <section class="py-24 relative z-10 bg-[#0C1018] border-y border-slate-800/50 overflow-hidden">
+    <section class="py-24 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
         </div>
 
-        <div class="max-w-5xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16 space-y-4 mask-reveal">
+        <div class="max-w-2xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-10 space-y-3 mask-reveal">
                 <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">Cronograma da Mentoria</span>
-                <h2 class="text-4xl md:text-5xl text-white">O que você vai aprender em 4 meses</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Uma trilha organizada para ajudar você a construir base, visão prática e direção profissional desde os primeiros períodos da graduação.
+                <h2 class="text-3xl md:text-4xl text-white">O que você vai aprender</h2>
+                <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto">
+                    Uma trilha organizada para ajudar você a construir base, visão prática e direção profissional desde cedo.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 stagger-children">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
-                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 01</p>
-                    <h3 class="text-white text-xl font-serif mb-2">1 - Entrando na Fonoaudiologia do jeito certo</h3>
-                    <p class="text-slate-400 text-sm mb-4">Entenda a profissão com mais clareza e comece a enxergar melhor os caminhos da comunicação.</p>
-                    <h4 class="text-white text-lg font-serif mb-2">2 - Marcos do desenvolvimento e primeiros olhares sobre a infância</h4>
-                    <p class="text-slate-400 text-sm">Aprenda o que observar no desenvolvimento infantil, os caminhos da linguagem, construindo um olhar mais atento desde cedo.</p>
+            <!-- Abas (Tabs) do Cronograma -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 stagger-children">
+                <button onclick="changeMonth(1)" id="tab-1" class="month-tab px-5 py-2 rounded-full border border-amber-500 bg-amber-900/40 text-amber-400 font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.2)]">Mês 01</button>
+                <button onclick="changeMonth(2)" id="tab-2" class="month-tab px-5 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Mês 02</button>
+                <button onclick="changeMonth(3)" id="tab-3" class="month-tab px-5 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Mês 03</button>
+                <button onclick="changeMonth(4)" id="tab-4" class="month-tab px-5 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Mês 04</button>
+            </div>
+
+            <!-- Painel de Conteúdo do Cronograma -->
+            <div class="bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-2xl p-6 md:p-8 shadow-xl relative overflow-hidden min-h-[260px] flex flex-col justify-center reveal-scale">
+                
+                <div class="absolute top-0 right-0 w-48 h-48 bg-amber-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Conteúdo Mês 1 -->
+                <div id="content-1" class="month-pane transition-all duration-500 opacity-100 transform translate-y-0 block">
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">1</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Entrando na Fonoaudiologia do jeito certo</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Entenda a profissão com mais clareza e comece a enxergar melhor os caminhos da comunicação.</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">2</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Marcos do desenvolvimento e a infância</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Aprenda o que observar no desenvolvimento infantil, os caminhos da linguagem, construindo um olhar mais atento.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
-                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 02</p>
-                    <h3 class="text-white text-xl font-serif mb-2">3 - Como a linguagem se desenvolve na criança</h3>
-                    <p class="text-slate-400 text-sm mb-4">Compreenda de forma prática como a linguagem se estrutura e aparece no desenvolvimento infantil.</p>
-                    <h4 class="text-white text-lg font-serif mb-2">4 - Quando observar mais de perto: atraso, dificuldade ou sinal de alerta?</h4>
-                    <p class="text-slate-400 text-sm">Desenvolva um olhar inicial para sinais que merecem mais atenção.</p>
+                <!-- Conteúdo Mês 2 -->
+                <div id="content-2" class="month-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">3</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Como a linguagem se desenvolve na criança</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Compreenda de forma prática como a linguagem se estrutura e aparece no desenvolvimento infantil.</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">4</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Atraso, dificuldade ou sinal de alerta?</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Desenvolva um olhar inicial preciso para sinais e comportamentos que merecem mais atenção na clínica.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
-                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 03</p>
-                    <h3 class="text-white text-xl font-serif mb-2">5 - Leitura e escrita: entendendo as bases da aprendizagem</h3>
-                    <p class="text-slate-400 text-sm mb-4">Entenda como linguagem, leitura e escrita se conectam no desenvolvimento da criança.</p>
-                    <h4 class="text-white text-lg font-serif mb-2">6 - Dificuldades de aprendizagem da Leitura e escrita</h4>
-                    <p class="text-slate-400 text-sm">Entenda os fatores que contribuem para as dificuldades de ler e escrever.</p>
+                <!-- Conteúdo Mês 3 -->
+                <div id="content-3" class="month-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">5</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Leitura e escrita: bases da aprendizagem</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Entenda como linguagem, leitura e escrita se conectam profundamente no desenvolvimento da criança.</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">6</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Dificuldades na Leitura e Escrita</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Entenda de maneira clara os principais fatores que contribuem para as dificuldades de ler e escrever.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover-lift card-sheen grid-card">
-                    <p class="text-amber-500 text-sm font-bold mb-2">MÊS 04</p>
-                    <h3 class="text-white text-xl font-serif mb-2">7 - Dificuldades de aprendizagem da linguagem, leitura e escrita</h3>
-                    <p class="text-slate-400 text-sm mb-4">Conceitualização e diagnóstico diferencial.</p>
-                    <h4 class="text-white text-lg font-serif mb-2">8 - Dificuldades de aprendizagem da Matemática</h4>
-                    <p class="text-slate-400 text-sm">Conceitualização e a importância das habilidades matemáticas.</p>
+                <!-- Conteúdo Mês 4 -->
+                <div id="content-4" class="month-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
+                    <div class="space-y-6 relative z-10">
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">7</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Diagnóstico e Diferenciação</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Conceitualização e raciocínio para o diagnóstico diferencial entre dificuldades de linguagem, leitura e escrita.</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+                        <div class="flex gap-4 md:gap-5 items-start">
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">8</div>
+                            <div>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Dificuldades de aprendizagem da Matemática</h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Conceitualização geral e um panorama sobre a importância fundamental das habilidades matemáticas.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- EXPERT -->
-    <section class="py-24 bg-gradient-to-b from-[#080C14] to-[#0D1420] relative z-10 border-y border-slate-800 overflow-hidden">
+    <section class="py-24 bg-transparent relative z-10 overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
         </div>
 
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 md:gap-16 relative z-10">
+            
+            <!-- Coluna da Imagem -->
             <div class="w-full md:w-1/2 relative mask-reveal-left">
-                <div class="expert-image-wrap relative">
-                    <div class="absolute inset-0 border-2 border-white/10 translate-x-4 translate-y-4 rounded-lg"></div>
-                    <img src="https://drafathimaoliveira.com.br/wp-content/uploads/elementor/thumbs/FTMITTO-15-qj1hffc3mdwfwx34i87dd7011b29rrifq3k8i6zy2o.jpg" alt="Dra. Fáthima" class="relative w-full rounded-lg shadow-2xl transition-all duration-700 object-cover h-[600px] object-top">
-                    <div class="expert-badge absolute bottom-8 -right-4 bg-amber-600 text-white p-4 rounded-lg shadow-lg max-w-[150px]">
+                <div class="relative w-full max-w-md mx-auto">
+                    <!-- Elemento de design (moldura dourada) atrás da foto -->
+                    <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-2xl"></div>
+                    
+                    <!-- FOTO DA DRA: Substitua o link do atributo 'src' abaixo pelo link RAW do seu GitHub -->
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=800&h=1000" alt="Dra. Fáthima Oliveira" class="relative w-full rounded-2xl shadow-2xl object-cover h-[450px] md:h-[600px] grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                    
+                    <!-- Selo flutuante de autoridade -->
+                    <div class="absolute -bottom-6 -left-2 md:-left-6 bg-slate-900 border border-slate-700 p-4 rounded-xl shadow-xl flex items-center gap-4 reveal-scale" style="transition-delay: 0.3s;">
+                        <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm">+22 Anos</p>
+                            <p class="text-slate-400 text-xs">de Experiência Clínica</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 space-y-6 mask-reveal">
-                <h2 class="text-4xl md:text-5xl text-white">Mais de 25 anos de experiência transformados em direção para quem está começando.</h2>
-                <div class="h-1 w-20 bg-white/50"></div>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Sou a <strong>Dra. Fáthima</strong>. Atuo há mais de 22 anos na Fonoaudiologia, com uma trajetória construída a partir da prática, da escuta, do acompanhamento de crianças e da formação de um olhar profissional sólido ao longo do tempo.
+            <!-- Coluna do Texto -->
+            <div class="w-full md:w-1/2 space-y-6 mask-reveal text-center md:text-left mt-10 md:mt-0">
+                <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">Mais de 25 anos de experiência transformados em direção para quem está começando.</h2>
+                <div class="h-1 w-20 bg-amber-600/50 rounded mx-auto md:mx-0"></div>
+                <p class="text-slate-300 text-lg md:text-xl leading-relaxed">
+                    Sou a <strong class="text-white">Dra. Fáthima</strong>. Atuo há mais de 22 anos na Fonoaudiologia, com uma trajetória construída a partir da prática, da escuta, do acompanhamento de crianças e da formação de um olhar profissional sólido ao longo do tempo.
                 </p>
-                <p class="text-slate-400 leading-relaxed">
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed">
                     Ao longo desses anos, percebi quantas estudantes entram na faculdade cheias de vontade, mas passam muito tempo tentando entender a profissão de forma solta, sem clareza e sem direção.
                 </p>
-                <p class="text-slate-400 leading-relaxed">
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed">
                     Foi por isso que criei a Fono Desde o Início: uma mentoria para ajudar quem está no começo da graduação a construir base, visão prática e maturidade profissional desde cedo, encurtando um caminho que muita gente leva anos para percorrer.
                 </p>
             </div>
@@ -772,7 +616,7 @@
     </section>
 
     <!-- OFERTA -->
-    <section id="oferta" class="py-24 relative z-10 overflow-hidden bg-[#080C14]">
+    <section id="oferta" class="py-24 relative z-10 overflow-hidden bg-transparent">
         <div class="scene-layer">
             <div class="light-beam"></div>
         </div>
@@ -804,10 +648,6 @@
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
                                 <span><strong>Acesso às gravações por 1 ano:</strong> para rever as aulas no seu tempo e consolidar o conteúdo com mais segurança.</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong>4 materiais complementares:</strong> conteúdos práticos liberados ao longo da mentoria para aprofundar seu entendimento e facilitar a revisão.</span>
-                            </li>
                         </ul>
                     </div>
 
@@ -816,12 +656,12 @@
                             <i data-lucide="gift" class="w-5 h-5 text-amber-500"></i>
                             4 materiais complementares inclusos:
                         </h3>
-                        <p class="text-xs text-slate-400 mb-4">Arquivos liberados ao longo da mentoria para aprofundar sua compreensão e deixar o conteúdo ainda mais claro e aplicável:</p>
+                        <p class="text-xs text-slate-400 mb-4">Arquivos liberados ao longo da mentoria para aprofundar sua compreensão e deixar o conteúdo ainda mais claro:</p>
                         <ul class="space-y-2 text-sm text-slate-300">
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 01:</span> Guia de Primeiros Passos na Fonoaudiologia.</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 02:</span> Mapa Prático do Desenvolvimento da Linguagem.</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 03:</span> Guia Essencial de Linguagem, Leitura e Escrita.</li>
-                            <li class="flex items-center gap-2"><span class="text-amber-500 font-bold">Mês 04:</span> Guia resumindo os temas mais importantes dos 8 encontros.</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Guia de Primeiros Passos na Fonoaudiologia.</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Mapa Prático do Desenvolvimento da Linguagem.</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Guia Essencial de Linguagem, Leitura e Escrita.</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Guia Resumo dos temas mais importantes.</li>
                         </ul>
                     </div>
 
@@ -842,7 +682,6 @@
                         <p class="text-sm text-amber-500 mt-4 font-bold bg-amber-900/20 inline-block px-4 py-2 rounded-full border border-amber-500/20 soft-pulse">
                             Menos de R$ 5,00 por dia para começar sua trajetória na Fono com muito mais clareza.
                         </p>
-                        <p class="text-xs text-slate-400 mt-2">Um investimento pequeno para encurtar anos de confusão e começar do jeito certo.</p>
                     </div>
 
                     <button class="btn-shine cta-pop relative block w-full py-5 mt-4 bg-amber-600 text-white font-bold text-lg rounded-xl hover:bg-amber-500 transition-colors shadow-[0_0_20px_rgba(217,119,6,0.3)]">
@@ -858,13 +697,122 @@
         </div>
     </section>
 
-    <footer class="bg-black py-12 text-center border-t border-slate-900 relative z-10">
+    <footer class="bg-transparent py-12 text-center relative z-10">
         <p class="text-slate-600 text-sm">
             &copy; 2026 Dra. Fáthima. Todos os direitos reservados.
         </p>
     </footer>
 
     <script>
+        // Dados dos Planetas (Nós Profissionais)
+        const planetData = [
+            {
+                icon: "cloud-fog",
+                title: "O medo de passar anos sem clareza",
+                desc: "Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois."
+            },
+            {
+                icon: "network",
+                title: "Tudo parece solto e desconectado",
+                desc: "Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão."
+            },
+            {
+                icon: "compass",
+                title: "A falta de direção e foco",
+                desc: "No começo da graduação, é comum estudar muito e ainda assim não saber exatamente o que observar, o que importa mais ou como começar a construir visão profissional de verdade."
+            }
+        ];
+
+        // Lógica de Ativação dos Nós Orbitais (Corrigida e atualizada para tamanhos compactos)
+        window.activatePlanet = function(index) {
+            const orbs = document.querySelectorAll('.planet-orb');
+            const glows = [document.getElementById('glow-0'), document.getElementById('glow-1'), document.getElementById('glow-2')];
+            const pulses = [document.getElementById('pulse-0'), document.getElementById('pulse-1'), document.getElementById('pulse-2')];
+            const labels = [document.getElementById('label-0'), document.getElementById('label-1'), document.getElementById('label-2')];
+            
+            const titleEl = document.getElementById('planet-title');
+            const descEl = document.getElementById('planet-desc');
+
+            // 1. Resetar todos para o estado inativo
+            orbs.forEach((orb, i) => {
+                orb.classList.remove('border-amber-500', 'bg-amber-900/40', 'text-amber-400', 'scale-125', 'shadow-[0_0_30px_rgba(217,119,6,0.4)]');
+                orb.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-400');
+                glows[i].classList.remove('scale-150', 'opacity-100');
+                glows[i].classList.add('scale-0', 'opacity-0');
+                pulses[i].classList.remove('block');
+                pulses[i].classList.add('hidden');
+                labels[i].classList.remove('text-amber-500', 'mt-5', 'font-bold', 'drop-shadow-md', 'text-sm');
+                labels[i].classList.add('text-slate-400', 'mt-3', 'text-xs');
+            });
+
+            // 2. Ativar o nó clicado
+            orbs[index].classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-400');
+            orbs[index].classList.add('border-amber-500', 'bg-amber-900/40', 'text-amber-400', 'scale-125', 'shadow-[0_0_30px_rgba(217,119,6,0.4)]');
+            glows[index].classList.remove('scale-0', 'opacity-0');
+            glows[index].classList.add('scale-150', 'opacity-100');
+            pulses[index].classList.remove('hidden');
+            pulses[index].classList.add('block');
+            labels[index].classList.remove('text-slate-400', 'mt-3', 'text-xs');
+            labels[index].classList.add('text-amber-500', 'mt-5', 'font-bold', 'drop-shadow-md', 'text-sm');
+
+            // 3. Animar saída do conteúdo atual
+            titleEl.style.opacity = '0';
+            titleEl.style.transform = 'translateY(-10px)';
+            descEl.style.opacity = '0';
+            descEl.style.transform = 'translateY(10px)';
+
+            // 4. Trocar o conteúdo e animar a entrada
+            setTimeout(() => {
+                titleEl.textContent = planetData[index].title;
+                descEl.textContent = planetData[index].desc;
+                
+                titleEl.style.opacity = '1';
+                titleEl.style.transform = 'translateY(0)';
+                descEl.style.opacity = '1';
+                descEl.style.transform = 'translateY(0)';
+            }, 300);
+        };
+
+        // Lógica das Abas do Cronograma
+        window.changeMonth = function(monthId) {
+            const tabs = document.querySelectorAll('.month-tab');
+            const panes = document.querySelectorAll('.month-pane');
+
+            // 1. Atualiza visual dos botões
+            tabs.forEach(tab => {
+                tab.classList.remove('border-amber-500', 'bg-amber-900/40', 'text-amber-400', 'shadow-[0_0_15px_rgba(217,119,6,0.2)]');
+                tab.classList.add('border-slate-700', 'bg-slate-900/50', 'text-slate-400');
+            });
+            
+            const activeTab = document.getElementById(`tab-${monthId}`);
+            activeTab.classList.remove('border-slate-700', 'bg-slate-900/50', 'text-slate-400');
+            activeTab.classList.add('border-amber-500', 'bg-amber-900/40', 'text-amber-400', 'shadow-[0_0_15px_rgba(217,119,6,0.2)]');
+
+            // 2. Anima a saída do painel atual
+            panes.forEach(pane => {
+                pane.style.opacity = '0';
+                pane.style.transform = 'translateY(15px)';
+            });
+
+            // 3. Aguarda o fade out terminar para trocar e fazer o fade in
+            setTimeout(() => {
+                panes.forEach(pane => {
+                    pane.classList.add('hidden');
+                    pane.classList.remove('block');
+                });
+
+                const activePane = document.getElementById(`content-${monthId}`);
+                activePane.classList.remove('hidden');
+                activePane.classList.add('block');
+
+                // Um pequeno delay para permitir que o display: block renderize antes da opacidade
+                setTimeout(() => {
+                    activePane.style.opacity = '1';
+                    activePane.style.transform = 'translateY(0)';
+                }, 50);
+            }, 300);
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
@@ -872,10 +820,10 @@
 
             const observerOptions = {
                 root: null,
-                threshold: 0.12,
-                rootMargin: "0px"
+                threshold: 0.05,
+                rootMargin: "50px"
             };
-
+            
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -897,7 +845,7 @@
                         el.classList.add('visible');
                     }
                 });
-            }, 1200);
+            }, 1000);
 
             const parallaxBlocks = document.querySelectorAll('.parallax-wrap');
 
@@ -926,93 +874,6 @@
                     });
                 });
             });
-
-            const container = document.getElementById('symptomsCarousel');
-
-            if (container) {
-                const items = container.querySelectorAll('.carousel-item');
-                let isScrolling = false;
-
-                const updateActiveCard = () => {
-                    const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
-
-                    items.forEach(item => {
-                        const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
-                        const distance = Math.abs(containerCenter - itemCenter);
-
-                        if (distance < 200) {
-                            item.classList.add('active');
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                            item.style.borderColor = 'rgba(255, 255, 255, 0.28)';
-                            item.style.zIndex = '10';
-                        } else {
-                            item.classList.remove('active');
-                            item.style.opacity = '0.3';
-                            item.style.transform = 'scale(0.9)';
-                            item.style.borderColor = 'rgba(30, 41, 59, 1)';
-                            item.style.zIndex = '1';
-                        }
-                    });
-                };
-
-                const checkInfiniteLoop = () => {
-                    if (isScrolling) return;
-
-                    const scrollLeft = container.scrollLeft;
-                    const scrollWidth = container.scrollWidth;
-                    const clientWidth = container.clientWidth;
-
-                    if (items.length < 2) return;
-
-                    const itemWidth = items[1].offsetWidth + 20;
-
-                    if (scrollLeft < 10) {
-                        isScrolling = true;
-                        container.style.scrollBehavior = 'auto';
-                        container.scrollLeft = scrollWidth - (itemWidth * 2) - clientWidth / 2 + itemWidth / 2;
-                        setTimeout(() => {
-                            container.style.scrollBehavior = 'smooth';
-                            isScrolling = false;
-                        }, 50);
-                    } else if (scrollLeft >= scrollWidth - clientWidth - 10) {
-                        isScrolling = true;
-                        container.style.scrollBehavior = 'auto';
-                        container.scrollLeft = items[1].offsetLeft - (clientWidth - items[1].offsetWidth) / 2;
-                        setTimeout(() => {
-                            container.style.scrollBehavior = 'smooth';
-                            isScrolling = false;
-                        }, 50);
-                    }
-                };
-
-                container.addEventListener('scroll', () => {
-                    updateActiveCard();
-                    checkInfiniteLoop();
-                });
-
-                if (items.length > 1) {
-                    const firstOriginal = items[1];
-                    const scrollPos = firstOriginal.offsetLeft - (container.offsetWidth - firstOriginal.offsetWidth) / 2;
-
-                    container.style.scrollBehavior = 'auto';
-                    container.scrollTo(scrollPos, 0);
-
-                    setTimeout(() => {
-                        container.style.scrollBehavior = 'smooth';
-                        updateActiveCard();
-                    }, 100);
-                }
-
-                window.scrollCarousel = (direction) => {
-                    const cardWidth = items[0].offsetWidth;
-                    const scrollAmount = cardWidth + 20;
-                    container.scrollBy({
-                        left: direction * scrollAmount,
-                        behavior: 'smooth'
-                    });
-                };
-            }
         });
     </script>
 </body>
