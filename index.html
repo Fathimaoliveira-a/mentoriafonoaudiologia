@@ -186,6 +186,17 @@
         
         .planet-orb { transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
+        /* FAQ Accordion */
+        .faq-content {
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .faq-content.open {
+            opacity: 1;
+        }
+
         /* Classes Utilitárias Adicionadas */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -202,8 +213,8 @@
     <div class="bg-noise"></div>
 
     <!-- Faixa de urgência vermelha no topo -->
-    <div class="w-full bg-red-600/15 border-b border-red-500/30 text-red-500 text-xs font-bold uppercase tracking-widest text-center py-2.5 relative z-50">
-        Inscrições Abertas por apenas 24h e vagas extremamente limitadas.
+    <div class="w-full bg-red-600/15 border-b border-red-500/30 text-red-500 text-xs md:text-sm font-bold uppercase tracking-widest text-center py-3 relative z-50">
+        INSCRIÇÕES ABERTAS POR APENAS 24H E VAGAS EXTREMAMENTE LIMITADAS (30 VAGAS)
     </div>
 
     <!-- HERO -->
@@ -212,46 +223,46 @@
             <div class="light-beam"></div>
         </div>
 
-        <div class="max-w-4xl mx-auto space-y-8 hero-content py-12">
+        <div class="max-w-5xl mx-auto space-y-8 hero-content py-12">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md soft-pulse">
                 <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
                 <span class="text-slate-200 text-xs font-bold uppercase tracking-widest">Mentoria Exclusiva Dra. Fáthima Oliveira</span>
             </div>
 
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight text-white w-full max-w-4xl mx-auto">
-                Comece fazendo a graduação em <br>
-                <span class="italic text-gold">Fono do jeito certo.</span>
+                Não espere o final da faculdade para entender a <br>
+                <span class="italic text-gold">Fonoaudiologia de verdade.</span>
             </h1>
 
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                Eu decidi criar essa mentoria para estudantes de fonoaudiologia que querem construir, desde cedo, mais clareza, visão prática e direção profissional, aprendendo com quem atua há mais de 25 anos nessa área.
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+                Desenvolva visão clínica, raciocínio prático e maturidade profissional desde os primeiros períodos da graduação. A Mentoria Exclusiva da Dra. Fáthima Oliveira te dá o atalho que a maioria só descobre tarde demais.
             </p>
 
             <div class="pt-6 pb-12">
-                <a href="#oferta" class="relative inline-flex group w-full md:w-auto">
+                <a href="COLOQUE_SEU_LINK_DE_COMPRA_AQUI" target="_blank" class="relative inline-flex group w-full md:w-auto">
                     <div class="absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200"></div>
-                    <button class="btn-shine cta-pop relative inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-bold text-white transition-all duration-200 bg-amber-600 rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20">
-                        QUERO COMEÇAR DO JEITO CERTO
+                    <button class="btn-shine cta-pop relative inline-flex items-center justify-center px-8 py-5 text-sm md:text-base font-bold text-white transition-all duration-200 bg-amber-600 rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20 shadow-[0_0_20px_rgba(217,119,6,0.2)]">
+                        QUERO COMEÇAR MINHA GRADUAÇÃO COM VISÃO CLÍNICA
                     </button>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- IDENTIFICAÇÃO (ÓRBITA) -->
+    <!-- IDENTIFICAÇÃO (ÓRBITA DA DOR) -->
     <section class="py-24 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
         </div>
 
         <div class="max-w-6xl mx-auto relative z-10 px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-6 mask-reveal">
+            <div class="text-center max-w-4xl mx-auto mb-16 space-y-6 mask-reveal">
                 <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">
                     A faculdade é só o começo.<br>
-                    <span class="text-slate-400 italic font-light">O problema é quando esse começo vira confusão.</span>
+                    <span class="text-slate-400 italic font-light">O problema é quando esse começo vira confusão, e a confusão vira insegurança.</span>
                 </h2>
-                <div class="text-slate-400 text-base md:text-lg space-y-4 max-w-2xl mx-auto">
-                    <p>Muitos estudantes entram na Fonoaudiologia cheios de vontade, mas logo percebem que a faculdade não mostra com clareza como ter raciocínio clinico e como a profissão funciona na vida real.</p>
+                <div class="text-slate-400 text-base md:text-lg space-y-4 max-w-3xl mx-auto">
+                    <p>Muitos estudantes de Fonoaudiologia entram na graduação cheios de vontade, mas logo percebem que a teoria, por si só, não constrói o profissional que o mercado exige. Você assiste às aulas, anota o conteúdo, tenta acompanhar as matérias, mas a sensação é que tudo parece solto e desconectado. Você estuda muito, mas não sabe como aplicar.</p>
                 </div>
             </div>
 
@@ -267,11 +278,11 @@
                     <div class="animate-float-1">
                         <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(0)">
                             <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-red-500/50 hover:text-red-300 shadow-lg" id="orb-0">
-                                <i data-lucide="cloud-fog" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                <i data-lucide="brain-circuit" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
                             <div class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-0"></div>
                             <div class="radar-pulse hidden" id="pulse-0"></div>
-                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-0">Falta de Clareza</span>
+                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-0">Falta de Raciocínio</span>
                         </button>
                     </div>
                 </div>
@@ -285,7 +296,7 @@
                             </div>
                             <div class="absolute inset-0 rounded-full bg-red-500/30 blur-xl transition-all duration-500 scale-150 opacity-100" id="glow-1"></div>
                             <div class="radar-pulse block" id="pulse-1"></div>
-                            <span class="absolute top-full mt-4 md:mt-5 text-xs md:text-sm font-bold whitespace-nowrap transition-colors text-red-500" id="label-1">Conteúdo Solto</span>
+                            <span class="absolute top-full mt-4 md:mt-5 text-xs md:text-sm font-bold whitespace-nowrap transition-colors text-red-500" id="label-1">Conteúdo Fragmentado</span>
                         </button>
                     </div>
                 </div>
@@ -299,7 +310,7 @@
                             </div>
                             <div class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-2"></div>
                             <div class="radar-pulse hidden" id="pulse-2"></div>
-                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-2">Sem Direção</span>
+                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-2">Ausência de Direção</span>
                         </button>
                     </div>
                 </div>
@@ -311,21 +322,21 @@
                     
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-red-500/40 to-transparent"></div>
 
-                    <h3 id="planet-title" class="text-xl md:text-2xl text-white font-serif mb-2 transition-all duration-400 transform translate-y-0 opacity-100">Tudo parece solto e desconectado</h3>
+                    <h3 id="planet-title" class="text-xl md:text-2xl text-white font-serif mb-2 transition-all duration-400 transform translate-y-0 opacity-100">O Conteúdo Fragmentado</h3>
                     <p id="planet-desc" class="text-slate-400 text-sm md:text-base leading-relaxed transition-all duration-400 transform translate-y-0 opacity-100 max-w-lg">
-                        Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão.
+                        Você assiste às aulas e anota tudo, mas as partes não formam um todo. A falta de integração faz com que o tempo passe e a segurança para atuar simplesmente não chegue.
                     </p>
                 </div>
                 
                 <div class="text-center mt-6 text-red-500/40 text-[10px] md:text-xs uppercase tracking-widest animate-pulse flex items-center justify-center gap-2">
                     <i data-lucide="mouse-pointer-click" class="w-3 h-3"></i>
-                    Clique nos nós orbitais para explorar
+                    Clique nos circulos acima.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- COMO FUNCIONA (RETÂNGULOS COMPACTOS ELEGANTES) -->
+    <!-- COMO FUNCIONA A SOLUÇÃO (RETÂNGULOS COMPACTOS) -->
     <section class="py-24 md:py-32 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
@@ -334,45 +345,45 @@
 
         <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
             <div class="text-center mb-16 space-y-4 mask-reveal">
-                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Mentoria</span>
-                <h2 class="text-3xl md:text-5xl text-white">Como a Fono Desde o Início funciona</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
-                    Em 4 meses, você percorre uma trilha de aulas pensada para ajudar estudantes iniciantes a desenvolver mais clareza, visão prática e direção profissional desde cedo.
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">A Solução Definitiva</span>
+                <h2 class="text-3xl md:text-5xl text-white font-serif">Existe um jeito mais inteligente de construir sua base na Fonoaudiologia.</h2>
+                <p class="text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                    A Mentoria Fono Desde o Início foi criada para estudantes que não querem apenas passar na faculdade, mas querem dominar a lógica prática da profissão e desenvolver um olhar clínico afiado desde cedo. Em 4 meses, você percorre uma trilha que a graduação, sozinha, nem sempre entrega.
                 </p>
             </div>
 
-            <div class="flex flex-col gap-4 relative z-10 max-w-2xl mx-auto reveal-on-scroll stagger-children">
+            <div class="flex flex-col gap-4 relative z-10 max-w-3xl mx-auto reveal-on-scroll stagger-children">
                 
                 <!-- Passo 1 -->
-                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-6 md:p-8 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-6 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
                         <span class="font-serif text-xl md:text-2xl leading-none -mt-[4px] md:-mt-[6px]">1</span>
                     </div>
                     <div>
-                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Entender a profissão com mais clareza</h3>
-                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Você começa enxergando a Fonoaudiologia de forma mais concreta, entendendo melhor os caminhos da comunicação e o desenvolvimento infantil.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">Entenda a Profissão com Visão Clínica</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Você começa enxergando a Fonoaudiologia de forma concreta, compreendendo os caminhos da comunicação e do desenvolvimento infantil sob uma ótica prática e estratégica.</p>
                     </div>
                 </div>
 
                 <!-- Passo 2 -->
-                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-6 md:p-8 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-6 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
                         <span class="font-serif text-xl md:text-2xl leading-none -mt-[4px] md:-mt-[6px]">2</span>
                     </div>
                     <div>
-                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Conectar a teoria à prática real</h3>
-                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Compreenda como linguagem, fala, leitura e escrita se conectam profundamente no desenvolvimento e na prática profissional do dia a dia.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">Conecte a Teoria à Prática Real</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Compreenda como linguagem, fala, leitura e escrita se integram profundamente no desenvolvimento e na atuação profissional do dia a dia, transformando conhecimento em repertório.</p>
                     </div>
                 </div>
 
                 <!-- Passo 3 -->
-                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-5 md:p-6 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-5 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
+                <div class="flex flex-col md:flex-row items-center md:items-center text-center md:text-left bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 p-6 md:p-8 rounded-xl hover:-translate-y-1 transition-transform duration-300 group shadow-lg w-full">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-800/80 border border-slate-700 flex flex-shrink-0 items-center justify-center text-amber-500 mb-4 md:mb-0 md:mr-6 shadow-[0_0_15px_rgba(217,119,6,0.1)] relative group-hover:border-amber-500/50 transition-colors">
                         <span class="font-serif text-xl md:text-2xl leading-none -mt-[4px] md:-mt-[6px]">3</span>
                     </div>
                     <div>
-                        <h3 class="text-base md:text-lg text-white font-serif mb-1.5 leading-snug">Construir visão profissional desde cedo</h3>
-                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Desenvolva mais repertório, mais direção e uma base sólida para atravessar a graduação com maturidade, se destacando já na faculdade.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">Construa Maturidade Profissional Desde Cedo</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Desenvolva um olhar diferenciado, uma base sólida e a segurança para atravessar a graduação com propósito, destacando-se já na faculdade e encurtando anos de aprendizado.</p>
                     </div>
                 </div>
 
@@ -389,9 +400,9 @@
         <div class="max-w-2xl mx-auto px-6 relative z-10">
             <div class="text-center mb-10 space-y-3 mask-reveal">
                 <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">Cronograma da Mentoria</span>
-                <h2 class="text-3xl md:text-4xl text-white">O que você vai aprender</h2>
+                <h2 class="text-3xl md:text-4xl text-white font-serif">O que você vai aprender em 4 meses</h2>
                 <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto">
-                    Uma trilha de aulas organizada para ajudar você a construir base, visão prática e direção profissional desde cedo.
+                    Uma trilha organizada para ajudar você a construir base, visão prática e direção profissional desde cedo.
                 </p>
             </div>
 
@@ -496,7 +507,7 @@
         </div>
     </section>
 
-    <!-- EXPERT (COM A FOTOGRAFIA EM DESTAQUE) -->
+    <!-- EXPERT (AUTORIDADE) -->
     <section class="py-24 bg-transparent relative z-10 overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
@@ -504,29 +515,29 @@
 
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 md:gap-16 relative z-10">
             
-            <!-- Coluna da Imagem (Corrigido o efeito que cortava o retângulo) -->
+            <!-- Coluna da Imagem -->
             <div class="w-full md:w-1/2 relative reveal-on-scroll">
                 <div class="relative w-full max-w-md mx-auto">
-                    <!-- Retângulo fino (Moldura Dourada) intacto e atrás da foto -->
+                    <!-- Retângulo fino (Moldura Dourada) -->
                     <div class="absolute inset-0 border-2 border-amber-500/40 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 rounded-2xl z-0"></div>
                     
-                    <!-- FOTO DA DRA (Sem ícone flutuante por cima) -->
+                    <!-- FOTO DA DRA -->
                     <img src="https://raw.githubusercontent.com/Fathimaoliveira-a/foto/469b6fddfba6b9b4394ee59c43068711e473e88d/ERIS3023.jpg" alt="Dra. Fáthima Oliveira" class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[450px] md:h-[600px] grayscale-[20%] hover:grayscale-0 transition-all duration-500">
                 </div>
             </div>
 
             <!-- Coluna do Texto -->
             <div class="w-full md:w-1/2 space-y-6 mask-reveal text-center md:text-left mt-10 md:mt-0">
-                <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">Mais de 25 anos de experiência transformados em direção para quem está começando.</h2>
+                <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">Mais de 25 anos de experiência transformados em atalho para quem está começando.</h2>
                 <div class="h-1 w-20 bg-amber-600/50 rounded mx-auto md:mx-0"></div>
                 <p class="text-slate-300 text-lg md:text-xl leading-relaxed">
-                    <strong class="text-white">Sou a Dra. Fáthima Oliveira</strong>. Atuo há mais de 25 anos na Fonoaudiologia, com uma trajetória construída a partir da prática, da escuta, do acompanhamento de crianças e da formação de um olhar profissional sólido ao longo do tempo.
+                    Sou a <strong class="text-white">Dra. Fáthima Oliveira</strong>. Atuo há mais de 25 anos na Fonoaudiologia, com uma trajetória construída a partir da prática intensa, da escuta ativa e do acompanhamento de centenas de crianças e famílias. Sou referência em desenvolvimento infantil, comunicação, autismo e inclusão escolar na minha região, e já formei equipes e conduzi discussões profundas sobre a área.
                 </p>
                 <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                    Ao longo desses anos, percebi quantas estudantes entram na faculdade cheias de vontade, mas passam muito tempo tentando entender a profissão de forma solta, sem clareza e sem direção.
+                    Ao longo desses anos, percebi que muitos estudantes, apesar de dedicados, passam a graduação inteira tentando entender a profissão de forma solta, sem clareza e sem direção.
                 </p>
                 <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                    Foi por isso que criei a Fono Desde o Início: uma mentoria para ajudar quem está no começo da graduação a construir base, visão prática e maturidade profissional desde cedo, encurtando um caminho que muita gente leva anos para percorrer.
+                    Foi por isso que criei a Fono Desde o Início: para te dar a chance de começar à frente, com a visão clínica e a maturidade que a maioria só adquire depois de anos de prática e muitos erros. Eu vou te guiar para que você não precise percorrer o caminho mais longo e confuso.
                 </p>
             </div>
         </div>
@@ -534,16 +545,24 @@
 
     <!-- OFERTA -->
     <section id="oferta" class="py-24 relative z-10 overflow-hidden bg-transparent">
-        <div class="max-w-2xl mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto px-6 relative z-10">
+            
+            <div class="text-center mb-12 space-y-4 mask-reveal">
+                <h2 class="text-3xl md:text-5xl text-white font-serif">Quanto vale começar sua carreira com a visão certa?</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    Imagine o tempo, a energia e a frustração que você vai economizar ao ter acesso a um raciocínio clínico estruturado e a uma direção clara desde o início da sua graduação. A Mentoria Fono Desde o Início é um investimento no seu futuro profissional, que te posiciona à frente da maioria.
+                </p>
+            </div>
+
             <div class="bg-gradient-to-b from-slate-800/80 to-slate-900/90 border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden reveal-scale backdrop-blur-md">
                 
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
 
                 <div class="space-y-8 relative z-10">
                     <div class="text-center mask-reveal">
-                        <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Inscrições Abertas</p>
+                        <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Sua base sólida para uma carreira de destaque</p>
                         <h2 class="text-3xl md:text-4xl text-white font-serif">Fono Desde o Início</h2>
-                        <p class="text-slate-400 text-sm mt-3 font-light">Mentoria para estudantes de Fonoaudiologia que querem começar a graduação com mais clareza, visão prática e direção profissional</p>
+                        <p class="text-slate-400 text-sm mt-3 font-light">Mentoria para estudantes de Fonoaudiologia que querem construir uma visão clínica e prática desde o início da graduação.</p>
                     </div>
 
                     <div class="w-full h-px bg-slate-700/50"></div>
@@ -556,11 +575,15 @@
                         <ul class="text-left space-y-4 text-slate-300 text-sm font-light">
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong class="font-medium text-white">8 encontros ao vivo em 4 meses:</strong> uma trilha organizada para ajudar você a construir visão, repertório e mais clareza desde os primeiros períodos.</span>
+                                <span><strong class="font-medium text-white">8 Encontros Ao Vivo e Online (4 meses):</strong> Uma trilha organizada para desenvolver sua visão clínica, repertório e clareza, com a interação e o direcionamento que só uma mentoria pode oferecer.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong class="font-medium text-white">Acesso às gravações por 1 ano:</strong> para rever as aulas no seu tempo e consolidar o conteúdo com mais segurança.</span>
+                                <span><strong class="font-medium text-white">Acesso às Gravações por 1 Ano:</strong> Revise as aulas no seu tempo, aprofunde o conteúdo e consolide seu aprendizado com total segurança.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
+                                <span><strong class="font-medium text-white">Acompanhamento e Suporte Exclusivo:</strong> Tire suas dúvidas diretamente com a Dra. Fáthima e tenha acesso a um ambiente de aprendizado focado e de alto nível.</span>
                             </li>
                         </ul>
                     </div>
@@ -568,62 +591,213 @@
                     <div class="bg-slate-900/60 rounded-2xl p-6 border border-slate-800/60 mask-reveal">
                         <h3 class="text-white font-medium mb-3 flex items-center gap-2 text-sm">
                             <i data-lucide="file-text" class="w-4 h-4 text-amber-500"></i>
-                            4 materiais complementares inclusos:
+                            Materiais Complementares Exclusivos:
                         </h3>
                         <ul class="space-y-2 text-sm text-slate-400 font-light">
-                            <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-amber-500"></span> Guia de Primeiros Passos na Fonoaudiologia.</li>
-                            <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-amber-500"></span> Mapa Prático do Desenvolvimento da Linguagem.</li>
-                            <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-amber-500"></span> Guia Essencial de Linguagem, Leitura e Escrita.</li>
-                            <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-amber-500"></span> Guia Resumo dos temas mais importantes.</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0"></span> <span><strong>Guia de Primeiros Passos:</strong> Seu mapa para entender o campo de atuação.</span></li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0"></span> <span><strong>Mapa Prático do Desenvolvimento da Linguagem:</strong> Ferramenta visual para organizar raciocínio.</span></li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0"></span> <span><strong>Guia Essencial de Linguagem, Leitura e Escrita:</strong> Aprofunde-se nos pilares da comunicação.</span></li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0"></span> <span><strong>Guia Resumo dos Temas Mais Importantes:</strong> Conteúdo mastigado para acelerar o aprendizado.</span></li>
                         </ul>
                     </div>
 
                     <div class="w-full h-px bg-slate-700/50"></div>
 
                     <div class="text-center py-2 mask-reveal">
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold">Investimento:</p>
-                        <div class="flex items-center justify-center gap-2 mt-2">
-                            <span class="text-xl text-slate-500 font-light">10x de</span>
-                            <span class="text-5xl font-serif text-white font-medium">R$129,90</span>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold">Investimento na sua Carreira:</p>
+                        
+                        <p class="text-slate-500 text-sm line-through decoration-red-500/50 mb-1">De R$ 2.999,90 por</p>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-xl text-slate-400 font-light">10x de</span>
+                            <span class="text-5xl font-serif text-white font-medium text-gold">R$132,20</span>
                         </div>
+                        <p class="text-sm text-slate-400 mt-2">Ou R$ 1.100,00 à vista</p>
+
                         <p class="text-sm text-amber-500/80 mt-4 font-light">
-                            Menos de R$ 5,00 por dia para começar com clareza.
+                            Menos de R$ 5,00 por dia para construir uma base sólida.
                         </p>
                     </div>
 
-                    <a href="https://pay.kiwify.com.br/BEN8ebr" target="_blank" class="block w-full">
+                    <a href="COLOQUE_SEU_LINK_DE_COMPRA_AQUI" target="_blank" class="block w-full">
                         <button class="btn-shine cta-pop relative block w-full py-5 bg-amber-600 text-white font-bold text-lg rounded-xl hover:bg-amber-500 transition-colors shadow-[0_0_20px_rgba(217,119,6,0.2)]">
-                            QUERO ENTRAR PARA A MENTORIA
+                            QUERO GARANTIR MINHA VAGA AGORA
+                        </button>
+                    </a>
 
-                    <div class="flex items-center justify-center gap-2 mt-4 text-xs text-slate-500 font-light mask-reveal">
-                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
-                        <span>Garantia de 7 dias para você entrar com tranquilidade.</span>
+                    <div class="flex items-start md:items-center justify-center gap-3 mt-4 text-xs md:text-sm text-slate-400 font-light mask-reveal bg-emerald-900/10 border border-emerald-500/20 p-4 rounded-xl">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-emerald-500 shrink-0"></i>
+                        <span class="text-left"><strong>Garantia Incondicional de 7 Dias:</strong> Sua decisão é 100% segura. Se achar que não é para você, basta pedir o reembolso e devolveremos 100% do investimento. Sem burocracia.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-transparent py-10 text-center relative z-10 border-t border-slate-800/30">
-        <p class="text-slate-600 text-xs">
-            &copy; 2026 Dra. Fáthima. Todos os direitos reservados.
-        </p>
+    <!-- QUEBRA DE OBJEÇÕES (FAQ) -->
+    <section class="py-24 relative z-10 bg-transparent overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 space-y-4 mask-reveal">
+                <h2 class="text-3xl md:text-5xl text-white font-serif">Dúvidas Frequentes</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto font-light">
+                    Comece sua jornada com total segurança. Respondemos as principais perguntas abaixo.
+                </p>
+            </div>
+
+            <div class="space-y-4 reveal-on-scroll stagger-children">
+                
+                <!-- FAQ Item 1 -->
+                <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                        <span class="text-white font-medium pr-4">Ainda estou no começo da faculdade, essa mentoria é para mim?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content bg-slate-900/80">
+                        <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                            Sim, e este é o momento ideal! A mentoria Fono Desde o Início foi criada justamente para quem está nos primeiros períodos e quer construir uma base sólida, desenvolver raciocínio clínico e ter direção prática antes que a confusão se instale. Começar certo é o segredo para uma trajetória de sucesso.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                        <span class="text-white font-medium pr-4">A faculdade já não deveria me ensinar tudo isso?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content bg-slate-900/80">
+                        <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                            A faculdade oferece uma base teórica essencial, mas muitas vezes não consegue organizar a visão prática e o raciocínio clínico que o dia a dia da profissão exige. Nossa mentoria preenche essa lacuna, conectando a teoria à realidade e te dando a leitura que a estrutura tradicional não alcança.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                        <span class="text-white font-medium pr-4">Não sei se vou conseguir acompanhar o conteúdo.</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content bg-slate-900/80">
+                        <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                            A metodologia da mentoria é pensada para ser acessível e didática, focando em organizar o seu pensamento e te dar ferramentas práticas. A Dra. Fáthima tem mais de 25 anos de experiência em formação e sabe como guiar quem está começando, transformando temas complexos em aprendizado claro e aplicável.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                        <span class="text-white font-medium pr-4">O investimento é alto para um estudante.</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content bg-slate-900/80">
+                        <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                            Pense no custo de passar anos estudando sem direção, acumulando insegurança e tentando recuperar depois o que faltou no início. Este é um investimento na sua formação que te fará economizar tempo e frustração, além de te posicionar à frente no mercado. Menos de R$ 5,00 por dia para ter a visão de uma especialista com 25 anos de experiência.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
+                    <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none">
+                        <span class="text-white font-medium pr-4">Posso encontrar conteúdo gratuito na internet.</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
+                    </button>
+                    <div class="faq-content bg-slate-900/80">
+                        <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                            Conteúdo solto informa, mas não organiza. A internet está cheia de informações, mas a mentoria oferece um caminho estruturado, a curadoria de uma especialista e o direcionamento para você transformar informação em raciocínio clínico e maturidade profissional. É a diferença entre ter peças de um quebra-cabeça e ter o mapa completo para montá-lo.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ÚLTIMA CHAMADA (FINAL CTA) -->
+    <section class="py-24 relative z-10 overflow-hidden bg-transparent border-t border-slate-800/30">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[300px] bg-amber-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center reveal-scale">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold uppercase tracking-widest mb-8">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Inscrições encerram em 24h
+            </div>
+
+            <h2 class="text-3xl md:text-5xl text-white font-serif leading-tight mb-6">
+                A oportunidade de começar sua carreira do jeito certo está aqui. <span class="italic text-slate-400">Mas não por muito tempo.</span>
+            </h2>
+
+            <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-2xl mx-auto mb-12">
+                Lembre-se: são <strong class="text-white">apenas 30 vagas</strong>. Esta é a sua chance de me ter como sua mentora, encurtando anos de aprendizado e construindo uma base sólida para se destacar na profissão. Não deixe a confusão da graduação te impedir de ser o profissional que você nasceu para ser.
+            </p>
+
+            <a href="https://pay.kiwify.com.br/BEN8ebr" target="_blank" class="inline-block w-full md:w-auto">
+                <button class="btn-shine cta-pop relative inline-flex items-center justify-center px-8 py-5 text-base md:text-lg font-bold text-white transition-all duration-200 bg-amber-600 rounded-xl focus:outline-none hover:bg-amber-700 w-full md:w-auto border border-amber-400/20 shadow-[0_0_30px_rgba(217,119,6,0.3)]">
+                    QUERO GARANTIR MINHA VAGA NA MENTORIA AGORA
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900/50 py-10 text-center relative z-10 border-t border-slate-800/50">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-slate-500 text-xs md:text-sm">
+                &copy; 2026 Dra. Fáthima Oliveira. Todos os direitos reservados.
+            </p>
+            <div class="flex items-center gap-4 text-slate-500 text-xs md:text-sm">
+                <a href="#" class="hover:text-amber-500 transition-colors">Política de Privacidade</a>
+                <span>|</span>
+                <a href="#" class="hover:text-amber-500 transition-colors">Termos de Uso</a>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Lógica de FAQ (Acordeão)
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqBtns = document.querySelectorAll('.faq-btn');
+            
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('.faq-icon');
+                    
+                    // Verifica se está aberto
+                    const isOpen = content.classList.contains('open');
+                    
+                    // Fecha todos os outros
+                    document.querySelectorAll('.faq-content').forEach(el => {
+                        el.style.maxHeight = '0';
+                        el.classList.remove('open');
+                    });
+                    document.querySelectorAll('.faq-icon').forEach(el => {
+                        el.style.transform = 'rotate(0deg)';
+                    });
+
+                    // Abre o que foi clicado se estava fechado
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+
         // Dados dos Planetas (Nós Profissionais)
         const planetData = [
             {
-                title: "O medo de passar anos sem clareza",
-                desc: "Muita gente entra na faculdade empolgada, mas passa os primeiros períodos apenas tentando acompanhar o ritmo. E só vai entender a lógica da prática muito tempo depois."
+                title: "A Falta de Raciocínio Clínico",
+                desc: "Transforma o sonho de ser um fonoaudiólogo de excelência em uma jornada de incertezas. Você se sente perdido, sem saber como a teoria se conecta com a prática real."
             },
             {
-                title: "Tudo parece solto e desconectado",
-                desc: "Você assiste aula, anota conteúdo, tenta acompanhar as matérias, mas ainda sente que tudo está desconectado. Aprende partes, mas não enxerga o todo da profissão."
+                title: "O Conteúdo Fragmentado",
+                desc: "Você assiste às aulas e anota tudo, mas as partes não formam um todo. A falta de integração faz com que o tempo passe e a segurança para atuar simplesmente não chegue."
             },
             {
-                title: "A falta de direção e foco",
-                desc: "No começo da graduação, é comum estudar muito e ainda assim não saber exatamente o que observar, o que importa mais ou como começar a construir visão profissional de verdade."
+                title: "A Ausência de Direção Prática",
+                desc: "O custo é alto: anos no piloto automático e o risco de chegar ao mercado sem o repertório que faz a diferença. Não espere o final do curso para ter visão profissional."
             }
         ];
 
