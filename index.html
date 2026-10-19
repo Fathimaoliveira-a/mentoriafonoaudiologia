@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fono Desde o Início | As 7 aulas gravadas da Dra. Fáthima Oliveira</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -14,9 +15,14 @@
             --text-main: #E2E8F0;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body { overflow-x: hidden; }
+        html,
+        body {
+            overflow-x: hidden;
+        }
 
         body {
             font-family: 'Manrope', sans-serif;
@@ -27,7 +33,12 @@
             position: relative;
         }
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
 
         .text-gold {
             background: linear-gradient(to right, #FDE68A, #D97706, #FDE68A);
@@ -38,7 +49,9 @@
         }
 
         @keyframes shineText {
-            to { background-position: 200% center; }
+            to {
+                background-position: 200% center;
+            }
         }
 
         .bg-noise {
@@ -67,8 +80,8 @@
             background: linear-gradient(
                 115deg,
                 transparent 20%,
-                rgba(255,255,255,0.015) 46%,
-                rgba(255,255,255,0.05) 50%,
+                rgba(255, 255, 255, 0.015) 46%,
+                rgba(255, 255, 255, 0.05) 50%,
                 transparent 60%
             );
             transform: rotate(8deg);
@@ -77,11 +90,21 @@
         }
 
         @keyframes beamSweep {
-            0%,100% { transform: translateX(-15%) rotate(8deg); opacity: 0.1; }
-            50% { transform: translateX(190%) rotate(8deg); opacity: 0.3; }
+            0%, 100% {
+                transform: translateX(-15%) rotate(8deg);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: translateX(190%) rotate(8deg);
+                opacity: 0.3;
+            }
         }
 
-        .reveal-on-scroll, .reveal-scale, .mask-reveal, .mask-reveal-left {
+        .reveal-on-scroll,
+        .reveal-scale,
+        .mask-reveal,
+        .mask-reveal-left {
             will-change: opacity, transform, clip-path;
         }
 
@@ -90,32 +113,60 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .reveal-scale {
             opacity: 0;
             transform: scale(0.98);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
 
         .mask-reveal {
             opacity: 0;
             clip-path: inset(0 0 100% 0);
             transition: opacity 0.8s ease, clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .mask-reveal.visible { opacity: 1; clip-path: inset(0 0 0 0); }
+
+        .mask-reveal.visible {
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+        }
 
         .stagger-children > * {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
-        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; }
-        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; }
-        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; }
-        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; }
+
+        .stagger-children.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-children.visible > *:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.visible > *:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.visible > *:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.visible > *:nth-child(4) {
+            transition-delay: 0.4s;
+        }
 
         .hero-content {
             animation: heroFadeUp 1s ease-out both;
@@ -124,17 +175,36 @@
         }
 
         @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .soft-pulse { animation: softPulse 3s ease-in-out infinite; }
+        .soft-pulse {
+            animation: softPulse 3s ease-in-out infinite;
+        }
+
         @keyframes softPulse {
-            0%, 100% { box-shadow: 0 0 0 rgba(217,119,6,0); }
-            50% { box-shadow: 0 0 20px rgba(217,119,6,0.15); }
+            0%, 100% {
+                box-shadow: 0 0 0 rgba(217, 119, 6, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(217, 119, 6, 0.15);
+            }
         }
 
-        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
         .btn-shine::after {
             content: '';
             position: absolute;
@@ -142,63 +212,119 @@
             left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent);
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
             transform: skewX(-25deg);
             animation: shineButton 3s infinite;
         }
+
         @keyframes shineButton {
-            0% { left: -100%; }
-            20% { left: 200%; }
-            100% { left: 200%; }
+            0% {
+                left: -100%;
+            }
+
+            20%, 100% {
+                left: 200%;
+            }
         }
 
         .cta-pop {
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
         }
+
         .cta-pop:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px -10px rgba(217,119,6,0.5);
+            box-shadow: 0 15px 30px -10px rgba(217, 119, 6, 0.5);
         }
 
         @keyframes float-orb {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .animate-float-1 { animation: float-orb 4s ease-in-out infinite; }
-        .animate-float-2 { animation: float-orb 5s ease-in-out infinite 1.5s; }
-        .animate-float-3 { animation: float-orb 4.5s ease-in-out infinite 0.8s; }
+            0%, 100% {
+                transform: translateY(0);
+            }
 
-        .spin-3d { animation: spin3d 24s linear infinite; }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .animate-float-1 {
+            animation: float-orb 4s ease-in-out infinite;
+        }
+
+        .animate-float-2 {
+            animation: float-orb 5s ease-in-out infinite 1.5s;
+        }
+
+        .animate-float-3 {
+            animation: float-orb 4.5s ease-in-out infinite 0.8s;
+        }
+
+        .spin-3d {
+            animation: spin3d 24s linear infinite;
+        }
+
         @keyframes spin3d {
-            from { transform: translate(-50%, -50%) rotateX(74deg) rotateZ(0deg); }
-            to { transform: translate(-50%, -50%) rotateX(74deg) rotateZ(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotateX(74deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotateX(74deg) rotateZ(360deg);
+            }
         }
 
         .radar-pulse {
             position: absolute;
             inset: -15px;
             border-radius: 50%;
-            border: 1px solid rgba(239,68,68,0.6);
-            animation: radarPulse 2.5s cubic-bezier(0.2,0.8,0.2,1) infinite;
+            border: 1px solid rgba(239, 68, 68, 0.6);
+            animation: radarPulse 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
             opacity: 0;
             pointer-events: none;
         }
 
         @keyframes radarPulse {
-            0% { transform: scale(0.6); opacity: 0; border-width: 2px; }
-            40% { opacity: 1; }
-            100% { transform: scale(1.6); opacity: 0; border-width: 0; }
+            0% {
+                transform: scale(0.6);
+                opacity: 0;
+                border-width: 2px;
+            }
+
+            40% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+                border-width: 0;
+            }
         }
 
-        .planet-orb { transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+        .planet-orb {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
+        /* FAQ */
         .faq-content {
-            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+            transition:
+                max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
         }
-        .faq-content.open { opacity: 1; }
+
+        .faq-content.open {
+            opacity: 1;
+        }
 
         /* Depoimentos */
         .testimonial-track {
@@ -213,12 +339,17 @@
             padding: 8px 2px 24px;
             cursor: grab;
         }
-        .testimonial-track::-webkit-scrollbar { display: none; }
+
+        .testimonial-track::-webkit-scrollbar {
+            display: none;
+        }
+
         .testimonial-track.is-dragging {
             cursor: grabbing;
             scroll-snap-type: none;
             user-select: none;
         }
+
         .testimonial-card {
             position: relative;
             flex: 0 0 min(78vw, 300px);
@@ -227,10 +358,13 @@
             border-radius: 20px;
             overflow: hidden;
             background: #101827;
-            border: 1px solid rgba(251,191,36,.2);
-            transition: border-color .25s;
+            border: 1px solid rgba(251, 191, 36, .2);
         }
-        .testimonial-card.is-selected { border-color: rgba(251,191,36,.7); }
+
+        .testimonial-card.is-selected {
+            border-color: rgba(251, 191, 36, .7);
+        }
+
         .testimonial-media {
             position: relative;
             width: 100%;
@@ -238,60 +372,83 @@
             overflow: hidden;
             background: #080c14;
         }
-        .testimonial-media iframe, .testimonial-media img {
+
+        .testimonial-media video {
             display: block;
             width: 100%;
             height: 100%;
-            border: 0;
+            object-fit: cover;
+            pointer-events: none;
         }
-        .testimonial-media iframe { position: absolute; inset: 0; }
-        .testimonial-media img { object-fit: contain; pointer-events: none; }
-        .testimonial-caption {
+
+        .testimonial-controls {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .testimonial-control {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .5);
+            background: rgba(8, 12, 20, .8);
+            color: #fff;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .testimonial-control:hover {
+            background: #b45309;
+        }
+
+        .testimonial-control svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .testimonial-play .icon-pause,
+        .testimonial-sound .sound-on {
+            display: none;
+        }
+
+        .testimonial-play[data-playing="true"] .icon-play,
+        .testimonial-sound[aria-pressed="true"] .sound-off {
+            display: none;
+        }
+
+        .testimonial-play[data-playing="true"] .icon-pause,
+        .testimonial-sound[aria-pressed="true"] .sound-on {
+            display: block;
+        }
+
+        .testimonial-caption {
             min-height: 108px;
             padding: 18px 16px;
-            border-top: 1px solid rgba(148,163,184,.12);
+            border-top: 1px solid rgba(148, 163, 184, .12);
         }
-        .testimonial-caption > div { min-width: 0; }
+
         .testimonial-name {
-            display: block;
             margin: 0 0 5px;
             color: #f8fafc;
             font-size: 17px;
             font-weight: 700;
             line-height: 1.35;
         }
+
         .testimonial-description {
             margin: 0;
             color: #94a3b8;
             font-size: 12px;
             line-height: 1.55;
         }
-        .testimonial-sound {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            color: white;
-            background: #080c14;
-            border: 1px solid rgba(255,255,255,.35);
-            transition: background .2s, border-color .2s;
-        }
-        .testimonial-sound:hover, .testimonial-sound[aria-pressed="true"] {
-            background: #b45309;
-            border-color: #fbbf24;
-        }
-        .testimonial-sound:disabled { opacity: .4; cursor: wait; }
-        .testimonial-sound svg { width: 21px; height: 21px; }
-        .testimonial-sound .sound-on { display: none; }
-        .testimonial-sound[aria-pressed="true"] .sound-on { display: block; }
-        .testimonial-sound[aria-pressed="true"] .sound-off { display: none; }
+
         .testimonial-feedback {
             margin: 0;
             padding: 0 16px 16px;
@@ -299,25 +456,16 @@
             font-size: 12px;
             line-height: 1.6;
         }
+
         .testimonial-feedback a {
-            display: inline-block;
             color: #fbbf24;
             text-decoration: underline;
         }
-        .testimonial-status {
-            position: absolute;
-            inset: 0;
-            margin: 0;
-            display: grid;
-            place-items: center;
-            padding: 32px;
-            text-align: center;
-            color: #cbd5e1;
-            font-size: 14px;
-            pointer-events: none;
-            background: #101827;
+
+        #depoimentos [hidden] {
+            display: none !important;
         }
-        #depoimentos [hidden] { display: none !important; }
+
         .testimonial-nav {
             width: 46px;
             height: 46px;
@@ -326,27 +474,38 @@
             border-radius: 50%;
             border: 1px solid #475569;
             color: white;
-            background: rgba(15,23,42,.8);
+            background: rgba(15, 23, 42, .8);
             cursor: pointer;
-            transition: border-color .2s, opacity .2s;
         }
-        .testimonial-nav:hover { border-color: #f59e0b; }
-        .testimonial-nav:disabled { opacity: .3; cursor: default; }
-        .testimonial-nav svg { width: 20px; height: 20px; }
-        .testimonial-sound:focus-visible, .testimonial-nav:focus-visible,
-        .testimonial-track:focus-visible, .testimonial-feedback a:focus-visible {
+
+        .testimonial-nav:hover {
+            border-color: #f59e0b;
+        }
+
+        .testimonial-nav:disabled {
+            opacity: .3;
+            cursor: default;
+        }
+
+        .testimonial-nav svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .testimonial-control:focus-visible,
+        .testimonial-nav:focus-visible,
+        .testimonial-track:focus-visible {
             outline: 2px solid #fbbf24;
             outline-offset: 3px;
         }
-        @media (prefers-reduced-motion: reduce) {
-            .testimonial-card, .testimonial-sound, .testimonial-nav { transition: none; }
-        }
     </style>
 </head>
+
 <body class="antialiased selection:bg-amber-500 selection:text-white">
 
     <div class="bg-noise"></div>
 
+    <!-- FAIXA SUPERIOR -->
     <div class="w-full bg-red-600/15 border-b border-red-500/30 text-red-500 text-xs md:text-sm font-bold uppercase tracking-widest text-center py-3 relative z-50">
         As 7 aulas gravadas para estudantes e profissionais de Fonoaudiologia.
     </div>
@@ -361,16 +520,23 @@
             <div class="md:col-span-7 space-y-6 text-center md:text-left">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md soft-pulse mx-auto md:mx-0">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                    <span class="text-slate-200 text-xs font-bold uppercase tracking-widest">Dra. Fáthima Oliveira</span>
+                    <span class="text-slate-200 text-xs font-bold uppercase tracking-widest">
+                        Dra. Fáthima Oliveira
+                    </span>
                 </div>
 
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">
-                    Aprenda a avaliar uma criança do começo ao fim com quem faz isso há <span class="italic text-gold">mais de 24 anos.</span>
+                    Aprenda a avaliar uma criança do começo ao fim com quem faz isso há
+                    <span class="italic text-gold">mais de 24 anos.</span>
                 </h1>
 
                 <div class="text-base md:text-lg text-slate-400 font-light leading-relaxed max-w-2xl space-y-4">
-                    <p>A faculdade te entregou os nomes técnicos, as tabelas de marcos e os protocolos. O que falta é saber o que observar primeiro, o que perguntar em seguida e como cada resposta muda o rumo da avaliação.</p>
-                    <p>Nestas 7 aulas eu abro o raciocínio clínico que utilizo com as crianças que chegam no meu instituto.</p>
+                    <p>
+                        A faculdade te entregou os nomes técnicos, as tabelas de marcos e os protocolos. O que falta é saber o que observar primeiro, o que perguntar em seguida e como cada resposta muda o rumo da avaliação.
+                    </p>
+                    <p>
+                        Nestas 7 aulas eu abro o raciocínio clínico que utilizo com as crianças que chegam no meu instituto.
+                    </p>
                 </div>
 
                 <div class="pt-4">
@@ -386,111 +552,386 @@
             <div class="md:col-span-5 relative">
                 <div class="relative w-full max-w-sm mx-auto">
                     <div class="absolute inset-0 border-2 border-amber-500/30 translate-x-4 translate-y-4 rounded-2xl z-0"></div>
-                    <img src="https://fathimaoliveira-a.github.io/Worskshopmapa03/fotoSobre.jpg" alt="[Dra. Fáthima Oliveira]" class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[400px] md:h-[480px]">
+
+                    <img
+                        src="https://fathimaoliveira-a.github.io/Worskshopmapa03/fotoSobre.jpg"
+                        alt="Dra. Fáthima Oliveira"
+                        class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[400px] md:h-[480px]"
+                    >
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DEPOIMENTOS — SEGUNDA DOBRA -->
-    <section id="depoimentos" class="py-16 md:py-24 relative z-10 overflow-hidden" aria-labelledby="depoimentos-titulo" aria-roledescription="carrossel">
+    <!-- DEPOIMENTOS -->
+    <section
+        id="depoimentos"
+        class="py-16 md:py-24 relative z-10 overflow-hidden"
+        aria-labelledby="depoimentos-titulo"
+        aria-roledescription="carrossel"
+    >
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-10 space-y-4 mask-reveal">
-                <span class="text-amber-500 text-xs md:text-sm font-bold uppercase tracking-widest">Quem já participou</span>
-                <h2 id="depoimentos-titulo" class="text-3xl md:text-5xl text-white leading-tight">Veja o que as alunas da <span class="italic text-gold">primeira turma têm a dizer.</span></h2>
-                <p class="text-slate-400 text-sm md:text-base">Depoimentos de quem participou da mentoria Fono Desde o Início.</p>
+                <span class="text-amber-500 text-xs md:text-sm font-bold uppercase tracking-widest">
+                    Quem já participou
+                </span>
+
+                <h2 id="depoimentos-titulo" class="text-3xl md:text-5xl text-white leading-tight">
+                    Veja o que as alunas da
+                    <span class="italic text-gold">primeira turma têm a dizer.</span>
+                </h2>
+
+                <p class="text-slate-400 text-sm md:text-base">
+                    Depoimentos de quem participou da mentoria Fono Desde o Início.
+                </p>
             </div>
 
-            <div id="depoimentos-trilha" class="testimonial-track" tabindex="0" aria-label="Depoimentos das alunas. Use as setas do teclado ou arraste para navegar.">
-                <article class="testimonial-card" data-video-id="tXfPwY4BnXE" data-student="Fâny Cristina" role="group" aria-roledescription="slide" aria-label="Depoimento 1 de 4, Fâny Cristina">
+            <div
+                id="depoimentos-trilha"
+                class="testimonial-track"
+                tabindex="0"
+                aria-label="Depoimentos das alunas. Use as setas do teclado ou arraste para navegar."
+            >
+                <!-- DEPOIMENTO 01 -->
+                <article
+                    class="testimonial-card"
+                    data-student="Fâny Cristina"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="Depoimento 1 de 4, Fâny Cristina"
+                >
                     <div class="testimonial-media">
-                        <iframe id="depoimento-1" title="Depoimento de Fâny Cristina" width="1080" height="1920" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <div class="testimonial-caption">
-                        <div>
-                            <p class="testimonial-name">Fâny Cristina</p>
-                            <p class="testimonial-description">Aluna mentoria Fono Desde o Início</p>
+                        <video
+                            id="depoimento-1"
+                            data-src="videos/depoimento-01.mp4"
+                            poster="videos/depoimento-01.jpg"
+                            width="720"
+                            height="1280"
+                            muted
+                            playsinline
+                            loop
+                            preload="none"
+                            disablepictureinpicture
+                            aria-label="Depoimento de Fâny Cristina"
+                        ></video>
+
+                        <div class="testimonial-controls">
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-play"
+                                aria-controls="depoimento-1"
+                                aria-label="Reproduzir depoimento de Fâny Cristina"
+                                data-playing="false"
+                            >
+                                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7Z"/>
+                                </svg>
+                                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+                                </svg>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-sound"
+                                aria-controls="depoimento-1"
+                                aria-label="Ativar áudio do depoimento de Fâny Cristina"
+                                aria-pressed="false"
+                            >
+                                <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="m17 9 5 6m0-6-5 6"/>
+                                </svg>
+                                <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/>
+                                </svg>
+                            </button>
                         </div>
-                        <button type="button" class="testimonial-sound" aria-controls="depoimento-1" aria-label="Ativar áudio do depoimento de Fâny Cristina" aria-pressed="false" title="Ativar áudio" disabled>
-                            <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
-                            <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>
-                        </button>
                     </div>
-                    <p class="testimonial-feedback" role="status" hidden><span></span> <a href="https://www.youtube.com/watch?v=tXfPwY4BnXE" target="_blank" rel="noopener noreferrer" hidden>Ver no YouTube</a></p>
-                    <noscript><p class="testimonial-feedback"><a href="https://www.youtube.com/watch?v=tXfPwY4BnXE" target="_blank" rel="noopener noreferrer">Assistir ao depoimento de Fâny Cristina</a></p></noscript>
+
+                    <div class="testimonial-caption">
+                        <p class="testimonial-name">Fâny Cristina</p>
+                        <p class="testimonial-description">
+                            Aluna mentoria Fono Desde o Início
+                        </p>
+                    </div>
+
+                    <p class="testimonial-feedback" role="status" hidden></p>
+
+                    <noscript>
+                        <p class="testimonial-feedback">
+                            <a href="videos/depoimento-01.mp4">Assistir ao depoimento de Fâny Cristina</a>
+                        </p>
+                    </noscript>
                 </article>
 
-                <article class="testimonial-card" data-video-id="G8wIWeeVumE" data-student="Alzira Prado" role="group" aria-roledescription="slide" aria-label="Depoimento 2 de 4, Alzira Prado">
+                <!-- DEPOIMENTO 02 -->
+                <article
+                    class="testimonial-card"
+                    data-student="Alzira Prado"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="Depoimento 2 de 4, Alzira Prado"
+                >
                     <div class="testimonial-media">
-                        <iframe id="depoimento-2" title="Depoimento de Alzira Prado" width="1080" height="1920" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <div class="testimonial-caption">
-                        <div>
-                            <p class="testimonial-name">Alzira Prado</p>
-                            <p class="testimonial-description">Aluna mentoria Fono Desde o Início</p>
+                        <video
+                            id="depoimento-2"
+                            data-src="videos/depoimento-02.mp4"
+                            poster="videos/depoimento-02.jpg"
+                            width="720"
+                            height="1280"
+                            muted
+                            playsinline
+                            loop
+                            preload="none"
+                            disablepictureinpicture
+                            aria-label="Depoimento de Alzira Prado"
+                        ></video>
+
+                        <div class="testimonial-controls">
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-play"
+                                aria-controls="depoimento-2"
+                                aria-label="Reproduzir depoimento de Alzira Prado"
+                                data-playing="false"
+                            >
+                                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7Z"/>
+                                </svg>
+                                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+                                </svg>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-sound"
+                                aria-controls="depoimento-2"
+                                aria-label="Ativar áudio do depoimento de Alzira Prado"
+                                aria-pressed="false"
+                            >
+                                <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="m17 9 5 6m0-6-5 6"/>
+                                </svg>
+                                <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/>
+                                </svg>
+                            </button>
                         </div>
-                        <button type="button" class="testimonial-sound" aria-controls="depoimento-2" aria-label="Ativar áudio do depoimento de Alzira Prado" aria-pressed="false" title="Ativar áudio" disabled>
-                            <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
-                            <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>
-                        </button>
                     </div>
-                    <p class="testimonial-feedback" role="status" hidden><span></span> <a href="https://www.youtube.com/watch?v=G8wIWeeVumE" target="_blank" rel="noopener noreferrer" hidden>Ver no YouTube</a></p>
-                    <noscript><p class="testimonial-feedback"><a href="https://www.youtube.com/watch?v=G8wIWeeVumE" target="_blank" rel="noopener noreferrer">Assistir ao depoimento de Alzira Prado</a></p></noscript>
+
+                    <div class="testimonial-caption">
+                        <p class="testimonial-name">Alzira Prado</p>
+                        <p class="testimonial-description">
+                            Aluna mentoria Fono Desde o Início
+                        </p>
+                    </div>
+
+                    <p class="testimonial-feedback" role="status" hidden></p>
+
+                    <noscript>
+                        <p class="testimonial-feedback">
+                            <a href="videos/depoimento-02.mp4">Assistir ao depoimento de Alzira Prado</a>
+                        </p>
+                    </noscript>
                 </article>
 
-                <article class="testimonial-card" data-video-id="XYQxe8bkWGc" data-student="Amanda Evelyn" role="group" aria-roledescription="slide" aria-label="Depoimento 3 de 4, Amanda Evelyn">
+                <!-- DEPOIMENTO 03 -->
+                <article
+                    class="testimonial-card"
+                    data-student="Amanda Evelyn"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="Depoimento 3 de 4, Amanda Evelyn"
+                >
                     <div class="testimonial-media">
-                        <iframe id="depoimento-3" title="Depoimento de Amanda Evelyn" width="1080" height="1920" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <div class="testimonial-caption">
-                        <div>
-                            <p class="testimonial-name">Amanda Evelyn</p>
-                            <p class="testimonial-description">Aluna mentoria Fono Desde o Início</p>
+                        <video
+                            id="depoimento-3"
+                            data-src="videos/depoimento-03.mp4"
+                            poster="videos/depoimento-03.jpg"
+                            width="720"
+                            height="1280"
+                            muted
+                            playsinline
+                            loop
+                            preload="none"
+                            disablepictureinpicture
+                            aria-label="Depoimento de Amanda Evelyn"
+                        ></video>
+
+                        <div class="testimonial-controls">
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-play"
+                                aria-controls="depoimento-3"
+                                aria-label="Reproduzir depoimento de Amanda Evelyn"
+                                data-playing="false"
+                            >
+                                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7Z"/>
+                                </svg>
+                                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+                                </svg>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-sound"
+                                aria-controls="depoimento-3"
+                                aria-label="Ativar áudio do depoimento de Amanda Evelyn"
+                                aria-pressed="false"
+                            >
+                                <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="m17 9 5 6m0-6-5 6"/>
+                                </svg>
+                                <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/>
+                                </svg>
+                            </button>
                         </div>
-                        <button type="button" class="testimonial-sound" aria-controls="depoimento-3" aria-label="Ativar áudio do depoimento de Amanda Evelyn" aria-pressed="false" title="Ativar áudio" disabled>
-                            <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
-                            <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>
-                        </button>
                     </div>
-                    <p class="testimonial-feedback" role="status" hidden><span></span> <a href="https://www.youtube.com/watch?v=XYQxe8bkWGc" target="_blank" rel="noopener noreferrer" hidden>Ver no YouTube</a></p>
-                    <noscript><p class="testimonial-feedback"><a href="https://www.youtube.com/watch?v=XYQxe8bkWGc" target="_blank" rel="noopener noreferrer">Assistir ao depoimento de Amanda Evelyn</a></p></noscript>
+
+                    <div class="testimonial-caption">
+                        <p class="testimonial-name">Amanda Evelyn</p>
+                        <p class="testimonial-description">
+                            Aluna mentoria Fono Desde o Início
+                        </p>
+                    </div>
+
+                    <p class="testimonial-feedback" role="status" hidden></p>
+
+                    <noscript>
+                        <p class="testimonial-feedback">
+                            <a href="videos/depoimento-03.mp4">Assistir ao depoimento de Amanda Evelyn</a>
+                        </p>
+                    </noscript>
                 </article>
 
-                <article class="testimonial-card" data-video-id="S22gg5_uyPg" data-student="Queicy" role="group" aria-roledescription="slide" aria-label="Depoimento 4 de 4, Queicy">
+                <!-- DEPOIMENTO 04 -->
+                <article
+                    class="testimonial-card"
+                    data-student="Queicy"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="Depoimento 4 de 4, Queicy"
+                >
                     <div class="testimonial-media">
-                        <iframe id="depoimento-4" title="Depoimento de Queicy" width="1080" height="1920" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <div class="testimonial-caption">
-                        <div>
-                            <p class="testimonial-name">Queicy</p>
-                            <p class="testimonial-description">Aluna mentoria Fono Desde o Início</p>
+                        <video
+                            id="depoimento-4"
+                            data-src="videos/depoimento-04.mp4"
+                            poster="videos/depoimento-04.jpg"
+                            width="720"
+                            height="1280"
+                            muted
+                            playsinline
+                            loop
+                            preload="none"
+                            disablepictureinpicture
+                            aria-label="Depoimento de Queicy"
+                        ></video>
+
+                        <div class="testimonial-controls">
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-play"
+                                aria-controls="depoimento-4"
+                                aria-label="Reproduzir depoimento de Queicy"
+                                data-playing="false"
+                            >
+                                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7Z"/>
+                                </svg>
+                                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+                                </svg>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="testimonial-control testimonial-sound"
+                                aria-controls="depoimento-4"
+                                aria-label="Ativar áudio do depoimento de Queicy"
+                                aria-pressed="false"
+                            >
+                                <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="m17 9 5 6m0-6-5 6"/>
+                                </svg>
+                                <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+                                    <path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/>
+                                </svg>
+                            </button>
                         </div>
-                        <button type="button" class="testimonial-sound" aria-controls="depoimento-4" aria-label="Ativar áudio do depoimento de Queicy" aria-pressed="false" title="Ativar áudio" disabled>
-                            <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>
-                            <svg class="sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>
-                        </button>
                     </div>
-                    <p class="testimonial-feedback" role="status" hidden><span></span> <a href="https://www.youtube.com/watch?v=S22gg5_uyPg" target="_blank" rel="noopener noreferrer" hidden>Ver no YouTube</a></p>
-                    <noscript><p class="testimonial-feedback"><a href="https://www.youtube.com/watch?v=S22gg5_uyPg" target="_blank" rel="noopener noreferrer">Assistir ao depoimento de Queicy</a></p></noscript>
+
+                    <div class="testimonial-caption">
+                        <p class="testimonial-name">Queicy</p>
+                        <p class="testimonial-description">
+                            Aluna mentoria Fono Desde o Início
+                        </p>
+                    </div>
+
+                    <p class="testimonial-feedback" role="status" hidden></p>
+
+                    <noscript>
+                        <p class="testimonial-feedback">
+                            <a href="videos/depoimento-04.mp4">Assistir ao depoimento de Queicy</a>
+                        </p>
+                    </noscript>
                 </article>
             </div>
 
             <div class="flex items-center justify-between gap-4 mt-2">
-                <p class="text-slate-400 text-xs md:text-sm">Passe para o lado e toque no ícone para ouvir.</p>
+                <p class="text-slate-400 text-xs md:text-sm">
+                    Passe para o lado e toque no ícone para ouvir.
+                </p>
+
                 <div class="flex items-center gap-3 shrink-0">
-                    <button id="depoimentos-anterior" class="testimonial-nav" type="button" aria-label="Ver depoimentos anteriores" aria-controls="depoimentos-trilha" disabled>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+                    <button
+                        id="depoimentos-anterior"
+                        class="testimonial-nav"
+                        type="button"
+                        aria-label="Ver depoimentos anteriores"
+                        aria-controls="depoimentos-trilha"
+                        disabled
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="m14 6-6 6 6 6"/>
+                        </svg>
                     </button>
-                    <span id="depoimentos-contador" class="text-slate-400 text-xs tabular-nums whitespace-nowrap" aria-live="polite" aria-atomic="true">1 / 4</span>
-                    <button id="depoimentos-proximo" class="testimonial-nav" type="button" aria-label="Ver próximos depoimentos" aria-controls="depoimentos-trilha">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg>
+
+                    <span
+                        id="depoimentos-contador"
+                        class="text-slate-400 text-xs tabular-nums whitespace-nowrap"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    >1 / 4</span>
+
+                    <button
+                        id="depoimentos-proximo"
+                        class="testimonial-nav"
+                        type="button"
+                        aria-label="Ver próximos depoimentos"
+                        aria-controls="depoimentos-trilha"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="m10 6 6 6-6 6"/>
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROBLEMA (ÓRBITA DA DOR) -->
+    <!-- PROBLEMA: ÓRBITA DA DOR -->
     <section class="py-24 relative z-10 bg-transparent overflow-hidden">
         <div class="scene-layer">
             <div class="light-beam"></div>
@@ -499,10 +940,14 @@
         <div class="max-w-6xl mx-auto relative z-10 px-6">
             <div class="text-center max-w-4xl mx-auto mb-16 space-y-4 mask-reveal">
                 <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">
-                    Você sabe muito na teoria e <span class="italic text-gold">pouco na hora de agir.</span>
+                    Você sabe muito na teoria e
+                    <span class="italic text-gold">pouco na hora de agir.</span>
                 </h2>
+
                 <div class="text-slate-400 text-base md:text-lg space-y-4 max-w-3xl mx-auto">
-                    <p>Você estudou fonética, desenvolvimento e audiologia. Chega o estágio, a supervisora pergunta a sua conduta para um caso e dá um branco. Você tem a teoria anotada no caderno da faculdade, mas não consegue transformar isso em uma avaliação clínica real.</p>
+                    <p>
+                        Você estudou fonética, desenvolvimento e audiologia. Chega o estágio, a supervisora pergunta a sua conduta para um caso e dá um branco. Você tem a teoria anotada no caderno da faculdade, mas não consegue transformar isso em uma avaliação clínica real.
+                    </p>
                 </div>
             </div>
 
@@ -512,12 +957,19 @@
                 <div class="absolute left-[12%] md:left-[15%] top-[35%] -translate-x-1/2 -translate-y-1/2 z-20">
                     <div class="animate-float-1">
                         <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(0)">
-                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-red-500/50 hover:text-red-300 shadow-lg" id="orb-0">
+                            <div
+                                id="orb-0"
+                                class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-red-500/50 hover:text-red-300 shadow-lg"
+                            >
                                 <i data-lucide="layers" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
-                            <div class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-0"></div>
-                            <div class="radar-pulse hidden" id="pulse-0"></div>
-                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-0">Cada professor dá sua matéria</span>
+
+                            <div id="glow-0" class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0"></div>
+                            <div id="pulse-0" class="radar-pulse hidden"></div>
+
+                            <span id="label-0" class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400">
+                                Cada professor dá sua matéria
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -525,12 +977,19 @@
                 <div class="absolute left-[50%] top-[85%] -translate-x-1/2 -translate-y-1/2 z-20">
                     <div class="animate-float-2">
                         <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(1)">
-                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-red-500 bg-red-900/40 backdrop-blur-sm flex items-center justify-center text-red-400 z-10 planet-orb scale-125 shadow-[0_0_30px_rgba(239,68,68,0.4)]" id="orb-1">
+                            <div
+                                id="orb-1"
+                                class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-red-500 bg-red-900/40 backdrop-blur-sm flex items-center justify-center text-red-400 z-10 planet-orb scale-125 shadow-[0_0_30px_rgba(239,68,68,0.4)]"
+                            >
                                 <i data-lucide="help-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
-                            <div class="absolute inset-0 rounded-full bg-red-500/30 blur-xl transition-all duration-500 scale-150 opacity-100" id="glow-1"></div>
-                            <div class="radar-pulse block" id="pulse-1"></div>
-                            <span class="absolute top-full mt-4 md:mt-5 text-xs md:text-sm font-bold whitespace-nowrap transition-colors text-red-500" id="label-1">Você sabe listar sintomas</span>
+
+                            <div id="glow-1" class="absolute inset-0 rounded-full bg-red-500/30 blur-xl transition-all duration-500 scale-150 opacity-100"></div>
+                            <div id="pulse-1" class="radar-pulse block"></div>
+
+                            <span id="label-1" class="absolute top-full mt-4 md:mt-5 text-xs md:text-sm font-bold whitespace-nowrap transition-colors text-red-500">
+                                Você sabe listar sintomas
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -538,25 +997,40 @@
                 <div class="absolute left-[88%] md:left-[85%] top-[35%] -translate-x-1/2 -translate-y-1/2 z-20">
                     <div class="animate-float-3">
                         <button class="group relative flex flex-col items-center outline-none cursor-pointer" onclick="activatePlanet(2)">
-                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-red-500/50 hover:text-red-300 shadow-lg" id="orb-2">
+                            <div
+                                id="orb-2"
+                                class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-slate-700 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center text-slate-400 z-10 planet-orb hover:border-red-500/50 hover:text-red-300 shadow-lg"
+                            >
                                 <i data-lucide="shield-alert" class="w-5 h-5 md:w-6 md:h-6"></i>
                             </div>
-                            <div class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0" id="glow-2"></div>
-                            <div class="radar-pulse hidden" id="pulse-2"></div>
-                            <span class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400" id="label-2">O medo de atender</span>
+
+                            <div id="glow-2" class="absolute inset-0 rounded-full bg-red-500/20 blur-xl transition-all duration-500 scale-0 opacity-0"></div>
+                            <div id="pulse-2" class="radar-pulse hidden"></div>
+
+                            <span id="label-2" class="absolute top-full mt-3 text-[10px] md:text-xs text-slate-400 font-medium whitespace-nowrap transition-colors group-hover:text-red-400">
+                                O medo de atender
+                            </span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <div class="relative z-30 mt-12 md:mt-16 max-w-xl mx-auto px-4 reveal-on-scroll">
-                <div class="bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 rounded-2xl p-6 md:p-8 text-center shadow-lg relative overflow-hidden min-h-[140px] md:min-h-[160px] flex flex-col justify-center items-center transition-all duration-500" id="planet-content-card">
+                <div
+                    id="planet-content-card"
+                    class="bg-slate-900/30 backdrop-blur-sm border border-slate-800/50 rounded-2xl p-6 md:p-8 text-center shadow-lg relative overflow-hidden min-h-[140px] md:min-h-[160px] flex flex-col justify-center items-center transition-all duration-500"
+                >
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-red-500/40 to-transparent"></div>
-                    <h3 id="planet-title" class="text-xl md:text-2xl text-white font-serif mb-2 transition-all duration-400">Você sabe listar sintomas, mas não sabe intervir.</h3>
+
+                    <h3 id="planet-title" class="text-xl md:text-2xl text-white font-serif mb-2 transition-all duration-400">
+                        Você sabe listar sintomas, mas não sabe intervir.
+                    </h3>
+
                     <p id="planet-desc" class="text-slate-400 text-sm md:text-base leading-relaxed transition-all duration-400 max-w-lg">
                         Escrever na prova o que é um atraso de linguagem é fácil. O peso aparece quando você senta de frente para uma criança de três anos e precisa decidir qual estímulo testar no primeiro minuto de sessão.
                     </p>
                 </div>
+
                 <div class="text-center mt-6 text-red-500/40 text-[10px] md:text-xs uppercase tracking-widest animate-pulse flex items-center justify-center gap-2">
                     <i data-lucide="mouse-pointer-click" class="w-3 h-3"></i>
                     Clique nos círculos acima para ver os três desafios.
@@ -574,8 +1048,14 @@
 
         <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
             <div class="text-center mb-16 space-y-4 mask-reveal">
-                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">O Método Prático</span>
-                <h2 class="text-3xl md:text-5xl text-white font-serif">Eu avalio crianças <br>seguindo sempre uma mesma ordem.</h2>
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">
+                    O Método Prático
+                </span>
+
+                <h2 class="text-3xl md:text-5xl text-white font-serif">
+                    Eu avalio crianças <br>seguindo sempre uma mesma ordem.
+                </h2>
+
                 <p class="text-slate-400 max-w-3xl mx-auto leading-relaxed">
                     Com 24 anos de consultório, parei de pensar por disciplinas. Nestas sete aulas, eu mostro o que observar na criança, quais perguntas fazer à família e como relacionar essas informações para conduzir a avaliação.
                 </p>
@@ -587,8 +1067,12 @@
                         <span class="font-serif text-xl md:text-2xl leading-none">1</span>
                     </div>
                     <div>
-                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">Você para de tentar decorar tabelas.</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Entendendo a função de cada marco naquela idade, a teoria faz sentido prático. Você não precisa mais decorar para a prova e esquecer quando chegar na clínica.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">
+                            Você para de tentar decorar tabelas.
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Entendendo a função de cada marco naquela idade, a teoria faz sentido prático. Você não precisa mais decorar para a prova e esquecer quando chegar na clínica.
+                        </p>
                     </div>
                 </div>
 
@@ -597,8 +1081,12 @@
                         <span class="font-serif text-xl md:text-2xl leading-none">2</span>
                     </div>
                     <div>
-                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">As matérias viram um caso clínico real.</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Linguagem, fala, leitura e escrita aparecem juntas no consultório. Você aprende a olhar para a criança inteira, do jeito que ela chega para o atendimento.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">
+                            As matérias viram um caso clínico real.
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Linguagem, fala, leitura e escrita aparecem juntas no consultório. Você aprende a olhar para a criança inteira, do jeito que ela chega para o atendimento.
+                        </p>
                     </div>
                 </div>
 
@@ -607,8 +1095,12 @@
                         <span class="font-serif text-xl md:text-2xl leading-none">3</span>
                     </div>
                     <div>
-                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">Você chega no estágio com base para falar.</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Quando a supervisora perguntar sua opinião sobre um caso, você terá uma hipótese clínica formulada e saberá explicar tecnicamente os motivos que te levaram a ela.</p>
+                        <h3 class="text-lg md:text-xl text-white font-serif mb-2 leading-snug">
+                            Você chega no estágio com base para falar.
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Quando a supervisora perguntar sua opinião sobre um caso, você terá uma hipótese clínica formulada e saberá explicar tecnicamente os motivos que te levaram a ela.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -623,90 +1115,182 @@
 
         <div class="max-w-3xl mx-auto px-6 relative z-10">
             <div class="text-center mb-10 space-y-3 mask-reveal">
-                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">Conteúdo do Curso</span>
-                <h2 class="text-3xl md:text-4xl text-white font-serif">As 7 aulas seguem a ordem que a clínica exige.</h2>
+                <span class="text-amber-500 text-sm font-bold uppercase tracking-widest">
+                    Conteúdo do Curso
+                </span>
+
+                <h2 class="text-3xl md:text-4xl text-white font-serif">
+                    As 7 aulas seguem a ordem que a clínica exige.
+                </h2>
+
                 <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto">
                     Da avaliação inicial aos quadros específicos. Cada aula precisa da anterior para o raciocínio fazer sentido.
                 </p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 stagger-children">
-                <button onclick="changeLessonBlock(1)" id="tab-1" class="lesson-tab px-4 py-2 rounded-full border border-amber-500 bg-amber-900/40 text-amber-400 font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.2)]">Aulas 01 e 02</button>
-                <button onclick="changeLessonBlock(2)" id="tab-2" class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Aulas 03 e 04</button>
-                <button onclick="changeLessonBlock(3)" id="tab-3" class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Aulas 05 e 06</button>
-                <button onclick="changeLessonBlock(4)" id="tab-4" class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300">Aula 07</button>
+                <button
+                    onclick="changeLessonBlock(1)"
+                    id="tab-1"
+                    class="lesson-tab px-4 py-2 rounded-full border border-amber-500 bg-amber-900/40 text-amber-400 font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.2)]"
+                >
+                    Aulas 01 e 02
+                </button>
+
+                <button
+                    onclick="changeLessonBlock(2)"
+                    id="tab-2"
+                    class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300"
+                >
+                    Aulas 03 e 04
+                </button>
+
+                <button
+                    onclick="changeLessonBlock(3)"
+                    id="tab-3"
+                    class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300"
+                >
+                    Aulas 05 e 06
+                </button>
+
+                <button
+                    onclick="changeLessonBlock(4)"
+                    id="tab-4"
+                    class="lesson-tab px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-slate-400 font-bold text-xs tracking-widest uppercase hover:border-slate-500 hover:text-slate-300 transition-all duration-300"
+                >
+                    Aula 07
+                </button>
             </div>
 
             <div class="bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-2xl p-6 md:p-8 shadow-xl relative overflow-hidden min-h-[260px] flex flex-col justify-center reveal-scale">
                 <div class="absolute top-0 right-0 w-48 h-48 bg-amber-600/5 rounded-full blur-3xl pointer-events-none"></div>
 
+                <!-- AULAS 1 E 2 -->
                 <div id="pane-1" class="lesson-pane transition-all duration-500 opacity-100 transform translate-y-0 block">
                     <div class="space-y-6 relative z-10">
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">1</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                1
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Entenda a profissão com visão clínica</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Você vai começar a enxergar a Fonoaudiologia de forma concreta, compreendendo os caminhos da comunicação e do desenvolvimento infantil sob uma ótica prática.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Entenda a profissão com visão clínica
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Você vai começar a enxergar a Fonoaudiologia de forma concreta, compreendendo os caminhos da comunicação e do desenvolvimento infantil sob uma ótica prática.
+                                </p>
                             </div>
                         </div>
+
                         <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">2</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                2
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Audiologia [Estudos de caso]</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">A análise de casos reais para você entender como a audição afeta todo o resto do quadro da criança.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Audiologia [Estudos de caso]
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    A análise de casos reais para você entender como a audição afeta todo o resto do quadro da criança.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- AULAS 3 E 4 -->
                 <div id="pane-2" class="lesson-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
                     <div class="space-y-6 relative z-10">
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">3</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                3
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Marcos do Desenvolvimento e a Infância</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Aprenda o que observar no desenvolvimento infantil, os caminhos da linguagem e como construir um olhar clínico mais atento.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Marcos do Desenvolvimento e a Infância
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Aprenda o que observar no desenvolvimento infantil, os caminhos da linguagem e como construir um olhar clínico mais atento.
+                                </p>
                             </div>
                         </div>
+
                         <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">4</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                4
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Atraso, dificuldade ou sinal de alerta?</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Desenvolva um olhar inicial preciso para sinais e comportamentos que merecem mais atenção na clínica.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Atraso, dificuldade ou sinal de alerta?
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Desenvolva um olhar inicial preciso para sinais e comportamentos que merecem mais atenção na clínica.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- AULAS 5 E 6 -->
                 <div id="pane-3" class="lesson-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
                     <div class="space-y-6 relative z-10">
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">5</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                5
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Leitura e escrita: bases da aprendizagem</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Entenda como linguagem, leitura e escrita se conectam profundamente no desenvolvimento da criança.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Leitura e escrita: bases da aprendizagem
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Entenda como linguagem, leitura e escrita se conectam profundamente no desenvolvimento da criança.
+                                </p>
                             </div>
                         </div>
+
                         <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700/80 to-transparent"></div>
+
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">6</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                6
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Dificuldades na Leitura e Escrita</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Entenda de maneira clara os principais fatores que contribuem para as dificuldades de ler e escrever.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Dificuldades na Leitura e Escrita
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Entenda de maneira clara os principais fatores que contribuem para as dificuldades de ler e escrever.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- AULA 7 -->
                 <div id="pane-4" class="lesson-pane transition-all duration-500 opacity-0 transform translate-y-4 hidden">
                     <div class="space-y-6 relative z-10">
                         <div class="flex gap-4 md:gap-5 items-start">
-                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">7</div>
+                            <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-amber-500 font-bold text-base md:text-lg shadow-inner">
+                                7
+                            </div>
+
                             <div>
-                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">Decifrando o Autismo</h3>
-                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Compreenda as diferentes manifestações do espectro, reconheça sinais importantes e entenda o papel da Fonoaudiologia no desenvolvimento da comunicação.</p>
+                                <h3 class="text-white text-lg md:text-xl font-serif mb-1.5 leading-snug">
+                                    Decifrando o Autismo
+                                </h3>
+                                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                                    Compreenda as diferentes manifestações do espectro, reconheça sinais importantes e entenda o papel da Fonoaudiologia no desenvolvimento da comunicação.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -718,7 +1302,10 @@
     <!-- PROPOSTA DE VALOR -->
     <section class="py-20 relative z-10 bg-transparent">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-6 mask-reveal">
-            <h2 class="text-3xl md:text-4xl text-white font-serif">Você vai atender crianças, a única questão é como você chega no consultório.</h2>
+            <h2 class="text-3xl md:text-4xl text-white font-serif">
+                Você vai atender crianças, a única questão é como você chega no consultório.
+            </h2>
+
             <p class="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
                 Existem profissionais que abrem a agenda e passam anos sofrendo de insegurança. E existem profissionais que chegam no primeiro dia sabendo avaliar e conduzir uma sessão. A diferença vem do método clínico de trabalho.
             </p>
@@ -731,48 +1318,82 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-on-scroll stagger-children">
                 <div class="bg-gradient-to-b from-slate-900/60 to-slate-900/40 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-8 md:p-10 shadow-lg relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
+
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                             <i data-lucide="check" class="w-6 h-6 text-emerald-400"></i>
                         </div>
-                        <h3 class="text-2xl md:text-3xl text-white font-serif">Para quem é</h3>
+
+                        <h3 class="text-2xl md:text-3xl text-white font-serif">
+                            Para quem é
+                        </h3>
                     </div>
+
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-300 text-sm md:text-base leading-relaxed"><strong class="text-white font-medium">Estudantes de estágio</strong> que precisam desenvolver raciocínio clínico real, sabendo exatamente o que e como fazer com o paciente na prática.</span>
+                            <span class="text-slate-300 text-sm md:text-base leading-relaxed">
+                                <strong class="text-white font-medium">Estudantes de estágio</strong>
+                                que precisam desenvolver raciocínio clínico real, sabendo exatamente o que e como fazer com o paciente na prática.
+                            </span>
                         </li>
+
                         <li class="flex items-start gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-300 text-sm md:text-base leading-relaxed"><strong class="text-white font-medium">Recém-formadas</strong> que aprenderam a preencher protocolos na faculdade, mas travam na hora de conduzir a avaliação e decidir a conduta.</span>
+                            <span class="text-slate-300 text-sm md:text-base leading-relaxed">
+                                <strong class="text-white font-medium">Recém-formadas</strong>
+                                que aprenderam a preencher protocolos na faculdade, mas travam na hora de conduzir a avaliação e decidir a conduta.
+                            </span>
                         </li>
+
                         <li class="flex items-start gap-4">
                             <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-300 text-sm md:text-base leading-relaxed"><strong class="text-white font-medium">Fonoaudiólogas migrando para a pediatria</strong> que precisam construir uma base investigativa segura para iniciar os atendimentos infantis.</span>
+                            <span class="text-slate-300 text-sm md:text-base leading-relaxed">
+                                <strong class="text-white font-medium">Fonoaudiólogas migrando para a pediatria</strong>
+                                que precisam construir uma base investigativa segura para iniciar os atendimentos infantis.
+                            </span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="bg-gradient-to-b from-slate-900/60 to-slate-900/40 backdrop-blur-md border border-red-500/20 rounded-3xl p-8 md:p-10 shadow-lg relative overflow-hidden group hover:border-red-500/40 transition-colors">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
+
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/20 shrink-0">
                             <i data-lucide="x" class="w-6 h-6 text-red-400"></i>
                         </div>
-                        <h3 class="text-2xl md:text-3xl text-white font-serif">Para quem não é</h3>
+
+                        <h3 class="text-2xl md:text-3xl text-white font-serif">
+                            Para quem não é
+                        </h3>
                     </div>
+
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
                             <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-400 text-sm md:text-base leading-relaxed"><strong class="text-slate-300 font-medium">Profissionais experientes</strong> que já têm o raciocínio clínico consolidado e fazem o diagnóstico diferencial infantil com facilidade.</span>
+                            <span class="text-slate-400 text-sm md:text-base leading-relaxed">
+                                <strong class="text-slate-300 font-medium">Profissionais experientes</strong>
+                                que já têm o raciocínio clínico consolidado e fazem o diagnóstico diferencial infantil com facilidade.
+                            </span>
                         </li>
+
                         <li class="flex items-start gap-4">
                             <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-400 text-sm md:text-base leading-relaxed">Quem procura apenas <strong class="text-slate-300 font-medium">listas engessadas de sintomas</strong> e protocolos prontos para aplicar no piloto automático.</span>
+                            <span class="text-slate-400 text-sm md:text-base leading-relaxed">
+                                Quem procura apenas
+                                <strong class="text-slate-300 font-medium">listas engessadas de sintomas</strong>
+                                e protocolos prontos para aplicar no piloto automático.
+                            </span>
                         </li>
+
                         <li class="flex items-start gap-4">
                             <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-400 text-sm md:text-base leading-relaxed">Quem busca <strong class="text-slate-300 font-medium">supervisão comigo para analisar casos ao vivo</strong> (esse nível de acompanhamento acontece apenas dentro da Mentoria).</span>
+                            <span class="text-slate-400 text-sm md:text-base leading-relaxed">
+                                Quem busca
+                                <strong class="text-slate-300 font-medium">supervisão comigo para analisar casos ao vivo</strong>
+                                (esse nível de acompanhamento acontece apenas dentro da Mentoria).
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -785,11 +1406,20 @@
         <div class="max-w-3xl mx-auto px-6 relative z-10">
             <div class="bg-gradient-to-b from-slate-800/80 to-slate-900/90 border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden reveal-scale backdrop-blur-md">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+
                 <div class="space-y-8 relative z-10">
                     <div class="text-center mask-reveal">
-                        <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Formato 100% Gravado</p>
-                        <h2 class="text-3xl md:text-4xl text-white font-serif">Fono Desde o Início</h2>
-                        <p class="text-slate-400 text-sm mt-3 font-light">As 7 aulas gravadas para assistir quando quiser, sem encontro ao vivo e sem grupo de WhatsApp.</p>
+                        <p class="text-amber-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">
+                            Formato 100% Gravado
+                        </p>
+
+                        <h2 class="text-3xl md:text-4xl text-white font-serif">
+                            Fono Desde o Início
+                        </h2>
+
+                        <p class="text-slate-400 text-sm mt-3 font-light">
+                            As 7 aulas gravadas para assistir quando quiser, sem encontro ao vivo e sem grupo de WhatsApp.
+                        </p>
                     </div>
 
                     <div class="w-full h-px bg-slate-700/50"></div>
@@ -799,14 +1429,22 @@
                             <i data-lucide="play-circle" class="w-5 h-5 text-amber-500"></i>
                             O que está incluso:
                         </h3>
+
                         <ul class="text-left space-y-4 text-slate-300 text-sm font-light">
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong class="font-medium text-white">As 7 aulas completas na plataforma:</strong> Liberadas logo após o pagamento. Você assiste no seu ritmo e pode revisar antes das provas ou dos estágios.</span>
+                                <span>
+                                    <strong class="font-medium text-white">As 7 aulas completas na plataforma:</strong>
+                                    Liberadas logo após o pagamento. Você assiste no seu ritmo e pode revisar antes das provas ou dos estágios.
+                                </span>
                             </li>
+
                             <li class="flex items-start gap-3">
                                 <i data-lucide="check" class="w-5 h-5 text-amber-500 shrink-0"></i>
-                                <span><strong class="font-medium text-white">Doze meses de acesso para consultar:</strong> Um ano inteiro para voltar no material sempre que você travar com um paciente ou tiver dúvida sobre a conduta.</span>
+                                <span>
+                                    <strong class="font-medium text-white">Doze meses de acesso para consultar:</strong>
+                                    Um ano inteiro para voltar no material sempre que você travar com um paciente ou tiver dúvida sobre a conduta.
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -814,13 +1452,27 @@
                     <div class="w-full h-px bg-slate-700/50"></div>
 
                     <div class="text-center py-2 mask-reveal">
-                        <p class="text-xs text-slate-400 uppercase tracking-widest mb-2 font-bold">Investimento Único:</p>
-                        <p class="text-slate-500 text-xs mb-1">A turma que entrou primeiro pagou R$ 1.100 para ter meus encontros ao vivo.</p>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest mb-2 font-bold">
+                            Investimento Único:
+                        </p>
+
+                        <p class="text-slate-500 text-xs mb-1">
+                            A turma que entrou primeiro pagou R$ 1.100 para ter meus encontros ao vivo.
+                        </p>
+
                         <div class="flex items-center justify-center gap-2 mt-2">
-                            <span class="text-xl text-slate-400 font-light">12x de</span>
-                            <span class="text-5xl font-serif text-white font-medium text-gold">R$51,40</span>
+                            <span class="text-xl text-slate-400 font-light">
+                                12x de
+                            </span>
+
+                            <span class="text-5xl font-serif text-white font-medium text-gold">
+                                R$51,40
+                            </span>
                         </div>
-                        <p class="text-sm text-slate-400 mt-2">Ou R$ 497,00 à vista</p>
+
+                        <p class="text-sm text-slate-400 mt-2">
+                            Ou R$ 497,00 à vista
+                        </p>
                     </div>
 
                     <a href="https://pay.kiwify.com.br/BEN8ebr" target="_blank" class="block w-full">
@@ -831,7 +1483,11 @@
 
                     <div class="flex items-start md:items-center justify-center gap-3 mt-4 text-xs md:text-sm text-slate-400 font-light mask-reveal bg-emerald-900/10 border border-emerald-500/20 p-4 rounded-xl">
                         <i data-lucide="shield-check" class="w-6 h-6 text-emerald-500 shrink-0"></i>
-                        <span class="text-left"><strong>Quinze dias para desistir sem dar satisfação:</strong> Você entra, assiste ao conteúdo e avalia o material. Se achar que não ajudou na sua prática clínica e na sua segurança, manda uma mensagem pedindo o reembolso. Nós devolvemos o valor inteiro, sem perguntas.</span>
+
+                        <span class="text-left">
+                            <strong>Quinze dias para desistir sem dar satisfação:</strong>
+                            Você entra, assiste ao conteúdo e avalia o material. Se achar que não ajudou na sua prática clínica e na sua segurança, manda uma mensagem pedindo o reembolso. Nós devolvemos o valor inteiro, sem perguntas.
+                        </span>
                     </div>
                 </div>
             </div>
@@ -848,22 +1504,35 @@
             <div class="w-full md:w-1/2 relative reveal-on-scroll">
                 <div class="relative w-full max-w-md mx-auto">
                     <div class="absolute inset-0 border-2 border-amber-500/40 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 rounded-2xl z-0"></div>
-                    <img src="https://raw.githubusercontent.com/Fathimaoliveira-a/foto/469b6fddfba6b9b4394ee59c43068711e473e88d/ERIS3023.jpg" alt="[Dra. Fáthima Oliveira]" class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[450px] md:h-[600px] grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+
+                    <img
+                        src="https://raw.githubusercontent.com/Fathimaoliveira-a/foto/469b6fddfba6b9b4394ee59c43068711e473e88d/ERIS3023.jpg"
+                        alt="Dra. Fáthima Oliveira"
+                        class="relative z-10 w-full rounded-2xl shadow-2xl object-cover h-[450px] md:h-[600px] grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                    >
                 </div>
             </div>
 
             <div class="w-full md:w-1/2 space-y-6 mask-reveal text-center md:text-left mt-10 md:mt-0">
-                <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">Quem <span class="text-gold italic">sou eu</span></h2>
+                <h2 class="text-3xl md:text-5xl text-white leading-tight font-serif">
+                    Quem <span class="text-gold italic">sou eu</span>
+                </h2>
+
                 <div class="h-1 w-20 bg-amber-600/50 rounded mx-auto md:mx-0"></div>
+
                 <p class="text-slate-300 text-base md:text-lg leading-relaxed">
-                    Sou a <strong class="text-white">Dra. Fáthima Oliveira</strong>, fonoaudióloga com atuação clínica desde 2002, especialista em Fonoaudiologia no Autismo e em Processamento Auditivo Central.
+                    Sou a <strong class="text-white">Dra. Fáthima Oliveira</strong>,
+                    fonoaudióloga com atuação clínica desde 2002, especialista em Fonoaudiologia no Autismo e em Processamento Auditivo Central.
                 </p>
+
                 <p class="text-slate-400 text-sm md:text-base leading-relaxed">
                     Sou certificada no método PROMPT (EUA), em Modificabilidade Cognitiva Estrutural (Israel), no modelo DIR/Floortime (ICDL/EUA) e na aplicação das Escalas Bayley de Desenvolvimento Infantil, além de terapeuta PADOVAN e pós-graduada em psicologia transpessoal.
                 </p>
+
                 <p class="text-slate-400 text-sm md:text-base leading-relaxed">
                     Atuo também como palestrante, mentora e capacitadora de profissionais em todo o Brasil, e sou membro da Sociedade Brasileira de Fonoaudiologia.
                 </p>
+
                 <p class="text-slate-300 font-medium text-sm md:text-base leading-relaxed mt-4 border-l-2 border-amber-500/50 pl-4">
                     Demorei anos errando e ajustando esse raciocínio clínico com crianças reais porque ninguém me entregou esse caminho pronto. Aqui, eu organizo tudo isso para você não precisar penar o mesmo tanto.
                 </p>
@@ -875,7 +1544,10 @@
     <section class="py-24 relative z-10 bg-transparent overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 space-y-4 mask-reveal">
-                <h2 class="text-3xl md:text-5xl text-white font-serif">Dúvidas Frequentes</h2>
+                <h2 class="text-3xl md:text-5xl text-white font-serif">
+                    Dúvidas Frequentes
+                </h2>
+
                 <p class="text-slate-400 max-w-2xl mx-auto font-light">
                     As perguntas mais comuns de quem está decidindo agora.
                 </p>
@@ -884,9 +1556,13 @@
             <div class="space-y-4 reveal-on-scroll stagger-children">
                 <div class="bg-slate-900/45 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
                     <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer">
-                        <span class="text-white font-medium pr-4">Já sou formada, o curso é para mim?</span>
+                        <span class="text-white font-medium pr-4">
+                            Já sou formada, o curso é para mim?
+                        </span>
+
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
                     </button>
+
                     <div class="faq-content bg-slate-900/80">
                         <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
                             Se você atende criança há anos, confia na sua conduta e faz diagnóstico diferencial com facilidade, estas aulas são básicas para você. Mas se você se formou, foi para outra área ou nunca pegou infantil de verdade, aqui está a base clínica que as pós-graduações cobram e não ensinam.
@@ -896,9 +1572,13 @@
 
                 <div class="bg-slate-900/45 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
                     <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer">
-                        <span class="text-white font-medium pr-4">Tem aula ao vivo ou grupo no WhatsApp?</span>
+                        <span class="text-white font-medium pr-4">
+                            Tem aula ao vivo ou grupo no WhatsApp?
+                        </span>
+
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
                     </button>
+
                     <div class="faq-content bg-slate-900/80">
                         <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
                             Não. Você recebe acesso apenas às aulas gravadas e aos guias em PDF. Os encontros ao vivo comigo e o grupo fechado fazem parte da Mentoria, que abre turmas específicas e tem outro valor.
@@ -908,9 +1588,13 @@
 
                 <div class="bg-slate-900/45 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
                     <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer">
-                        <span class="text-white font-medium pr-4">Por que R$ 497 se a primeira turma pagou R$ 1.100?</span>
+                        <span class="text-white font-medium pr-4">
+                            Por que R$ 497 se a primeira turma pagou R$ 1.100?
+                        </span>
+
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
                     </button>
+
                     <div class="faq-content bg-slate-900/80">
                         <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
                             As turmas anteriores compraram a Mentoria: encontros ao vivo semanais, grupo no WhatsApp, perguntas de casos respondidas na hora e acesso vitalício. Aqui, nós isolamos o conteúdo gravado por um valor menor, focado em quem quer apenas estudar o método.
@@ -920,9 +1604,13 @@
 
                 <div class="bg-slate-900/45 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
                     <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer">
-                        <span class="text-white font-medium pr-4">As 7 aulas já estão disponíveis?</span>
+                        <span class="text-white font-medium pr-4">
+                            As 7 aulas já estão disponíveis?
+                        </span>
+
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
                     </button>
+
                     <div class="faq-content bg-slate-900/80">
                         <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
                             Sim. As 7 aulas gravadas já estão disponíveis na plataforma. O acesso é liberado após a confirmação do pagamento, e você pode assistir no seu ritmo durante 12 meses.
@@ -932,9 +1620,13 @@
 
                 <div class="bg-slate-900/45 backdrop-blur-sm border border-slate-800/60 rounded-xl overflow-hidden hover:border-slate-700 transition-colors">
                     <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer">
-                        <span class="text-white font-medium pr-4">Posso parcelar os R$ 497?</span>
+                        <span class="text-white font-medium pr-4">
+                            Posso parcelar os R$ 497?
+                        </span>
+
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 transition-transform duration-300 shrink-0 faq-icon"></i>
                     </button>
+
                     <div class="faq-content bg-slate-900/80">
                         <p class="px-6 pb-6 text-slate-400 text-sm leading-relaxed">
                             Sim, você divide em 12x de R$ 51,40. Fica mais leve para pagar por mês e entrega a direção exata para você atender com segurança no consultório.
@@ -951,18 +1643,25 @@
             <p class="text-slate-500 text-xs md:text-sm">
                 &copy; 2026 Dra. Fáthima Oliveira. Todos os direitos reservados.
             </p>
+
             <div class="flex items-center gap-4 text-slate-500 text-xs md:text-sm">
-                <a href="#" class="hover:text-amber-500 transition-colors">Política de Privacidade</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">
+                    Política de Privacidade
+                </a>
+
                 <span>|</span>
-                <a href="#" class="hover:text-amber-500 transition-colors">Termos de Uso</a>
+
+                <a href="#" class="hover:text-amber-500 transition-colors">
+                    Termos de Uso
+                </a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Depoimentos do YouTube: carrossel manual, áudio individual e reprodução visível.
+        // DEPOIMENTOS EM MP4
+        // A pausa manual é preservada individualmente para cada vídeo.
         document.addEventListener('DOMContentLoaded', () => {
-            const section = document.getElementById('depoimentos');
             const track = document.getElementById('depoimentos-trilha');
             if (!track) return;
 
@@ -970,152 +1669,252 @@
             const previous = document.getElementById('depoimentos-anterior');
             const next = document.getElementById('depoimentos-proximo');
             const counter = document.getElementById('depoimentos-contador');
-            const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-            const ratios = new Map();
-            const items = cards.filter(card => card.dataset.videoId).map(card => ({
+            const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+            const items = cards.map(card => ({
                 card,
-                frame: card.querySelector('iframe'),
-                button: card.querySelector('.testimonial-sound'),
+                video: card.querySelector('video'),
+                play: card.querySelector('.testimonial-play'),
+                sound: card.querySelector('.testimonial-sound'),
                 feedback: card.querySelector('.testimonial-feedback'),
-                player: null,
-                ready: false,
-                failed: false,
+                userPaused: false,
                 blocked: false,
-                timer: null
+                pending: false,
+                failed: false
             }));
 
             let selected = 0;
-            let apiRequested = false;
-            let playersCreated = false;
-            let programmaticScroll = false;
-            let settleTimer;
+            let scrollTimer;
+            let programmatic = false;
+            let unlockTimer;
+            let drag = null;
 
-            function updateSelection() {
-                cards.forEach((card, index) => card.classList.toggle('is-selected', index === selected));
+            function update(item) {
+                const playing = !item.video.paused && !item.video.ended;
+                const audible = !item.video.muted;
+
+                item.play.dataset.playing = String(playing);
+                item.play.setAttribute(
+                    'aria-label',
+                    `${playing ? 'Pausar' : 'Reproduzir'} depoimento de ${item.card.dataset.student}`
+                );
+
+                item.sound.setAttribute('aria-pressed', String(audible));
+                item.sound.setAttribute(
+                    'aria-label',
+                    `${audible ? 'Silenciar' : 'Ativar áudio'} do depoimento de ${item.card.dataset.student}`
+                );
+            }
+
+            function navigation() {
+                cards.forEach((card, i) => {
+                    card.classList.toggle('is-selected', i === selected);
+                });
+
                 previous.disabled = selected === 0;
                 next.disabled = selected === cards.length - 1;
                 counter.textContent = `${selected + 1} / ${cards.length}`;
             }
 
-            function showMessage(item, text, withLink = false) {
-                item.feedback.querySelector('span').textContent = text;
-                item.feedback.querySelector('a').hidden = !withLink;
-                item.feedback.hidden = !text;
-            }
-
-            function setSoundUI(item, soundOn) {
-                const action = soundOn ? 'Silenciar' : 'Ativar áudio';
-                item.button.setAttribute('aria-pressed', String(soundOn));
-                item.button.setAttribute('aria-label', `${action} do depoimento de ${item.card.dataset.student}`);
-                item.button.title = action;
-            }
-
-            function mute(item) {
-                if (item.ready) item.player.mute();
-                setSoundUI(item, false);
-            }
-
             function visible(item) {
-                return !document.hidden && (ratios.get(item.card) || 0) >= .5;
+                if (document.hidden) return false;
+
+                const r = item.video.getBoundingClientRect();
+                const t = track.getBoundingClientRect();
+
+                const width =
+                    Math.min(r.right, t.right, innerWidth) -
+                    Math.max(r.left, t.left, 0);
+
+                const height =
+                    Math.min(r.bottom, innerHeight) -
+                    Math.max(r.top, 0);
+
+                return (
+                    width >= r.width * .5 &&
+                    height >= Math.min(180, r.height * .35)
+                );
             }
 
-            function pause(item) {
-                mute(item);
-                if (item.ready && [1, 3].includes(item.player.getPlayerState())) {
-                    item.player.pauseVideo();
+            function allowed(item) {
+                return (
+                    items[selected] === item &&
+                    !item.userPaused &&
+                    !item.failed &&
+                    visible(item)
+                );
+            }
+
+            function stop(item) {
+                item.video.pause();
+                item.video.muted = true;
+                update(item);
+            }
+
+            function start(item, explicit = false) {
+                if (
+                    !allowed(item) ||
+                    (item.blocked && !explicit) ||
+                    item.pending ||
+                    !item.video.paused
+                ) {
+                    return;
                 }
+
+                if (!item.video.getAttribute('src')) {
+                    item.video.src = item.video.dataset.src;
+                }
+
+                item.pending = true;
+                const request = item.video.play();
+
+                if (!request || !request.then) {
+                    item.pending = false;
+                    return;
+                }
+
+                request
+                    .then(() => {
+                        item.blocked = false;
+
+                        if (!allowed(item)) {
+                            stop(item);
+                        }
+                    })
+                    .catch(error => {
+                        if (error.name === 'NotAllowedError') {
+                            item.blocked = true;
+                        }
+
+                        // Trocas rápidas podem cancelar um play pendente.
+                    })
+                    .finally(() => {
+                        item.pending = false;
+                        update(item);
+                    });
             }
 
-            function syncPlayback() {
+            function sync() {
                 items.forEach(item => {
-                    if (cards[selected] !== item.card || !visible(item)) pause(item);
+                    if (!allowed(item)) {
+                        stop(item);
+                    }
                 });
 
-                const current = items.find(item => item.card === cards[selected]);
-
-                if (current && current.ready && !current.failed && !current.blocked && visible(current)) {
-                    if (![1, 3].includes(current.player.getPlayerState())) {
-                        current.player.playVideo();
-                    }
-                }
+                start(items[selected]);
             }
 
             function select(index, scroll = false) {
-                selected = Math.max(0, Math.min(cards.length - 1, index));
-                updateSelection();
+                const target = Math.max(0, Math.min(items.length - 1, index));
+
+                if (target !== selected) {
+                    stop(items[selected]);
+                }
+
+                selected = target;
+                navigation();
 
                 if (scroll) {
-                    programmaticScroll = true;
-                    clearTimeout(settleTimer);
-                    const max = Math.max(0, track.scrollWidth - track.clientWidth);
-                    const left = Math.min(max, cards[selected].offsetLeft - cards[0].offsetLeft);
-                    track.scrollTo({ left, behavior: motion.matches ? 'auto' : 'smooth' });
-                    settleTimer = setTimeout(() => {
-                        programmaticScroll = false;
+                    programmatic = true;
+                    clearTimeout(unlockTimer);
+
+                    const max = Math.max(
+                        0,
+                        track.scrollWidth - track.clientWidth
+                    );
+
+                    const left = Math.min(
+                        max,
+                        cards[selected].offsetLeft - cards[0].offsetLeft
+                    );
+
+                    track.scrollTo({
+                        left,
+                        behavior: reducedMotion.matches ? 'auto' : 'smooth'
+                    });
+
+                    unlockTimer = setTimeout(() => {
+                        programmatic = false;
+                        sync();
                     }, 700);
                 }
 
-                syncPlayback();
+                sync();
             }
 
             function selectFromScroll() {
-                if (programmaticScroll) return;
+                if (programmatic) return;
+
                 const left = track.getBoundingClientRect().left;
-                let best = selected;
+                let closest = selected;
                 let distance = Infinity;
 
-                cards.forEach((card, index) => {
-                    const rect = card.getBoundingClientRect();
-                    const amount = Math.min(rect.right, left + track.clientWidth) - Math.max(rect.left, left);
-                    const delta = Math.abs(rect.left - left);
+                cards.forEach((card, i) => {
+                    const r = card.getBoundingClientRect();
 
-                    if (amount >= rect.width * .5 && delta < distance) {
-                        best = index;
-                        distance = delta;
+                    const amount =
+                        Math.min(r.right, left + track.clientWidth) -
+                        Math.max(r.left, left);
+
+                    const d = Math.abs(r.left - left);
+
+                    if (amount >= r.width * .5 && d < distance) {
+                        closest = i;
+                        distance = d;
                     }
                 });
 
-                if (best !== selected) select(best);
-                else syncPlayback();
+                select(closest);
             }
 
-            previous.addEventListener('click', () => select(selected - 1, true));
-            next.addEventListener('click', () => select(selected + 1, true));
+            function manualScroll() {
+                programmatic = false;
+                clearTimeout(unlockTimer);
+            }
+
+            previous.addEventListener('click', () => {
+                select(selected - 1, true);
+            });
+
+            next.addEventListener('click', () => {
+                select(selected + 1, true);
+            });
 
             track.addEventListener('keydown', event => {
-                if (event.target !== track) return;
-
-                if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-                    event.preventDefault();
-                    select(selected + (event.key === 'ArrowLeft' ? -1 : 1), true);
+                if (
+                    event.target !== track ||
+                    !['ArrowLeft', 'ArrowRight'].includes(event.key)
+                ) {
+                    return;
                 }
+
+                event.preventDefault();
+
+                select(
+                    selected + (event.key === 'ArrowLeft' ? -1 : 1),
+                    true
+                );
             });
 
             track.addEventListener('scroll', () => {
-                if (programmaticScroll) return;
-                clearTimeout(settleTimer);
-                settleTimer = setTimeout(selectFromScroll, 100);
+                sync();
+
+                if (programmatic) return;
+
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(selectFromScroll, 120);
             }, { passive: true });
 
-            window.addEventListener('resize', () => {
-                updateSelection();
-                selectFromScroll();
+            track.addEventListener('wheel', manualScroll, {
+                passive: true
             });
 
-            // Arraste pelas legendas e pelos espaços entre os cards.
-            let drag = null;
-
-            const manualScroll = () => {
-                programmaticScroll = false;
-                clearTimeout(settleTimer);
-            };
-
-            track.addEventListener('wheel', manualScroll, { passive: true });
-
             track.addEventListener('pointerdown', event => {
+                if (event.target.closest('button, a')) return;
+
                 manualScroll();
 
-                if (event.pointerType !== 'mouse' || event.button !== 0 || event.target.closest('button, a, iframe')) {
+                if (event.pointerType !== 'mouse' || event.button !== 0) {
                     return;
                 }
 
@@ -1131,6 +1930,7 @@
                 if (!drag || drag.id !== event.pointerId) return;
 
                 const delta = event.clientX - drag.x;
+
                 if (!drag.moved && Math.abs(delta) <= 5) return;
 
                 if (!drag.moved) {
@@ -1154,219 +1954,130 @@
                 }
 
                 track.classList.remove('is-dragging');
-                if (moved) selectFromScroll();
+
+                if (moved) {
+                    selectFromScroll();
+                }
             }
 
             window.addEventListener('pointerup', finishDrag);
             window.addEventListener('pointercancel', finishDrag);
 
-            function playerError(item, code) {
-                item.failed = true;
-                item.button.disabled = true;
-                clearTimeout(item.timer);
-                pause(item);
+            items.forEach((item, i) => {
+                item.video.muted = true;
 
-                const message = code === 153
-                    ? 'Abra a página publicada para assistir.'
-                    : 'Este vídeo não pôde ser reproduzido aqui.';
+                item.play.addEventListener('click', () => {
+                    if (
+                        i === selected &&
+                        (!item.video.paused || item.pending)
+                    ) {
+                        item.userPaused = true;
+                        stop(item);
+                    } else {
+                        stop(items[selected]);
 
-                showMessage(item, message, true);
-            }
+                        selected = i;
+                        item.userPaused = false;
+                        item.blocked = false;
 
-            function createPlayers() {
-                if (playersCreated || !window.YT || !window.YT.Player) return;
-                playersCreated = true;
+                        navigation();
+                        start(item, true);
+                    }
+                });
 
-                items.forEach(item => {
-                    const id = item.card.dataset.videoId;
-                    const url = new URL(`https://www.youtube.com/embed/${id}`);
+                item.sound.addEventListener('click', () => {
+                    const enable = item.video.muted;
 
-                    const parameters = {
-                        enablejsapi: 1,
-                        autoplay: 0,
-                        controls: 0,
-                        playsinline: 1,
-                        loop: 1,
-                        playlist: id,
-                        rel: 0,
-                        fs: 0
-                    };
-
-                    Object.entries(parameters).forEach(([key, value]) => {
-                        url.searchParams.set(key, value);
-                    });
-
-                    if (/^https?:$/.test(location.protocol)) {
-                        url.searchParams.set('origin', location.origin);
+                    if (i !== selected) {
+                        stop(items[selected]);
+                        selected = i;
+                        navigation();
                     }
 
-                    item.frame.src = url.toString();
-
-                    item.player = new YT.Player(item.frame.id, {
-                        events: {
-                            onReady(event) {
-                                item.player = event.target;
-                                item.ready = true;
-                                item.failed = false;
-                                clearTimeout(item.timer);
-                                item.button.disabled = false;
-                                mute(item);
-                                showMessage(item, '');
-                                syncPlayback();
-                            },
-
-                            onStateChange(event) {
-                                if (event.data === YT.PlayerState.PLAYING) {
-                                    if (cards[selected] !== item.card || !visible(item)) {
-                                        pause(item);
-                                        return;
-                                    }
-
-                                    items.forEach(other => {
-                                        if (other !== item) pause(other);
-                                    });
-
-                                    item.blocked = false;
-                                    setSoundUI(item, !item.player.isMuted());
-                                    showMessage(item, '');
-                                }
-                            },
-
-                            onAutoplayBlocked() {
-                                item.blocked = true;
-                                mute(item);
-
-                                if (cards[selected] === item.card) {
-                                    showMessage(item, 'Toque no ícone de áudio para assistir.');
-                                }
-                            },
-
-                            onError(event) {
-                                playerError(item, event.data);
-                            }
+                    items.forEach(other => {
+                        if (other !== item) {
+                            stop(other);
                         }
                     });
 
-                    item.timer = setTimeout(() => {
-                        if (!item.ready) {
-                            showMessage(item, 'O vídeo está demorando para carregar.', true);
+                    item.video.muted = !enable;
+                    update(item);
+
+                    // O botão de áudio não desfaz uma pausa manual.
+                    if (!item.userPaused) {
+                        item.blocked = false;
+                        start(item, true);
+                    }
+                });
+
+                item.video.addEventListener('play', () => {
+                    if (!allowed(item)) {
+                        stop(item);
+                        return;
+                    }
+
+                    items.forEach(other => {
+                        if (other !== item) {
+                            stop(other);
                         }
-                    }, 20000);
-                });
-            }
-
-            function loadYouTube() {
-                if (apiRequested) return;
-                apiRequested = true;
-
-                if (window.YT && window.YT.Player) {
-                    createPlayers();
-                    return;
-                }
-
-                const priorCallback = window.onYouTubeIframeAPIReady;
-
-                window.onYouTubeIframeAPIReady = () => {
-                    try {
-                        if (typeof priorCallback === 'function') priorCallback();
-                    } finally {
-                        createPlayers();
-                    }
-                };
-
-                const script = document.createElement('script');
-                script.src = 'https://www.youtube.com/iframe_api';
-                script.onerror = () => {
-                    items.forEach(item => {
-                        showMessage(item, 'Não foi possível carregar o vídeo.', true);
                     });
-                };
 
-                document.head.appendChild(script);
-
-                setTimeout(() => {
-                    if (!playersCreated) {
-                        items.forEach(item => {
-                            showMessage(item, 'O YouTube está demorando para responder.', true);
-                        });
-                    }
-                }, 20000);
-            }
-
-            items.forEach(item => {
-                item.button.addEventListener('click', () => {
-                    if (!item.ready || item.failed) return;
-
-                    const enableSound = item.player.isMuted();
-                    items.forEach(mute);
-                    selected = cards.indexOf(item.card);
-                    updateSelection();
-                    item.blocked = false;
-
-                    if (enableSound) {
-                        item.player.setVolume(100);
-                        item.player.unMute();
-                    }
-
-                    setSoundUI(item, enableSound);
-                    item.player.playVideo();
-                    syncPlayback();
+                    update(item);
                 });
+
+                ['pause', 'playing', 'volumechange', 'ended'].forEach(event => {
+                    item.video.addEventListener(event, () => {
+                        update(item);
+                    });
+                });
+
+                item.video.addEventListener('error', () => {
+                    item.failed = true;
+                    item.feedback.textContent =
+                        'Não foi possível carregar este depoimento. Atualize a página para tentar novamente.';
+                    item.feedback.hidden = false;
+                    stop(item);
+                });
+
+                update(item);
             });
 
             if ('IntersectionObserver' in window) {
-                const playbackObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        ratios.set(
-                            entry.target.closest('.testimonial-card'),
-                            entry.intersectionRatio
-                        );
-                    });
-                    syncPlayback();
-                }, { threshold: [0, .5, 1] });
-
-                cards.forEach(card => {
-                    playbackObserver.observe(card.querySelector('.testimonial-media'));
+                const observer = new IntersectionObserver(sync, {
+                    threshold: [0, .25, .5, .75, 1]
                 });
 
-                const loadObserver = new IntersectionObserver(entries => {
-                    if (entries.some(entry => entry.isIntersecting)) {
-                        loadYouTube();
-                        loadObserver.disconnect();
-                    }
-                }, { rootMargin: '250px' });
-
-                loadObserver.observe(section);
-            } else {
-                const measure = () => {
-                    const viewport = track.getBoundingClientRect();
-
-                    cards.forEach(card => {
-                        const r = card.querySelector('.testimonial-media').getBoundingClientRect();
-                        const w = Math.max(
-                            0,
-                            Math.min(r.right, viewport.right, innerWidth) - Math.max(r.left, viewport.left, 0)
-                        );
-                        const h = Math.max(
-                            0,
-                            Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)
-                        );
-
-                        ratios.set(card, w * h / (r.width * r.height));
-                    });
-
-                    syncPlayback();
-                };
-
-                window.addEventListener('scroll', measure, { passive: true });
-                window.addEventListener('resize', measure);
-                track.addEventListener('scroll', measure, { passive: true });
-                measure();
-                loadYouTube();
+                items.forEach(item => {
+                    observer.observe(item.video);
+                });
             }
 
-            document.addEventListener('visibilitychange', syncPlayback);
-            updateSelection();
+            let frame = null;
+
+            function scheduleSync() {
+                if (frame !== null) return;
+
+                frame = requestAnimationFrame(() => {
+                    frame = null;
+                    sync();
+                });
+            }
+
+            window.addEventListener('scroll', scheduleSync, {
+                passive: true
+            });
+
+            window.addEventListener('resize', scheduleSync);
+            document.addEventListener('visibilitychange', sync);
+
+            window.addEventListener('pagehide', () => {
+                items.forEach(stop);
+            });
+
+            window.addEventListener('pageshow', sync);
+
+            navigation();
+            sync();
         });
 
         // FAQ
@@ -1397,39 +2108,43 @@
             });
         });
 
-        // Órbita
+        // ÓRBITA
         const planetData = [
             {
-                title: "Cada professor dá sua matéria e vai embora.",
-                desc: "Ninguém ensina como juntar o que você viu em linguagem com o que viu em desenvolvimento. Você termina o semestre sem saber como essas coisas funcionam ao mesmo tempo em uma criança de verdade."
+                title: 'Cada professor dá sua matéria e vai embora.',
+                desc: 'Ninguém ensina como juntar o que você viu em linguagem com o que viu em desenvolvimento. Você termina o semestre sem saber como essas coisas funcionam ao mesmo tempo em uma criança de verdade.'
             },
             {
-                title: "Você sabe listar sintomas, mas não sabe intervir.",
-                desc: "Escrever na prova o que é um atraso de linguagem é fácil. O peso aparece quando você senta de frente para uma criança de três anos e precisa decidir qual estímulo testar no primeiro minuto de sessão."
+                title: 'Você sabe listar sintomas, mas não sabe intervir.',
+                desc: 'Escrever na prova o que é um atraso de linguagem é fácil. O peso aparece quando você senta de frente para uma criança de três anos e precisa decidir qual estímulo testar no primeiro minuto de sessão.'
             },
             {
-                title: "O medo de atender acompanha o diploma.",
-                desc: "Ele continua com você enquanto você precisar improvisar nos atendimentos. A insegurança vai embora quando você aprende a ordem exata das perguntas que precisa fazer diante do paciente."
+                title: 'O medo de atender acompanha o diploma.',
+                desc: 'Ele continua com você enquanto você precisar improvisar nos atendimentos. A insegurança vai embora quando você aprende a ordem exata das perguntas que precisa fazer diante do paciente.'
             }
         ];
 
         window.activatePlanet = function(index) {
             const orbs = document.querySelectorAll('.planet-orb');
+
             const glows = [
                 document.getElementById('glow-0'),
                 document.getElementById('glow-1'),
                 document.getElementById('glow-2')
             ];
+
             const pulses = [
                 document.getElementById('pulse-0'),
                 document.getElementById('pulse-1'),
                 document.getElementById('pulse-2')
             ];
+
             const labels = [
                 document.getElementById('label-0'),
                 document.getElementById('label-1'),
                 document.getElementById('label-2')
             ];
+
             const titleEl = document.getElementById('planet-title');
             const descEl = document.getElementById('planet-desc');
 
@@ -1441,27 +2156,50 @@
                     'scale-125',
                     'shadow-[0_0_30px_rgba(239,68,68,0.4)]'
                 );
-                orb.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-400');
+
+                orb.classList.add(
+                    'border-slate-700',
+                    'bg-slate-900/80',
+                    'text-slate-400'
+                );
 
                 if (glows[i]) {
                     glows[i].classList.remove('scale-150', 'opacity-100');
                     glows[i].classList.add('scale-0', 'opacity-0');
                 }
+
                 if (pulses[i]) {
                     pulses[i].classList.remove('block');
                     pulses[i].classList.add('hidden');
                 }
+
                 if (labels[i]) {
                     labels[i].classList.remove(
-                        'text-red-500', 'mt-4', 'md:mt-5', 'font-bold',
-                        'drop-shadow-md', 'text-xs', 'md:text-sm'
+                        'text-red-500',
+                        'mt-4',
+                        'md:mt-5',
+                        'font-bold',
+                        'drop-shadow-md',
+                        'text-xs',
+                        'md:text-sm'
                     );
-                    labels[i].classList.add('text-slate-400', 'mt-3', 'text-[10px]', 'md:text-xs');
+
+                    labels[i].classList.add(
+                        'text-slate-400',
+                        'mt-3',
+                        'text-[10px]',
+                        'md:text-xs'
+                    );
                 }
             });
 
             if (orbs[index]) {
-                orbs[index].classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-400');
+                orbs[index].classList.remove(
+                    'border-slate-700',
+                    'bg-slate-900/80',
+                    'text-slate-400'
+                );
+
                 orbs[index].classList.add(
                     'border-red-500',
                     'bg-red-900/40',
@@ -1470,19 +2208,33 @@
                     'shadow-[0_0_30px_rgba(239,68,68,0.4)]'
                 );
             }
+
             if (glows[index]) {
                 glows[index].classList.remove('scale-0', 'opacity-0');
                 glows[index].classList.add('scale-150', 'opacity-100');
             }
+
             if (pulses[index]) {
                 pulses[index].classList.remove('hidden');
                 pulses[index].classList.add('block');
             }
+
             if (labels[index]) {
-                labels[index].classList.remove('text-slate-400', 'mt-3', 'text-[10px]', 'md:text-xs');
+                labels[index].classList.remove(
+                    'text-slate-400',
+                    'mt-3',
+                    'text-[10px]',
+                    'md:text-xs'
+                );
+
                 labels[index].classList.add(
-                    'text-red-500', 'mt-4', 'md:mt-5', 'font-bold',
-                    'drop-shadow-md', 'text-xs', 'md:text-sm'
+                    'text-red-500',
+                    'mt-4',
+                    'md:mt-5',
+                    'font-bold',
+                    'drop-shadow-md',
+                    'text-xs',
+                    'md:text-sm'
                 );
             }
 
@@ -1495,6 +2247,7 @@
                 setTimeout(() => {
                     titleEl.textContent = planetData[index].title;
                     descEl.textContent = planetData[index].desc;
+
                     titleEl.style.opacity = '1';
                     titleEl.style.transform = 'translateY(0)';
                     descEl.style.opacity = '1';
@@ -1503,7 +2256,7 @@
             }
         };
 
-        // Abas das aulas
+        // ABAS DAS AULAS
         window.changeLessonBlock = function(blockId) {
             const tabs = document.querySelectorAll('.lesson-tab');
             const panes = document.querySelectorAll('.lesson-pane');
@@ -1515,11 +2268,22 @@
                     'text-amber-400',
                     'shadow-[0_0_15px_rgba(217,119,6,0.2)]'
                 );
-                tab.classList.add('border-slate-700', 'bg-slate-900/50', 'text-slate-400');
+
+                tab.classList.add(
+                    'border-slate-700',
+                    'bg-slate-900/50',
+                    'text-slate-400'
+                );
             });
 
             const activeTab = document.getElementById(`tab-${blockId}`);
-            activeTab.classList.remove('border-slate-700', 'bg-slate-900/50', 'text-slate-400');
+
+            activeTab.classList.remove(
+                'border-slate-700',
+                'bg-slate-900/50',
+                'text-slate-400'
+            );
+
             activeTab.classList.add(
                 'border-amber-500',
                 'bg-amber-900/40',
@@ -1539,6 +2303,7 @@
                 });
 
                 const activePane = document.getElementById(`pane-${blockId}`);
+
                 activePane.classList.remove('hidden');
                 activePane.classList.add('block');
 
@@ -1549,7 +2314,7 @@
             }, 300);
         };
 
-        // Animações de scroll
+        // ANIMAÇÕES DE SCROLL
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
@@ -1558,7 +2323,7 @@
             const observerOptions = {
                 root: null,
                 threshold: 0.05,
-                rootMargin: "50px"
+                rootMargin: '50px'
             };
 
             const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1574,7 +2339,9 @@
                 '.reveal-on-scroll, .reveal-scale, .mask-reveal, .mask-reveal-left, .stagger-children'
             );
 
-            revealElements.forEach(el => revealObserver.observe(el));
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
 
             setTimeout(() => {
                 revealElements.forEach(el => {
